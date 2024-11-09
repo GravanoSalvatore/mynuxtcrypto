@@ -1,6 +1,7 @@
 
 <template>
   <div class="">
+
     <div v-if="loadingBanner" class="preloader text-white">
       <p>
         <img
@@ -61,6 +62,19 @@
 
         <!-- Основная колонка с карточками новостей -->
         <div class="col-12 col-md-9" ref="newsContainer">
+          <div class="tradingview-widgets-container">
+  <div class="tradingview-widget">
+    <TradingViewChart :symbol="'BINANCE:BTCUSDT'" :width="300" :height="300" containerId="tradingview_btc_chart" />
+  </div>
+  <div class="tradingview-widget">
+    <TradingViewChart :symbol="'BINANCE:ETHUSDT'" :width="300" :height="300" containerId="tradingview_eth_chart" />
+  </div>
+  <div class="tradingview-widget">
+    <TradingViewChart :symbol="'KRAKEN:USDTUSD'" :width="300" :height="300" containerId="tradingview_usdt_chart" />
+  </div>
+</div>
+
+  <br/>
           <div class="row">
             <div v-for="newsItem in paginatedNews" :key="newsItem.id" class="col-12 col-md-6 col-lg-4 mb-4">
               <div class="card h-100 news-card" style="max-height: 500px; background-color: #f8f9fa;">
@@ -98,6 +112,7 @@
               <i class="bi bi-arrow-right-square"></i>
             </span>
           </div>
+      
         </div>
       </div>
     </div>
@@ -106,7 +121,10 @@
 </template>
 
 <script>
+import TradingViewChart from '../components/Chart.vue';
+
 export default {
+  components:{TradingViewChart},
   data() {
     return {
       loadingBanner: true,
@@ -218,6 +236,30 @@ export default {
 </script>
 
 <style scoped>
+.tradingview-widgets-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap; /* Чтобы не было переноса на больших экранах */
+}
+
+.tradingview-widget {
+  /* width: 400px;
+  height: 400px; */
+}
+
+@media (max-width: 768px) {
+  .tradingview-widgets-container {
+    flex-direction: column; /* Размещаем графики один под другим на мобильных устройствах */
+    align-items: center; /* Центрируем графики по горизонтали */
+  }
+
+  .tradingview-widget {
+    width: 100%; /* Графики занимают всю ширину на мобильных устройствах */
+    max-width: 400px;
+  }
+}
+
 .preloader {
   position: fixed;
   top: 0;

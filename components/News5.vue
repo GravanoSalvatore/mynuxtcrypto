@@ -1,6 +1,14 @@
 
 <template>
   <div class="container-fluid">
+    <div v-if="isLoading" class="preloader text-white">
+      <p>
+        <img
+          style="width: 300px;"
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"
+        />
+      </p>
+    </div>
     <div class="row top">
       
       <!-- Основная колонка с карточками новостей (четыре карточки в ряд) -->
@@ -65,13 +73,26 @@
         </div>
       </div>
     </div>
+    <!-- <div class="tradingview-widgets-container">
+  <div class="tradingview-widget">
+    <TradingViewChart :symbol="'BINANCE:BTCUSDT'" :width="300" :height="300" containerId="tradingview_btc_chart" />
+  </div>
+  <div class="tradingview-widget">
+    <TradingViewChart :symbol="'BINANCE:ETHUSDT'" :width="300" :height="300" containerId="tradingview_eth_chart" />
+  </div>
+  <div class="tradingview-widget">
+    <TradingViewChart :symbol="'BINANCE:USDTUSD'" :width="300" :height="300" containerId="tradingview_usdt_chart" />
+  </div>
+</div> -->
     <br /><br />
   </div>
   
 </template>
 
 <script>
+import TradingViewChart from './components/Chart.vue';
 export default {
+  components:{TradingViewChart},
   data() {
     return {
       news: [],
@@ -142,6 +163,19 @@ export default {
 </script>
 
 <style scoped>
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #091520;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
 .top {
   margin-top: 65px;
 }

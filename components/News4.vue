@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid">
+   
     <div class="row">
       <!-- Sidebar с криптовалютами -->
       <div class="col-12 col-md-3 fixed-sidebar mb-4 mb-md-0">
         <input
-       
           v-if="!isLoading"
-          style="box-shadow: none !important;border: none !important;"
+          style="box-shadow: none !important; border: none !important;"
           type="text"
           v-model="searchQuery"
           placeholder="Search Cryptocurrency"
@@ -42,19 +42,19 @@
             </div>
           </div>
           <span
-            v-if="!showAllCryptos"
+            v-if="!isLoading && !showAllCryptos"
             @click="showAllCryptos = true"
             class="pointer mt-2 fw-bold"
           >
             Open 100
-        </span>
+          </span>
           <span
-            v-if="showAllCryptos"
+            v-if="!isLoading && showAllCryptos"
             @click="showAllCryptos = false"
             class="pointer mt-2 fw-bold"
           >
             Close
-      </span>
+          </span>
         </div>
       </div>
 
