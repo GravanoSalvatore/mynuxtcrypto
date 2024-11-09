@@ -47,7 +47,7 @@
 
     <h2>9. Contact Information</h2>
     <p>
-      If you have any questions or comments regarding these Terms of Service, please contact us at: <a href="mailto:cryptoItshka.com">cryptoItshka.com</a>.
+      If you have any questions or comments regarding these Terms of Service, please contact us at: <a href="mailto:cryptobulls.com">cryptobulls.com</a>.
     </p>
   </div>
 </template>

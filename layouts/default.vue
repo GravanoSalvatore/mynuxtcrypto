@@ -193,9 +193,9 @@
           <li class="sidebar-item">
             <NuxtLink to="/about" class="sidebar-link" @click="toggleSidebar">Articles</NuxtLink>
           </li>
-          <li class="sidebar-item">
+          <!-- <li class="sidebar-item">
             <NuxtLink to="/sec" class="sidebar-link" @click="toggleSidebar">SEC</NuxtLink>
-          </li>
+          </li> -->
           <li class="sidebar-item">
             <NuxtLink to="/ai" class="sidebar-link" @click="toggleSidebar">AI</NuxtLink>
           </li>
@@ -212,7 +212,7 @@
             <NuxtLink to="/altcoins" class="sidebar-link" @click="toggleSidebar">Altcoins</NuxtLink>
           </li>
           <li class="sidebar-item">
-            <NuxtLink to="/defi" class="sidebar-link" @click="toggleSidebar">Defi & NFT</NuxtLink>
+            <NuxtLink to="/defi" class="sidebar-link" @click="toggleSidebar">Defi</NuxtLink>
           </li>
           <li class="sidebar-item">
             <NuxtLink to="/privacy" class="sidebar-link" @click="toggleSidebar">Privacy Policy</NuxtLink>

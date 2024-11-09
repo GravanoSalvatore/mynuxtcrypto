@@ -77,7 +77,7 @@
 
     <h2>10. Contact Information</h2>
     <p>
-      If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:cryptoItshka.com">cryptoItshka.com</a>.
+      If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:cryptobulls.com">cryptobulls.com</a>.
     </p>
   </div>
 </template>
