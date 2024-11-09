@@ -1,7 +1,17 @@
 
 <template>
   <div class=" personalities ">
-    <div class="container">
+    <!-- <div v-if="isLoading" class="preloader text-white">
+      <p>
+        <img
+          style="width: 300px;"
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"
+          alt="preloader"
+        />
+      </p>
+    </div> -->
+
+    <div  class="container">
     <br/> <br/>
     <div class="row" v-if="!selectedPerson">
       <div
@@ -11,6 +21,7 @@
       >
         <div class="personality-card text-center" @click="selectPerson(index)">
           <img
+         @load="checkImagesLoaded"
             v-if="person.image"
             :src="person.image"
             class="img-fluid personality-img"
@@ -103,10 +114,15 @@ export default {
     
 
     return {
+
       newsStore,
     };
   },
+ 
   computed: {
+    totalImages() {
+      return this.visiblePersonalities.length; // Общее количество изображений для отображения
+    },
     visiblePersonalities() {
       return this.newsStore.personalities.slice(0, this.visiblePersonalitiesCount);
     },
@@ -121,17 +137,20 @@ export default {
       latestNews2: [],
       currentSlideArticles: [],
       visiblePersonalitiesCount: 12,
-
+isLoading: true, 
+loadedImagesCount: 0,
 selectedPerson: null,
       latestNews: [],
     };
   },
   async mounted() {
+   
     await this.fetchSliderNews();
     window.addEventListener('resize', this.adjustSidebarHeight);
     await this.fetchLatestNews();
   },
   methods: {
+    
     async fetchSliderNews() {
   try {
     const response = await fetch(
@@ -226,6 +245,18 @@ nextSlide() {
 </script>
 
 <style scoped>
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #091520;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
 .sidebar-news-item {
   display: flex;
   align-items: center;

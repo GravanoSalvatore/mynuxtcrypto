@@ -81,6 +81,22 @@
               <p>{{ selectedArticle.content4 }}</p>
               <p>{{ selectedArticle.content5 }}</p>
               <p>{{ selectedArticle.content6 }}</p>
+              <p>{{ selectedArticle.content7 }}</p>
+              <p>{{ selectedArticle.content8 }}</p>
+              <p>{{ selectedArticle.content9 }}</p>
+              <p>{{ selectedArticle.content10 }}</p>
+              <p>{{ selectedArticle.content11}}</p>
+              <p>{{ selectedArticle.content12 }}</p>
+              <p>{{ selectedArticle.content13 }}</p>
+              <p>{{ selectedArticle.content14 }}</p>
+              <p>{{ selectedArticle.content15 }}</p>
+              <p>{{ selectedArticle.content16 }}</p>
+              <p>{{ selectedArticle.content17 }}</p>
+              <p>{{ selectedArticle.content18 }}</p>
+              <p>{{ selectedArticle.content19 }}</p>
+              <p>{{ selectedArticle.content20 }}</p>
+              <p>{{ selectedArticle.content21}}</p>
+              <p>{{ selectedArticle.content22 }}</p>
             </div>
           </div>
 

@@ -9,6 +9,12 @@
         />
       </p>
     </div>
+    <!-- <div class="tradingview-widgets-container">
+  <div class="tradingview-widget">
+    <TradingViewChart :symbol="'BINANCE:BTCUSDT'" :width="300" :height="300" containerId="tradingview_btc_chart" />
+  </div>
+ 
+</div> -->
     <div class="row top">
       
       <!-- Основная колонка с карточками новостей (четыре карточки в ряд) -->
