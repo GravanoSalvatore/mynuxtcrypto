@@ -19,11 +19,13 @@
             <img v-if="newsItem.imageurl" :src="newsItem.imageurl" class="card-img-top" alt="news image" />
             <div class="card-body d-flex flex-column">
               <p><img style="width: 35px; height: 35px;" :src="newsItem.source_info.img"> {{ newsItem.source_info.name }}</p>
-              <NuxtLink :to="`/news/${newsItem.id}`" class="text-decoration-none text-dark">
+              <a :href="newsItem.url" target="_blank" class="mt-auto">
                 <h5 class="card-title fw-bold">{{ newsItem.title }}</h5>
-              </NuxtLink>
+              </a>
               <p class="card-text text-muted">{{ formatDate(newsItem.published_on) }}</p>
-              <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
+              <span style="font-size:10px;color:cornflowerblue;">
+                  {{ truncateCategory(newsItem.categories) }}
+                </span>
             </div>
           </div>
         </div>
@@ -49,6 +51,9 @@ export default {
     this.isLoading = false;
   },
   methods: {
+    truncateCategory(category) {
+      return category.length > 20 ? category.slice(0, 50) + "..." : category;
+    },
     formatDate(timestamp) {
       const date = new Date(timestamp * 1000);
       return date.toLocaleDateString("en-US", {
@@ -123,6 +128,10 @@ export default {
 </script>
 
 <style scoped>
+a{
+  text-decoration: none;
+  color: #040404;
+}
 .container {
   max-width: 1200px;
 }

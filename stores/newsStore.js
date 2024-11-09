@@ -189,6 +189,40 @@ export const useNewsStore = defineStore('news', {
     ,
     articles: [
       {
+        "title": "Can Bitcoin Reach $1 Million by 2030 if It Continues Its Growth?",
+        "content": "Bitcoin's price history has shown significant growth over the years, leading many to wonder if it could reach an unprecedented value of $1 million by 2030. If Bitcoin maintains a similar growth trajectory as in previous cycles, this milestone may be achievable. In this article, we’ll explore the factors that could drive Bitcoin toward the $1 million mark within the next decade.",
+        "content2": "Limited Supply and Halving Cycles. Bitcoin's unique supply mechanism, with a capped supply of 21 million coins, plays a critical role in its potential price appreciation. Every four years, the Bitcoin network undergoes a 'halving' event, reducing the reward for mining new blocks by half. This supply reduction historically leads to price increases, as decreased supply with steady or increasing demand creates scarcity. As halving events continue, they could drive the price of Bitcoin higher, potentially pushing it towards the $1 million mark.",
+        "content3": "Growing Institutional Interest. Institutional interest in Bitcoin has grown significantly in recent years. Companies, hedge funds, and even governments are beginning to see Bitcoin as a valuable asset for hedging against inflation and currency devaluation. If this trend continues, institutions could allocate substantial amounts of capital into Bitcoin, which would drive up its demand and, consequently, its price. This level of interest could be a key factor in Bitcoin’s journey to $1 million.",
+        "content4": "Increasing Global Adoption. Bitcoin's adoption has grown globally as more people turn to digital assets for investment, remittance, and savings. In countries with economic instability or high inflation, Bitcoin is becoming a popular choice for preserving wealth. As adoption continues to rise, the demand for Bitcoin could grow exponentially, especially as its reputation as 'digital gold' solidifies. This increased global adoption could help fuel Bitcoin’s rise to a million-dollar valuation.",
+        "content5": "Advancements in Bitcoin Technology. Continued advancements in the Bitcoin network, such as the Lightning Network, improve scalability and transaction speed, making it easier and cheaper to use Bitcoin for everyday transactions. Improved technology could make Bitcoin more accessible and useful as a global currency, increasing its value proposition and encouraging higher demand. These advancements might boost Bitcoin’s appeal and support its potential to reach $1 million.",
+        "content6": "Inflation and Devaluation of Fiat Currencies. As central banks continue to print money and economies face inflationary pressures, Bitcoin could benefit as an alternative store of value. Many investors view Bitcoin as 'digital gold,' a hedge against inflation and the devaluation of fiat currencies. If this perception strengthens, more investors may flock to Bitcoin as a safe haven, increasing demand and supporting a higher price target. If inflation persists globally, Bitcoin’s value could be pushed toward the million-dollar mark as a result.",
+        "image": "https://bitcoinist.com/wp-content/uploads/2024/09/Bitcoin_353b90.webp"
+    }
+,    
+     
+      {
+        "title": "How Ripple's Price Could Skyrocket if the SEC Drops Charges",
+        "content": "The ongoing legal battle between Ripple Labs and the U.S. Securities and Exchange Commission (SEC) has had a significant impact on XRP's price and its standing in the crypto market. If the SEC were to drop all charges against Ripple and close the case, it could lead to a dramatic surge in XRP's value. In this article, we’ll explore the potential effects on Ripple's price if it emerges victorious in this landmark case.",
+        "content2": "Restored Market Confidence. With the SEC case closed, Ripple would regain its reputation and legitimacy in the eyes of the public and investors. Many have been cautious about investing in XRP due to legal uncertainty, but a favorable ruling could shift this perception. Investors who had previously avoided XRP might reconsider, leading to an influx of capital and driving up its price significantly.",
+        "content3": "Relisting on Major Exchanges. Many cryptocurrency exchanges, especially in the United States, delisted XRP in response to the SEC's charges. A favorable outcome would likely lead to the relisting of XRP on major exchanges like Coinbase and Kraken, making it more accessible to a wider audience. The increased liquidity and exposure from being available on popular platforms could drive demand and positively impact XRP's market value.",
+        "content4": "Institutional Investment Opportunities. Institutions have largely stayed away from XRP due to regulatory concerns. If Ripple were cleared by the SEC, it could pave the way for institutional investors to include XRP in their portfolios. Institutional investment could bring substantial funds into XRP, as hedge funds and financial institutions view it as a secure and compliant digital asset, potentially fueling massive price growth.",
+        "content5": "Increased Adoption in Cross-Border Payments. Ripple’s focus has always been on revolutionizing cross-border payments. With the legal pressure removed, Ripple could focus on expanding its partnerships with banks and financial institutions globally. This increased adoption for real-world use cases could add intrinsic value to XRP, leading to increased demand and price appreciation as more financial entities leverage Ripple's technology.",
+        "content6": "Bullish Sentiment and Speculation. News of Ripple’s victory could spark a bullish sentiment and speculation among traders. The crypto market often responds dramatically to major legal and regulatory wins. Traders might buy up XRP in anticipation of future gains, leading to a significant price increase driven by speculative interest. As the market rallies around XRP, it could push prices to new highs, especially if the overall crypto market is in a bullish phase.",
+        "image": " https://www.crypto-news-flash.com/wp-content/uploads/2024/10/DALL%C2%B7E-2024-10-11-09.02.55-A-conceptual-digital-artwork-illustrating-the-ongoing-legal-battle-between-Ripple-and-the-SEC.-The-scene-depicts-a-large-symbolic-courtroom-with-a-ma.webp"
+    }
+,    
+      {
+        "title": "How Trump's Presidency Could Positively Impact Cryptocurrency Markets",
+        "content": "The election of Donald Trump as the 47th President of the United States has raised questions about the future of the cryptocurrency market. Many experts believe that Trump's policies could create a favorable environment for digital assets. In this article, we’ll explore how Trump's potential policies and economic stance might positively influence the growth of cryptocurrencies.",
+        "content2": "Lowering Regulatory Burdens. If Trump focuses on reducing regulatory burdens for financial markets, including crypto, this could attract more institutional and retail investors. Trump’s administration might prioritize pro-business and anti-regulation policies, which could benefit cryptocurrencies by making the market more accessible and attractive to new investors. Such an approach could foster innovation within the blockchain and crypto industry, leading to greater adoption and technological advancements.",
+        "content3": "U.S. Dollar Inflation and Cryptocurrency as a Hedge. In the face of inflationary pressures, cryptocurrencies like Bitcoin and Ethereum are often considered as 'digital gold' and potential hedges against fiat currency devaluation. If Trump's policies lead to increased government spending without higher taxes, this could drive inflation up, making cryptocurrencies more appealing as stores of value. Investors may flock to Bitcoin and other digital assets as a way to protect their wealth, driving demand and prices higher.",
+        "content4": "Reduced Capital Gains Tax. Trump has previously expressed support for reducing capital gains taxes, which would be favorable for cryptocurrency investors. Lower taxes on capital gains could encourage long-term investment in cryptocurrencies, as individuals would be more likely to hold their assets to benefit from potential tax savings. This policy shift could promote crypto as a long-term investment asset, adding stability to the market.",
+        "content5": "Potential for Blockchain Innovation and Jobs. Trump's pro-business stance could lead to incentives for blockchain and crypto companies operating within the United States. By promoting tax breaks or subsidies for technology companies, the U.S. could become a hub for blockchain innovation and development, attracting global talent and creating jobs. As more companies and developers enter the market, the cryptocurrency ecosystem could grow, leading to new projects, partnerships, and use cases for blockchain technology.",
+        "content6": "Digital Dollar as a Catalyst. If Trump's administration backs the development of a U.S. digital dollar, it could indirectly boost the adoption of cryptocurrencies. The launch of a central bank digital currency (CBDC) would likely increase public awareness of digital assets, encouraging people to explore other cryptocurrencies and decentralized finance (DeFi) opportunities. This could help normalize digital currency usage and lead to greater mainstream acceptance of Bitcoin, Ethereum, and other altcoins.",
+        "image": "https://bravenewcoin.com/wp-content/uploads/2024/11/Trump-Bitcoin.jpg"
+    }
+,    
+      {
         title: "From Staking to AI Trading in 2025",
         content: "During periods of high volatility, people prefer more stable income methods and turn to passive income tools. In this article, we’ll cover several of them: staking, restaking, farming, and copy trading.",
         content2: "One of the most popular ways to earn additional income, available to users on CEX platforms like Binance and DeFi protocols like Lido. What is staking and how to earn on it? Stakers must hold native currencies of PoS blockchains — Ethereum (ETH), Solana (SOL), Toncoin (TON), Tezos (XTZ), and others. The network rewards them for verifying and confirming transactions. To do this, users lock their coins by running nodes or delegating funds to validators. The payout sizes and lock-up periods vary depending on the blockchain. Current data can be found on analytics resources like Staking Rewards.",
@@ -555,35 +589,7 @@ export const useNewsStore = defineStore('news', {
 ,
 
 
-      { title: "Статья 2", content: "Содержание", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 3", content: "Содержание статьи 3.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 4", content: "Содержание статьи 4.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 5", content: "Содержание статьи 5.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 6", content: "Содержание статьи 6.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 7", content: "Содержание статьи 7.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 8", content: "Содержание статьи 8.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 9", content: "Содержание статьи 9.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 10", content: "Содержание статьи 10.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 11", content: "Содержание статьи 11.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 12", content: "Содержание статьи 12.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 13", content: "Содержание статьи 13.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 14", content: "Содержание статьи 14.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 15", content: "Содержание статьи 15.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 16", content: "Содержание статьи 16.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 17", content: "Содержание статьи 17.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 18", content: "Содержание статьи 18.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 19", content: "Содержание статьи 19.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 20", content: "Содержание статьи 20.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 21", content: "Содержание статьи 21.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 22", content: "Содержание статьи 22.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 23", content: "Содержание статьи 23.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 24", content: "Содержание статьи 24.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 25", content: "Содержание статьи 25.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 26", content: "Содержание статьи 26.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 27", content: "Содержание статьи 27.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 28", content: "Содержание статьи 28.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 29", content: "Содержание статьи 29.", image: "https://via.placeholder.com/600x400" },
-      { title: "Статья 30", content: "Содержание статьи 30.", image: "https://via.placeholder.com/600x400" }
+     
     ],
     visibleArticlesCount: 8,
     selectedArticle: null,

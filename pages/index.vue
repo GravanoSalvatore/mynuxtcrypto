@@ -1,8 +1,8 @@
-<template>
+<!-- <template>
     <div style="background-color: white;">
-    <br/>    <br/>
+    
     <CookieConsent/>
-    <!-- <Price/> -->
+    
     <News3 />
     <Price/>
     
@@ -15,8 +15,7 @@
       <NewsSection />
       <br/>
 
-      <!-- <News3 /> -->
-      <!-- <News2 /> -->
+     
       <News4 />
       <br/>
      
@@ -37,6 +36,7 @@
   import Price from '~/components/Price.vue';
   import CookieConsent from '~/components/CookieConsent.vue';
   export default {
+    data(){},
     components: {
       NewsSection,
       AdvancedNewsSection,
@@ -52,4 +52,74 @@
   };
   </script>
   
+   -->
+   <template>
+    <div style="background-color: white;">
+      <CookieConsent />
+  
+      <!-- Прелоадер отображается, пока компонент не загрузился -->
+      <div v-if="loading" class="preloader text-white">
+        <p>
+          <img
+            style="width: 300px;"
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"
+          />
+        </p>
+      </div>
+  
+      <!-- Отображение компонентов, когда loading становится false -->
+      <div v-else>
+        <News5 />
+        <News3 />
+        <Price />
+        <AdvancedNewsSection />
+        
+        <News6 />
+        <News3a />
+        <NewsSection />
+        <br />
+        <News4 />
+        <br />
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import NewsSection from '~/components/NewsSection.vue';
+  import AdvancedNewsSection from '~/components/AdvancedNewsSection.vue';
+  import News2 from '~/components/News2.vue';
+  import News3a from '~/components/News3a.vue';
+  import News4 from '~/components/News4.vue';
+  import News5 from '~/components/News5.vue';
+  import News6 from '~/components/News6.vue';
+  import Price from '~/components/Price.vue';
+  import CookieConsent from '~/components/CookieConsent.vue';
+  
+  export default {
+    components: {
+      NewsSection,
+      AdvancedNewsSection,
+      News2,
+      News3a,
+      News4,
+      News5,
+      News6,
+      Price,
+      CookieConsent,
+    },
+    data() {
+      return {
+        loading: true, // начальное состояние
+      };
+    },
+    async created() {
+      // Асинхронная загрузка компонента News3
+      const { default: News3 } = await import('~/components/News3.vue');
+      this.$options.components.News3 = News3;
+  
+      // Установка флага после загрузки News3
+      this.loading = false;
+    },
+  };
+  </script>
   

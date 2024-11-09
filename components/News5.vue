@@ -1,7 +1,7 @@
 
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row top">
       
       <!-- Основная колонка с карточками новостей (четыре карточки в ряд) -->
       <div class="col-12 col-md-9" ref="newsContainer">
@@ -11,7 +11,7 @@
             :key="newsItem.id"
             class="col-12 col-md-6 col-lg-3 mb-4"
           >
-            <div class=" h-100 news-card" style="max-height: 500px">
+            <div class="h-100 news-card" style="max-height: 500px">
               <img
                 v-if="newsItem.imageurl"
                 :src="newsItem.imageurl"
@@ -30,29 +30,13 @@
                 <p class="card-text text-muted">
                   {{ formatDate(newsItem.published_on) }}
                 </p>
-                <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
+                <span style="font-size:10px;color:cornflowerblue;">
+                  {{ truncateCategory(newsItem.categories) }}
+                </span>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Пагинация, отображается только после полной загрузки -->
-        <!-- <div v-if="!isLoading" class="d-flex justify-content-center mt-4">
-          <span
-            class="pointer mx-2"
-            :disabled="currentPage === 1"
-            @click="prevPage"
-          >
-            Назад
-          </span>
-          <span
-            class="pointer mx-2"
-            :disabled="currentPage === totalPages"
-            @click="nextPage"
-          >
-            Вперед
-          </span>
-        </div> -->
       </div>
 
       <!-- Правая колонка для оставшихся новостей -->
@@ -74,7 +58,9 @@
                 {{ formatDate(newsItem.published_on) }}
               </p>
             </a>
-            <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
+            <span style="font-size:10px;color:cornflowerblue;">
+              {{ truncateCategory(newsItem.categories) }}
+            </span>
           </div>
         </div>
       </div>
@@ -116,11 +102,7 @@ export default {
           "https://min-api.cryptocompare.com/data/v2/news/?lang=EN"
         );
         const data = await response.json();
-
-        // Отбираем новости с 16-й позиции до нужного количества для основной колонки
-        this.news = data.Data.slice(15, 23); // Основная колонка (16-я новость и далее)
-
-        // Остальные новости для правой колонки (начиная с 55-й новости)
+        this.news = data.Data.slice(15, 23);
         this.remainingNews = data.Data.slice(23);
       } catch (error) {
         console.error("Ошибка при загрузке новостей:", error);
@@ -133,6 +115,9 @@ export default {
         month: "long",
         day: "numeric",
       });
+    },
+    truncateCategory(category) {
+      return category.length > 20 ? category.slice(0, 50) + "..." : category;
     },
     prevPage() {
       if (this.currentPage > 1) {
@@ -157,6 +142,9 @@ export default {
 </script>
 
 <style scoped>
+.top {
+  margin-top: 65px;
+}
 .pointer {
   cursor: pointer;
 }
@@ -184,12 +172,6 @@ a {
   font-weight: bold;
   margin-top: 5px;
 }
-
-/* .news-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-} */
 
 .card-title {
   font-size: 1.1rem;

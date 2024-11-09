@@ -9,7 +9,9 @@
         />
       </p>
     </div>
-    <div v-else>
+
+<div v-else >
+
     <div class="banner" v-if="bannerData && bannerData.source_info">
       <div class="banner-content">
        
@@ -27,10 +29,9 @@
      
       </div>
     </div>
-    
     <div class="container-fluid">
       <div class="heading-marquee-container">
-        <h2 v-if="!isLoading" class="heading-left fw-bold">AI </h2>
+        <h2 v-if="!isLoading" class="heading-left fw-bold">IT TECHNOLOGY </h2>
 
         <!-- Бегущая строка -->
         <div v-if="!isLoading" class="marquee">
@@ -219,8 +220,17 @@ export default {
 </script>
 
 <style scoped>
-.heading-left{
-  margin-left: 10px;
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #091520;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
 .heading-marquee-container {
   display: flex;
@@ -260,7 +270,7 @@ export default {
 }
 .banner {
   margin-top: 58px;
-  background-image: url('../public/ai.webp');
+  background-image: url('../public/it.webp');
   background-size: cover; /* Заполняет баннер, сохраняя пропорции */
   background-position: center;
   background-repeat: no-repeat;
@@ -288,7 +298,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
@@ -407,17 +417,5 @@ a {
   .card-content-scroll {
     overflow-y: auto;
   }
-}
-.preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #091520;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
 }
 </style>

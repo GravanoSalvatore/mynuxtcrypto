@@ -1,12 +1,13 @@
 
 <template>
-  <div class="container personalities ">
+  <div class=" personalities ">
+    <div class="container">
     <br/> <br/>
     <div class="row" v-if="!selectedPerson">
       <div
         v-for="(person, index) in visiblePersonalities"
         :key="index"
-        class="col-lg-3 col-md-6 col-12 mb-4"
+        class="col-lg-2 col-md-6 col-12 mb-4"
       >
         <div class="personality-card text-center" @click="selectPerson(index)">
           <img
@@ -31,16 +32,25 @@
     <div v-if="selectedPerson" class="selected-personality ">
       <div class="row">
         <!-- Левая колонка с новостями -->
-        <div class="col-md-3 news-sidebar"  style="">
-          <div v-for="(newsItem, index) in latestNews" :key="index" class="sidebar-news-item"  >
-            <a :href="newsItem.url" target="_blank">
-              <h6 class="news-title ">{{ newsItem.title }}</h6>
-              <p class="card-text text-muted">
-                {{formatDate( newsItem.published_on) }}
-                  </p>
-            </a>
-          </div>
-        </div>
+        <div class="col-md-3 news-sidebar">
+  <div v-for="(newsItem, index) in latestNews" :key="index" class="sidebar-news-item">
+    <a :href="newsItem.url" target="_blank" class="d-flex align-items-center">
+      <img
+        v-if="newsItem.imageurl"
+        :src="newsItem.imageurl"
+        class="sidebar-image"
+        alt="news image"
+      />
+      <div class="sidebar-text">
+        <h6 class="news-title">{{ newsItem.title }}</h6>
+        <p class="card-text text-muted">
+          {{ formatDate(newsItem.published_on) }}
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
+
 
         <!-- Основной контент выбранной персоны -->
         <div class="col-md-9 personality-content">
@@ -79,6 +89,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -109,7 +120,7 @@ export default {
       slideSize: 2,
       latestNews2: [],
       currentSlideArticles: [],
-      visiblePersonalitiesCount: 8,
+      visiblePersonalitiesCount: 12,
 
 selectedPerson: null,
       latestNews: [],
@@ -170,10 +181,10 @@ nextSlide() {
     }
   },
     loadMorePersonalities() {
-      this.visiblePersonalitiesCount += 8;
+      this.visiblePersonalitiesCount += 12;
     },
     hidePersonalities() {
-      this.visiblePersonalitiesCount = 8; // Скрывает все кроме первых 6
+      this.visiblePersonalitiesCount = 12; // Скрывает все кроме первых 6
     },
     scrollToTop() {
   console.log("Scrolling to top...");
@@ -215,6 +226,24 @@ nextSlide() {
 </script>
 
 <style scoped>
+.sidebar-news-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.sidebar-image {
+  width: 50px; /* Задайте желаемый размер для изображения */
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 5px; /* Добавляет скругление углов для изображения */
+}
+
+.sidebar-text {
+  flex: 1;
+}
+
 .news-section-wrapper {
   width: 100%;
   margin-top: 20px;
@@ -269,21 +298,24 @@ a{
 }
 .personalities {
   margin-top: 20px;
+  /* background-image: url('https://s40910.pcdn.co/wp-content/uploads/2022/03/TD0622-blockchain-thats-exciting-1778x1000.jpg.optimal.jpg'); */
+  /* color: white; */
 }
 .personality-card {
-  padding: 20px;
+  /* padding: 20px; */
   cursor: pointer;
+  
 }
 .personality-card:hover {
-  transform: translateY(-5px);
+  /* transform: translateY(-5px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
+  transition: transform 0.3s; */
 }
 .personality-img {
-  width: 100%;
-  height: 200px;
+  min-width: 185px;
+  min-height: 250px;
   object-fit: cover;
-  /* border-radius: 8px 8px 0 0; */
+  border-radius: 10px;
 }
 .card-title {
   font-size: 1.1rem;
@@ -294,7 +326,7 @@ a{
   display: flex;
 }
 .news-sidebar {
-  max-height: 380vh;
+  max-height: 420vh;
   overflow-y: auto;
   background-color: #f8f9fa;
   padding: 10px;
@@ -316,6 +348,7 @@ a{
   padding: 20px;
 }
 .personality-container {
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -378,6 +411,24 @@ a{
   }
   .personality-text {
     text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .news-card {
+    flex: 1 0 100%; /* Показываем одну карточку на экранах мобильных устройств */
+  }
+
+  .slider-button {
+    font-size: 18px;
+    padding: 5px;
+  }
+
+  .news-title {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.8rem;
   }
 }
 </style>

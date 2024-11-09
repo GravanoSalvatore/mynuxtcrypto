@@ -1,5 +1,5 @@
 <template>
-  <div style=" background-color: ">
+  <div style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
     <div v-if="loading" class="preloader text-white">
      <p> <img style="width: 300px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"></p>
        
@@ -7,11 +7,11 @@
     </div>
     <header>
     
-      <nav style="background-color: rgba(12, 31, 74, 0.9);" class="navbar navbar-expand-lg navbar-white  fixed-top">
+      <nav style="background-color: rgba(12, 31, 74, 0.9);font-size: 14px;" class="navbar navbar-expand-lg navbar-white  fixed-top">
         <div class="container">
           <NuxtLink to="/" class="navbar-brand ">
-            <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png">
-            Crypto bulls
+          
+            Crypto  <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> Bulls
             </NuxtLink>
           
           <button
@@ -28,52 +28,71 @@
 </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto text">
-              <li class="nav-item ">
-                <NuxtLink to="/" class="nav-link text-white" aria-current="page">News</NuxtLink>
-              </li>
-              <li class="nav-item">
-                <NuxtLink to="/about" class="nav-link text-white" aria-current="page">Articles</NuxtLink>
-              </li>
-              <li class="nav-item">
-                <NuxtLink to="/crypto" class="nav-link text-white">Bitcoin & Ethereum</NuxtLink>
-              </li>
-              <li class="nav-item">
-                <NuxtLink to="/altcoins" class="nav-link text-white">Altcoins</NuxtLink>
-              </li>
-              <!-- <li class="nav-item">
-                <NuxtLink to="/defi" class="nav-link text-white">Defi & NFT</NuxtLink>
-              </li> -->
-              <li class="nav-item">
-                <NuxtLink to="/contact" class="nav-link text-white">Blockchain People</NuxtLink>
-              </li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link text-white" @click="toggleDropdown">More</a>
+              <span class="nav-link">
+                <span class="text-warning">BTC:</span>
+                <span class="text-white">
+                  ${{ btcPrice }}
+                  <span :class="btcChangeClass" class="ms-1">
+                    <i class="bi" :class="btcArrow"></i>
+                  </span>
+                </span>
+                
+                <span class="text-primary">ETH:</span>
+                <span class="text-white">
+                  ${{ ethPrice }}
+                  <span :class="ethChangeClass" class="ms-1">
+                    <i class="bi" :class="ethArrow"></i>
+                  </span>
+                </span>
+              </span>
+              <li class="nav-item dropdown" ref="dropdownMenu">
+                <a href="#" class="nav-link text-white" @click="toggleDropdown">Crypto base</a>
                 <ul v-if="isDropdownOpen" class="dropdown-menu">
-                  <li><NuxtLink to="/sec" class="dropdown-item">SEC</NuxtLink></li>
-                  <li><NuxtLink to="/ai" class="dropdown-item">AI</NuxtLink></li>
-                  <li><NuxtLink to="/dao" class="dropdown-item">DAO</NuxtLink></li>
+                  <li><NuxtLink to="/ai" class="dropdown-item">Artificial intelligence</NuxtLink></li>
                   <li class="nav-item">
-                <NuxtLink to="/defi" class="dropdown-item">Defi & NFT</NuxtLink>
+                <NuxtLink to="/altcoins" class="dropdown-item ">Altcoins</NuxtLink>
               </li>
-              <li class="sidebar-item">
-            <NuxtLink to="/privacy" class="dropdown-item" >Privacy Policy</NuxtLink>
-          </li>
-          <li class="sidebar-item">
-            <NuxtLink to="/terms" class="dropdown-item" >Terms of servise</NuxtLink>
-          </li>
-          <li class="sidebar-item">
-            <NuxtLink to="/aboutUs" class="dropdown-item" >About Us</NuxtLink>
-          </li>
-                  <!-- <li><NuxtLink to="/contact" class="dropdown-item">Contact</NuxtLink></li>
-                  <li><NuxtLink to="/sec" class="dropdown-item">SEC</NuxtLink></li>
-                  <li><NuxtLink to="/ai" class="dropdown-item">AI</NuxtLink></li>
-                  <li><NuxtLink to="/dao" class="dropdown-item">DAO</NuxtLink></li> -->
+                  <li class="nav-item">
+                <NuxtLink to="/about" class="dropdown-item " aria-current="page">Articles</NuxtLink>
+              </li>
+                  <li class="nav-item">
+                <NuxtLink to="/crypto" class="dropdown-item ">Bitcoin & Ethereum</NuxtLink>
+              </li>
+             
+              
+              <li class="nav-item">
+                <NuxtLink to="/contact" class="dropdown-item ">Blockchain people</NuxtLink>
+              </li>
+                 
+                  <li class="nav-item">
+                <NuxtLink to="/defi" class="dropdown-item">Defi</NuxtLink>
+              </li>
+                  <li><NuxtLink to="/it" class="dropdown-item">Information technology </NuxtLink></li>
+                
+              
+                  
                 </ul>
               </li>
 
+              <li class="nav-item ">
+                <NuxtLink to="/" class="nav-link text-white" aria-current="page">Crypto bulls news</NuxtLink>
+              </li>
+<!--              
+              <li class="sidebar-item">
+            <NuxtLink to="/privacy" class="nav-link text-white" >Privacy Policy</NuxtLink>
+          </li>
+          <li class="sidebar-item">
+            <NuxtLink to="/terms" class="nav-link text-white" >Terms of servise</NuxtLink>
+          </li>
+          <li class="sidebar-item">
+            <NuxtLink to="/aboutUs" class="nav-link text-white" >About Us</NuxtLink>
+          </li> -->
+             
+            
+
              
             </ul>
-<!-- Кнопка для открытия/закрытия поля поиска -->
+
 <button class="btn" @click="toggleSearch">
   <i class="fa-brands fa-searchengin text-white"></i>
  
@@ -84,44 +103,20 @@
   <input
     v-model="searchQuery"
     type="text"
-    class="form-control me-1"
+    class="form-control me-1 text-white"
     placeholder="Search..."
     aria-label="Search"
   />
   <button type="button" class="btn" @click="search">
     <i class="bi bi-search"></i>
   </button>
-  <!-- <div class="input-group">
-  <input
-    v-model="searchQuery"
-    type="text"
-    class="form-control"
-    placeholder="Search..."
-    aria-label="Search"
-  />
-  <span class="input-group-text" @click="search">
-    <i class="bi bi-search"></i>
-  </span>
-</div> -->
+  
 
 </form>
 
 
 
-            <!-- <form class="d-flex search-form d-none d-lg-flex" @submit.prevent="search">
-              <input
-              style="background-color:transparent;"
-                v-model="searchQuery"
-                type="text"
-                class="form-control me-2 "
-                placeholder="Search..."
-                aria-label="Search"
-              />
-              <button style="" class="btn" type="submit">
-                <i class="bi bi-search"></i>
-              </button>
-              
-            </form> -->
+           
           </div>
         </div>
       </nav>
@@ -204,9 +199,9 @@
           <li class="sidebar-item">
             <NuxtLink to="/ai" class="sidebar-link" @click="toggleSidebar">AI</NuxtLink>
           </li>
-          <li class="sidebar-item">
+          <!-- <li class="sidebar-item">
             <NuxtLink to="/dao" class="sidebar-link" @click="toggleSidebar">DAO</NuxtLink>
-          </li>
+          </li> -->
           <li class="sidebar-item">
             <NuxtLink to="/contact" class="sidebar-link" @click="toggleSidebar">Blockchain People</NuxtLink>
           </li>
@@ -260,7 +255,7 @@
       <div v-if="searchResults.length" class="container  search-results" style="background-color: white;">
         <div style="margin-top: 70px;" class="d-flex justify-content-between align-items-center">
 
-          <button class="btn" @click="clearSearch">Свернуть</button>
+          <button class="btn" @click="clearSearch">Close</button>
         </div>
         <div class="row">
           <div
@@ -270,16 +265,20 @@
           >
             <div class="card search-result-card d-flex flex-row align-items-center">
               <img
-                v-if="result.urlToImage"
-                :src="result.urlToImage"
+                v-if="result.imageurl"
+                :src="result.imageurl"
                 class="img-fluid search-result-img"
                 alt="news image"
               />
               <div class="card-body">
+                <p>
+                    <img  style="width: 35px;height: 35px;" :src="result.source_info.img">  
+                    {{ result.source_info.name }}
+                  </p>
                 <a :href="result.url" target="_blank" class="text-dark">
                   <h5 class="card-title">{{ result.title }}</h5>
                 </a>
-                <p class="card-text text-muted">{{ formatDate(result.publishedAt) }}</p>
+                <p class="card-text text-muted">  {{ formatDate(result.published_on) }}</p>
               </div>
             </div>
           </div>
@@ -314,7 +313,16 @@
   <h5 class="fw-bold">Quick Links</h5>
   <ul class="list-unstyled">
     <li><NuxtLink to="/" class="footer-link">Home</NuxtLink></li>
-    <li><NuxtLink to="/about" class="footer-link">About Us</NuxtLink></li>
+    <li class="sidebar-item">
+            <NuxtLink to="/privacy" class="nav-link text-white" >Privacy Policy</NuxtLink>
+          </li>
+          <li class="sidebar-item">
+            <NuxtLink to="/terms" class="nav-link text-white" >Terms of servise</NuxtLink>
+          </li>
+          <li class="sidebar-item">
+            <NuxtLink to="/aboutUs" class="nav-link text-white" >About Us</NuxtLink>
+          </li>
+    <!-- <li><NuxtLink to="/about" class="footer-link">About Us</NuxtLink></li> -->
     <li><NuxtLink to="/contact" class="footer-link">Contact</NuxtLink></li>
   </ul>
 </div>
@@ -326,7 +334,7 @@
     <input
       type="email"
       v-model="email"
-      class="form-control"
+      class="form-control text-white"
       placeholder="Your Email"
     />
     <button class="btn btn-primary mt-2 w-100">Subscribe</button>
@@ -364,10 +372,14 @@
   
   <script>
   export default {
-   
-  beforeDestroy() {
+    beforeUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
+    document.removeEventListener("click", this.closeDropdownOnClickOutside);
   },
+   
+  // beforeDestroy() {
+  //   window.removeEventListener("scroll", this.handleScroll);
+  // },
     data() {
       return {
         isSearchVisible: false,
@@ -400,6 +412,8 @@
     }, 500);
       await this.fetchCryptoPrices();
       window.addEventListener("scroll", this.handleScroll);
+      document.addEventListener("click", this.closeDropdownOnClickOutside);
+ 
     },
     methods: {
     //   handleScroll() {
@@ -412,10 +426,26 @@
       this.clearSearch(); // Очистка при скрытии поля
     }
   },
-
-      toggleDropdown() {
+  toggleDropdown(event) {
       this.isDropdownOpen = !this.isDropdownOpen;
+      event.stopPropagation(); // Останавливаем всплытие события для открытия dropdown
     },
+    closeDropdownOnClickOutside(event) {
+      const dropdownMenu = this.$refs.dropdownMenu;
+      if (dropdownMenu && !dropdownMenu.contains(event.target)) {
+        this.isDropdownOpen = false;
+      }
+    },
+    toggleSearch() {
+      this.isSearchVisible = !this.isSearchVisible;
+      if (!this.isSearchVisible) {
+        this.clearSearch(); // Очистка при скрытии поля
+      }
+    },
+
+    //   toggleDropdown() {
+    //   this.isDropdownOpen = !this.isDropdownOpen;
+    // },
       handleScroll() {
       this.showScrollTopButton = window.scrollY > 200;
     },
@@ -476,10 +506,10 @@
   
         try {
           const response = await fetch(
-            `https://4v-news-api.azurewebsites.net/News?SiteId=1&LanguageCode=ru&CategoryId=16&Page=1&PageSize=100`
+            `https://min-api.cryptocompare.com/data/v2/news/?categories=BTC,ETH,ADA,XRP,XLM,TRX,SHIBA,DOGE,EOS,LTC,USDT,&excludeCategories=Sponsored`
           );
           const data = await response.json();
-          this.searchResults = data.items.filter(item =>
+          this.searchResults = data.Data.filter(item =>
             item.title.toLowerCase().includes(this.searchQuery.toLowerCase())
           );
         } catch (error) {
@@ -490,19 +520,22 @@
         this.searchQuery = '';
         this.searchResults = [];
       },
-      formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleDateString("ru-RU", {
+      formatDate(timestamp) {
+        const date = new Date(timestamp * 1000); // Преобразование Unix timestamp в миллисекунды
+        return date.toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
         });
-      }
+      },
     }
   };
   </script>
   
   <style scoped>
+  ::placeholder{
+    color: white;
+  }
   .input-group-text {
   cursor: pointer;
   background: none; /* Убирает фон */
@@ -515,6 +548,7 @@
 }
 
 .form-control {
+  background-color: transparent !important;
   padding-right: 2.5rem; /* Добавляем пространство для кнопки справа */
 }
 
@@ -561,7 +595,7 @@
   }
   .navbar-brand {
     color: #3d96ef;
-    font-weight: bold;
+    /* font-weight: bold; */
   }
   .nav-link {
     transition: color 0.3s;
@@ -666,6 +700,7 @@
   }
   
   .sidebar-link:hover {
+    /* border-radius: 13px; */
     background-color: #f0f0f0;
     color:#091520;
   }

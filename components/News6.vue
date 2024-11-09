@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <h2 v-if="!isLoading" class="fw-bold">Bitcoin and Ethereum News</h2>
+    <h2 v-if="!isLoading" class="fw-bold">Bitcoin and Ethereum</h2>
     <div class="row">
       <!-- Левая колонка для новостей (шире правой колонки) -->
       <div class="col-12 col-md-4 fixed-sidebar mb-4 mb-md-0" v-if="!isLoading">

@@ -43,9 +43,9 @@
                 class="small-card-img overlay-dark d-flex flex-column justify-content-end"
               >
               
-                <NuxtLink :to="`/news/${newsItem.id}`" class="text-decoration-none text-white p-2">
+              <a :href="newsItem.url" target="_blank" class="mt-auto">
                   <h6 class="card-title small-title">{{ newsItem.title }}</h6>
-                </NuxtLink>
+              </a>
                 <p class="card-text text-muted">
                     {{ formatDate(newsItem.published_on) }}
                   </p>  </div>

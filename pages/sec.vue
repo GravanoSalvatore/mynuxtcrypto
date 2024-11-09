@@ -1,7 +1,22 @@
 <template>
  
+  <div class="">
+    <br/><br/>
+    <div
+    class="banner mt-2"
+  
+    style=" backgroundImage:url('https://emarsys.com/app/uploads/2020/03/real-ai.jpg')"
+  >
+    <div class="banner-content">
+      <h2 
+    v-if="!isLoading" 
+    class="heading-left  fw-bold">Artificial intelligence</h2>
+      <!-- <p v-if="bannerData.publishedAt" class="banner-date" :class="{ fadeIn: showTitle }">
+        {{ formatDate(bannerData.publishedAt) }}
+      </p> -->
+    </div>
+  </div>
   <div class="container-fluid">
-    <br/><br/> <br/>
     <h2 v-if="!isLoading" class="heading-left  fw-bold">SEC</h2>
     <div class="row">
       <!-- Левая колонка для новостей (шире правой колонки) -->
@@ -76,6 +91,7 @@
           </span>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -163,6 +179,63 @@ export default {
 </script>
 
 <style scoped>
+.banner {
+  background-image: url('https://emarsys.com/app/uploads/2020/03/real-ai.jpg');
+  background-size: cover; /* Заполняет баннер, сохраняя пропорции */
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh; /* Высота в процентах от высоты экрана */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  text-align: center;
+  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 767px) {
+  .banner {
+    height: 30vh; /* Меньшая высота на мобильных устройствах */
+  }
+}
+
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.banner-title {
+  font-size: 2rem;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.banner-date {
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  margin-top: 10px;
+}
+
+.fadeIn {
+  opacity: 1;
+}
 .heading-left {
   margin-left: 10px; /* Регулируйте значение, чтобы достичь желаемого эффекта */
   text-align: left;
