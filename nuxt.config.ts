@@ -47,7 +47,14 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: 'CryptoBulls',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'CryptoBulls', content: 'CryptoBulls' }
+      ],
       link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
           rel: 'stylesheet',
           href: 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css'
