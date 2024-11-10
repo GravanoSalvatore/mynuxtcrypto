@@ -4,9 +4,9 @@
     <div v-if="bannerItem" ref="banner" class="banner-container text-center py-4 mb-5">
       <div ref="bannerContent" class="banner-content">
         <NuxtLink to="/" class="navbar-brand">
-          <img style="width: 130px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png">
+          <img style="width: 250px;" src="../public/solana.png">
         </NuxtLink>
-        <p ref="slogan" class="slogan fw-bold" style="font-size: 36px; color: #3d96ef;">Crypto bulls!</p>
+        <!-- <p ref="slogan" class="slogan fw-bold" style="font-size: 36px; color: #3d96ef;">Crypto bulls!</p> -->
       </div>
     </div>
 

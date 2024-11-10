@@ -6,7 +6,7 @@
       <p>
         <img
           style="width: 300px;"
-          src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"
+          src="../public/bull.png"
         />
       </p>
     </div>

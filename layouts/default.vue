@@ -1,7 +1,7 @@
 <template>
   <div style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
     <div v-if="loading" class="preloader text-white">
-     <p> <img style="width: 300px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"></p>
+     <p> <img style="width: 300px;" src="../public/bull.png"></p>
        
       <!-- <p style="font-size: 63px;font-weight: bold;">Crypto bulls</p>    -->
     </div>
@@ -9,23 +9,28 @@
     
       <nav style="background-color: rgba(12, 31, 74, 0.9);font-size: 14px;" class="navbar navbar-expand-lg navbar-white  fixed-top">
         <div class="container">
-          <NuxtLink to="/" class="navbar-brand ">
+          <!-- <NuxtLink to="/" class="navbar-brand ">
           
             Crypto  <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> Bulls
             </NuxtLink>
-          
-          <button
-  style="border: none !important;box-shadow: none !important;"
-  class="navbar-toggler d-lg-none "
-  type="button"
-  @click="toggleSidebar"
-  aria-expanded="false"
-  aria-label="Toggle navigation"
-> 
-<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-list" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-</svg>
-</button>
+           -->
+           <NuxtLink to="/" class="navbar-brand" style="position: absolute; left: 10px;">
+            <img style="width: 50px;" src="../public/bull.png">
+            <span class="text-warning fw-bold" style="font-size: 17px;">Crypto Bulls</span>
+        </NuxtLink>
+        
+        <button
+            style="border: none !important; box-shadow: none !important; position: absolute; right: 10px;"
+            class="navbar-toggler d-lg-none"
+            type="button"
+            @click="toggleSidebar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        > 
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+            </svg>
+        </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto text">
               <span class="nav-link">
@@ -129,10 +134,10 @@
           </svg>
         </button>
   
-        <NuxtLink to="/" class="navbar-brand ">
-           
-          <img class="" style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png">
-          Crypto bulls    </NuxtLink>
+        <NuxtLink to="/" class="navbar-brand" style="">
+            <img style="width: 50px;" src="../public/bull.png">
+            <span class="text-warning fw-bold" style="font-size: 17px;">Crypto Bulls</span>
+        </NuxtLink>
            
         <div class="sidebar-crypto-search d-lg-none mb-4 ">
           <div class="p-3">
@@ -360,8 +365,10 @@
     </div>
 
     <div class="footer-bottom text-center py-3" style="background-color: rgba(12, 31, 74, 0.9);">
-      &copy; 2024  <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png">
-      Crypto bulls. All rights reserved.
+      &copy; 2024   <NuxtLink to="/" class="navbar-brand" style="">
+            <img style="width: 50px;" src="../public/bull.png">
+            <span class="text-warning fw-bold" style="font-size: 17px;">Crypto Bulls</span>
+        </NuxtLink>. All rights reserved.
     </div>
   </div>
 </footer>
@@ -591,10 +598,11 @@
     text-decoration: none;
   }
   .navbar {
+    height: 55px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
   .navbar-brand {
-    color: #3d96ef;
+    color: #1a709e;
     /* font-weight: bold; */
   }
   .nav-link {
