@@ -219,6 +219,8 @@
           <li class="sidebar-item">
             <NuxtLink to="/defi" class="sidebar-link" @click="toggleSidebar">Defi</NuxtLink>
           </li>
+          <li class="sidebar-item"><NuxtLink to="/it" class="sidebar-link">Information technology </NuxtLink></li>
+                
           <li class="sidebar-item">
             <NuxtLink to="/privacy" class="sidebar-link" @click="toggleSidebar">Privacy Policy</NuxtLink>
           </li>
@@ -248,10 +250,10 @@
       </a>
     </div>
     <div style="background-color: rgba(12, 31, 74, 0.9);" class="footer-bottom text-center py-3 px-3">
-      &copy; 2024           <NuxtLink to="/" class="navbar-brand ">
-            <img style="width: 20px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png">
-            Crypto bulls
-            </NuxtLink>. All rights reserved.
+      &copy; 2024           <NuxtLink to="/" class="navbar-brand" style="">
+            <img style="width: 30px;" src="../public/bull.png">
+            <span class="text-warning fw-bold" style="font-size: 17px;"> Crypto Bulls</span>
+        </NuxtLink>. All rights reserved.
     </div>
    
       </aside>
@@ -307,7 +309,8 @@
     <div class="row text-center text-md-start">
       
       <div class="col-12 col-md-4 mb-4">
-        <h5 class="fw-bold"> <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png">
+        <h5 class="fw-bold"> 
+          <!-- <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> -->
           Crypto bulls</h5>
         <p>
           Get the latest cryptocurrency news, analysis and more. Subscribe so you don't miss anything important!
@@ -333,7 +336,7 @@
 </div>
 
 
-<div class="col-12 col-md-4 mb-4">
+<div class="col-12 col-md-4 mb-4 ">
   <h5 class="fw-bold">Newsletter Subscription</h5>
   <form @submit.prevent="subscribeNewsletter">
     <input
@@ -342,7 +345,9 @@
       class="form-control text-white"
       placeholder="Your Email"
     />
-    <button class="btn btn-primary mt-2 w-100">Subscribe</button>
+    <div class="container">
+    <button class="btn-danger3 mt-2 w-100">Subscribe</button>
+  </div>
   </form>
 </div>
 
@@ -366,8 +371,8 @@
 
     <div class="footer-bottom text-center py-3" style="background-color: rgba(12, 31, 74, 0.9);">
       &copy; 2024   <NuxtLink to="/" class="navbar-brand" style="">
-            <img style="width: 50px;" src="../public/bull.png">
-            <span class="text-warning fw-bold" style="font-size: 17px;">Crypto Bulls</span>
+            <img style="width: 30px;" src="../public/bull.png">
+            <span class="text-warning fw-bold" style="font-size: 14px;">Crypto Bulls</span>
         </NuxtLink>. All rights reserved.
     </div>
   </div>
@@ -540,6 +545,33 @@
   </script>
   
   <style scoped>
+  .btn-danger3:hover {
+    transform: perspective(500px) translateZ(20px);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.8), inset 0px -3px 12px rgba(255, 255, 255, 0.2);
+  }
+  .btn-danger3 {
+    border-radius: none !important;
+    z-index: 1;
+    left: 5px;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 13px;
+    padding: 10px 9px;
+    border: 2px solid orange;
+        border-radius: 17px;
+        background: linear-gradient(135deg,#123c63 0%,#0a243d 50%, #291919 100%);
+  background-size: 200% 200%;
+  animation: marbleGradientAnimation 5s ease infinite;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.6), inset 0px -2px 8px rgba(255, 255, 255, 0.2);
+  transform: perspective(500px) translateZ(30px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color:#091520; 
+        background-size: 200% 200%;
+       
+        transform: perspective(500px) translateZ(30px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
   ::placeholder{
     color: white;
   }
@@ -749,7 +781,7 @@
   padding: 30px 0;
 }
 .footer h5 {
-  color: #3d96ef;
+  color:orange;
 }
 .footer-link {
   color: #ffffff;

@@ -259,7 +259,7 @@ export default {
   }
 }
 .banner {
-  margin-top: 58px;
+  margin-top: 55px;
   background-image: url('../public/ai.webp');
   background-size: cover; /* Заполняет баннер, сохраняя пропорции */
   background-position: center;

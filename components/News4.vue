@@ -44,17 +44,19 @@
           <span
             v-if="!isLoading && !showAllCryptos"
             @click="showAllCryptos = true"
-            class="pointer mt-2 fw-bold"
+            class="pointer fw-bold"
           >
             Open 100
           </span>
           <span
             v-if="!isLoading && showAllCryptos"
             @click="showAllCryptos = false"
-            class="pointer mt-2 fw-bold"
+            class="pointer  fw-bold"
           >
             Close
+            <br/><br/>
           </span>
+          <br/><br/>
         </div>
       </div>
 
