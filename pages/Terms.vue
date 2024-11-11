@@ -1,6 +1,6 @@
 <template>
   <div class="terms-of-service container my-4">
-    <h1 class="text-center mb-4 mt-3">Terms of Service</h1>
+    <h1 class="text-center mb-4 ">Terms of Service</h1>
     <p>
       Welcome to our website. Please read these Terms of Service carefully before using our site. By using our site, you agree to these terms.
     </p>
@@ -47,7 +47,7 @@
 
     <h2>9. Contact Information</h2>
     <p>
-      If you have any questions or comments regarding these Terms of Service, please contact us at: <a href="mailto:cryptobulls.com">cryptobulls.com</a>.
+      If you have any questions or comments regarding these Terms of Service, please contact us at: <a href="mailto:cryptocurrencybulls.com">cryptocurrencybulls.com</a>.
     </p>
   </div>
 </template>
@@ -60,10 +60,10 @@ export default {
 
 <style scoped>
 .terms-of-service {
-  background-color: #f8f9fa;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* background-color: #f8f9fa; */
+  /* padding: 30px; */
+  /* border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 h1, h2 {

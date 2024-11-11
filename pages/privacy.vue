@@ -1,6 +1,6 @@
 <template>
   <div class="privacy-policy container my-4">
-    <h1 class="text-center mb-4 mt-3">Privacy Policy</h1>
+    <h1 class="text-center mb-4 ">Privacy Policy</h1>
     <p>
       Your privacy is important to us. This Privacy Policy explains how we collect, use, store, and protect your personal data, and your rights regarding this data.
     </p>
@@ -77,7 +77,7 @@
 
     <h2>10. Contact Information</h2>
     <p>
-      If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:cryptobulls.com">cryptobulls.com</a>.
+      If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:cryptocurrencybulls.com">cryptocurrencybulls.com</a>.
     </p>
   </div>
 </template>
@@ -90,10 +90,10 @@ export default {
 
 <style scoped>
 .privacy-policy {
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 h1, h2 {

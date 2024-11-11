@@ -220,8 +220,8 @@
           <li class="sidebar-item">
             <NuxtLink to="/defi" class="sidebar-link" @click="toggleSidebar">Defi</NuxtLink>
           </li>
-          <li class="sidebar-item"><NuxtLink to="/it" class="sidebar-link">Information technology </NuxtLink></li>
-          <li class="sidebar-item"><NuxtLink to="/it" class="sidebar-link">Podcasts</NuxtLink> </li>  
+          <li class="sidebar-item"><NuxtLink to="/it" class="sidebar-link" @click="toggleSidebar">Information technology </NuxtLink></li>
+          <li class="sidebar-item"><NuxtLink to="/ex" class="sidebar-link" @click="toggleSidebar">Exchange</NuxtLink> </li>  
           <li class="sidebar-item">
             <NuxtLink to="/privacy" class="sidebar-link" @click="toggleSidebar">Privacy Policy</NuxtLink>
           </li>

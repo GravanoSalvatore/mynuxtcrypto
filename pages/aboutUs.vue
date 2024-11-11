@@ -1,9 +1,9 @@
 <template>
   <div class="about-us container my-4">
-    <h1 class="text-center mb-4 mt-3">About Us</h1>
+    <h1 class="text-center mb-4">About Us</h1>
    
     <p>
-      <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png">
+      <!-- <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> -->
       <strong>Crypto bulls</strong> is an innovative platform for distributing news about blockchain, cryptocurrencies, and IT technologies from around the world. We specialize in providing up-to-date and quality information and content.
     </p>
     <p>
@@ -32,10 +32,10 @@ export default {
 
 <style scoped>
 .about-us {
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 h1 {
@@ -49,6 +49,6 @@ p {
 }
 
 strong {
-  color: #007bff;
+  color:orange;
 }
 </style>

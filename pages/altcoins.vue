@@ -12,7 +12,7 @@
     <div class="banner" v-if="bannerData && bannerData.source_info">
       <div class="banner-content">
        
-        <h1 v-if="bannerData.title" class="banner-title">{{ bannerData.title }}</h1>
+        <h1 v-if="bannerData.title" class="banner-title pointer">{{ bannerData.title }}</h1>
         <p>
           <img
             v-if="bannerData.source_info.img"
@@ -220,6 +220,9 @@ export default {
 </script>
 
 <style scoped>
+.pointer{
+  cursor: pointer;
+}
 .preloader {
   position: fixed;
   top: 0;
@@ -317,7 +320,9 @@ export default {
   transition: opacity 2s ease-in-out;
   word-wrap: break-word; /* Перенос длинных слов */
 }
-
+/* .banner-title:hover{
+  color:red
+} */
 .banner-date {
   font-size: 1.2rem;
   margin-top: 10px;
