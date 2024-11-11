@@ -183,7 +183,7 @@ export default {
 }
 
 .top {
-  margin-top: 65px;
+  margin-top: px;
 }
 .pointer {
   cursor: pointer;

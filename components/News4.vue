@@ -153,13 +153,28 @@ export default {
       }
     },
     async fetchNews() {
-      const response = await fetch(
-        "https://min-api.cryptocompare.com/data/v2/news/?categories=ADA,XRP,XLM,TRX,SHIBA,DOGE,EOS,LTC,USDT,&excludeCategories=Sponsored"
-      );
-      const data = await response.json();
-      this.news = data.Data;
-      this.latestNews = data.Data;
-    },
+  try {
+    const response = await fetch(
+      "https://min-api.cryptocompare.com/data/v2/news/?categories=ADA,XRP,XLM,TRX,SHIBA,DOGE,EOS,LTC,USDT,&excludeCategories=Sponsored"
+    );
+    const data = await response.json();
+    this.news = Array.isArray(data.Data) ? data.Data : []; // Проверка на массив
+    this.latestNews = Array.isArray(data.Data) ? data.Data : [];
+  } catch (error) {
+    console.error("Ошибка при загрузке новостей:", error);
+    this.news = []; // В случае ошибки инициализируем как пустой массив
+    this.latestNews = [];
+  }
+}
+,
+    // async fetchNews() {
+    //   const response = await fetch(
+    //     "https://min-api.cryptocompare.com/data/v2/news/?categories=ADA,XRP,XLM,TRX,SHIBA,DOGE,EOS,LTC,USDT,&excludeCategories=Sponsored"
+    //   );
+    //   const data = await response.json();
+    //   this.news = data.Data;
+    //   this.latestNews = data.Data;
+    // },
     async fetchTopCryptos() {
       const response = await fetch(
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"

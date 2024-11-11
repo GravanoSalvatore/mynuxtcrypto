@@ -105,7 +105,10 @@
 </template>
 
 <script>
+
 export default {
+  components: {  },
+  props: {},
   data() {
     return {
       loadingBanner: true,
@@ -266,7 +269,7 @@ export default {
   }
 }
 .banner {
-  margin-top: 55px;
+ 
   background-image: url('../public/altcoins.webp');
   background-size: cover; /* Заполняет баннер, сохраняя пропорции */
   background-position: center;

@@ -16,7 +16,7 @@
            -->
            <NuxtLink to="/" class="navbar-brand" style="position: absolute; left: 10px;">
             <img style="width: 50px;" src="../public/bull.png">
-            <span class="text-warning fw-bold" style="font-size: 17px;">Crypto Bulls</span>
+            <span class="text-warning fw-bold" style="font-size: 16px;">CryptoCurrencyBulls</span>
         </NuxtLink>
         
         <button
@@ -74,7 +74,8 @@
               </li>
                   <li><NuxtLink to="/it" class="dropdown-item">Information technology </NuxtLink></li>
                 
-              
+                  <li><NuxtLink to="/ex" class="dropdown-item">Exchanges </NuxtLink></li>
+                
                   
                 </ul>
               </li>
@@ -220,7 +221,7 @@
             <NuxtLink to="/defi" class="sidebar-link" @click="toggleSidebar">Defi</NuxtLink>
           </li>
           <li class="sidebar-item"><NuxtLink to="/it" class="sidebar-link">Information technology </NuxtLink></li>
-                
+          <li class="sidebar-item"><NuxtLink to="/it" class="sidebar-link">Podcasts</NuxtLink> </li>  
           <li class="sidebar-item">
             <NuxtLink to="/privacy" class="sidebar-link" @click="toggleSidebar">Privacy Policy</NuxtLink>
           </li>
@@ -292,8 +293,11 @@
         </div>
       </div>
       
-    
+      <br/>  <br/>  
+      <Price/>
       <NuxtPage />
+
+     
       <button
       v-show="showScrollTopButton"
       class="scroll-top-button"
@@ -383,7 +387,9 @@
   </template>
   
   <script>
+   import Price from '../components/Price.vue';
   export default {
+    components: {Price},
     beforeUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
     document.removeEventListener("click", this.closeDropdownOnClickOutside);
@@ -563,8 +569,8 @@
         background: linear-gradient(135deg,#123c63 0%,#0a243d 50%, #291919 100%);
   background-size: 200% 200%;
   animation: marbleGradientAnimation 5s ease infinite;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.6), inset 0px -2px 8px rgba(255, 255, 255, 0.2);
-  transform: perspective(500px) translateZ(30px);
+  /* box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.6), inset 0px -2px 8px rgba(255, 255, 255, 0.2);
+  transform: perspective(500px) translateZ(30px); */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
         background-color:#091520; 
         background-size: 200% 200%;

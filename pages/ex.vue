@@ -1,4 +1,3 @@
-
 <template>
   <div class="container articles">
    
@@ -150,7 +149,7 @@ export default {
   },
   computed: {
     visibleArticles() {
-      return this.newsStore.articles.slice(0, this.visibleArticlesCount);
+      return this.newsStore.articles1.slice(0, this.visibleArticlesCount);
     },
   },
   data() {
@@ -283,7 +282,7 @@ updateCurrent(startIndex) {
   });
 },
     selectArticle(index) {
-      this.selectedArticle = this.newsStore.articles[index];
+      this.selectedArticle = this.newsStore.articles1[index];
       this.scrollToTop();
     },
     

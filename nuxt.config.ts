@@ -54,7 +54,39 @@ export default defineNuxtConfig({
         { hid: 'description', name: 'CryptoBulls', content: 'CryptoBulls' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          rel: 'preload',
+          href: '/altcoins.webp',
+          as: 'image'
+        },
+        {
+          rel: 'preload',
+          href: '/ai.webp',
+          as: 'image'
+        },
+        {
+          rel: 'preload',
+          href: '/crypto.webp',
+          as: 'image'
+        },
+        {
+          rel: 'preload',
+          href: '/defi.webp',
+          as: 'image'
+        },
+        {
+          rel: 'preload',
+          href: '/it.webp',
+          as: 'image'
+        },
+        // {
+        //   rel: 'preload',
+        //   href: '/defi.webp',
+        //   as: 'image'
+        // },
+        { 
+          rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'
+         },
         {
           rel: 'stylesheet',
           href: 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css'

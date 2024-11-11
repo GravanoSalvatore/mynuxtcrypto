@@ -269,7 +269,7 @@ export default {
   }
 }
 .banner {
-  margin-top: 55px;
+ 
   background-image: url('../public/it.webp');
   background-size: cover; /* Заполняет баннер, сохраняя пропорции */
   background-position: center;

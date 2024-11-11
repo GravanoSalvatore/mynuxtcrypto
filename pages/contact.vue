@@ -12,7 +12,7 @@
     </div> -->
 
     <div  class="container">
-    <br/> <br/>
+   
     <div class="row" v-if="!selectedPerson">
       <div
         v-for="(person, index) in visiblePersonalities"

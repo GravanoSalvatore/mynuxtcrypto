@@ -69,9 +69,13 @@
   
       <!-- Отображение компонентов, когда loading становится false -->
       <div v-else>
+        <!-- <br/> <br/> -->
+        <!-- <Price /> -->
         <News5 />
         <News3 />
-        <Price />
+
+        <br/>
+        <!-- <Price /> -->
         <AdvancedNewsSection />
         
         <News6 />

@@ -309,7 +309,7 @@ export default {
   }
 }
 .banner {
-  margin-top: 55px;
+ 
   background-image: url('../public/crypto.webp');
   background-size: cover; /* Заполняет баннер, сохраняя пропорции */
   background-position: center;
