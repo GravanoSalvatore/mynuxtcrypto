@@ -156,7 +156,8 @@
             </ul>
 
             <button class="btn" @click="toggleSearch">
-              <i class="fa-brands fa-searchengin text-white"></i>
+              <img style="width: 20px;" src="https://static.vecteezy.com/system/resources/previews/017/784/742/non_2x/magnifying-glass-loupe-icon-button-search-icon-png.png"/>
+              <!-- <i class="fa-brands fa-searchengin text-white"></i> -->
             </button>
 
             <form
@@ -369,15 +370,16 @@
       </aside>
 
       <div
+      :class="['dropdown-menu', isDarkMode ? 'dark-dropdown' : 'light-dropdown']"
         v-if="searchResults.length"
         class="container search-results"
-        style="background-color: white"
+        style=""
       >
         <div
           style="margin-top: 70px"
           class="d-flex justify-content-between align-items-center"
         >
-          <button class="btn" @click="clearSearch">Close</button>
+          <span class="pointer" @click="clearSearch">Close</span>
         </div>
         <div class="row">
           <div
@@ -386,7 +388,7 @@
             class="col-12 mb-3"
           >
             <div
-              class="card search-result-card d-flex flex-row align-items-center"
+              class="car search-result-card d-flex flex-row align-items-center"
             >
               <img
                 v-if="result.imageurl"
@@ -402,10 +404,10 @@
                   />
                   {{ result.source_info.name }}
                 </p>
-                <a :href="result.url" target="_blank" class="text-dark">
+                <a :href="result.url" target="_blank" class="">
                   <h5 class="card-title">{{ result.title }}</h5>
                 </a>
-                <p class="card-text text-muted">
+                <p class="card-text ">
                   {{ formatDate(result.published_on) }}
                 </p>
               </div>
@@ -728,8 +730,12 @@ export default {
 </script>
 
 <style scoped>
-
-
+.pointer{
+  cursor: pointer;
+}
+.social-icon:hover{
+ color: cornflowerblue;
+}
 
 .theme-toggle-btn {
   background: none;
@@ -985,7 +991,7 @@ input,
   padding: 30px 0;
 }
 .footer h5 {
-  color: orange;
+  color:cornflowerblue;
 }
 .footer-link {
   color: #ffffff;

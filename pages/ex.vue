@@ -1,5 +1,6 @@
 <template>
   <div class="container articles">
+   
     <div style="" class="row" v-if="!selectedArticle">
       <div
         v-for="(article, index) in visibleArticles"
@@ -7,23 +8,24 @@
         class="col-lg-3 col-md-6 col-12 mb-4"
       >
         <div
-          style="background-color: "
+          style="background-color:"
           class="article-card text-center"
           @click="selectArticle(index)"
         >
-          <img
+          <NuxtImg 
+            format="webp"
             :src="article.image"
             class="img-fluid article-img"
             alt="article image"
           />
-          <div class="text">
+          <!-- <div class="text">
             <h5 class="card-title fw-bold">{{ article.title }}</h5>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="col-12 text-center fw-bold">
         <span
-          v-if="visibleArticlesCount < newsStore.articles.length"
+          v-if="visibleArticlesCount < newsStore.articles1.length"
           @click="loadMoreArticles"
           class="pointer"
           >Show more
@@ -43,23 +45,20 @@
     <div v-if="selectedArticle" class="selected-article">
       <div class="row">
         <!-- Левая колонка с новостями -->
-        <div class="col-md-3 news-sidebar" style="background-color: ">
+        <div class="col-md-3 news-sidebar" style="background-color:">
           <div
             v-for="(newsItem, index) in latestNews"
             :key="index"
             class="sidebar-news-item"
           >
             <p>
-              <img
-                style="width: 45px; height: 45px"
-                :src="newsItem.source_info.img"
-              />
+              <img style="width: 35px; height: 35px;" :src="newsItem.source_info.img" />
               {{ newsItem.source_info.name }}
             </p>
             <a :href="newsItem.url" target="_blank">
               <h6 class="news-title ">{{ newsItem.title }}</h6>
             </a>
-          <span style="color:cornflowerblue" > {{ formatDate(newsItem.published_on) }}</span>
+        <span style="color:cornflowerblue" >   {{ formatDate(newsItem.published_on) }}</span>
           </div>
         </div>
 
@@ -86,7 +85,7 @@
               <p>{{ selectedArticle.content8 }}</p>
               <p>{{ selectedArticle.content9 }}</p>
               <p>{{ selectedArticle.content10 }}</p>
-              <p>{{ selectedArticle.content11 }}</p>
+              <p>{{ selectedArticle.content11}}</p>
               <p>{{ selectedArticle.content12 }}</p>
               <p>{{ selectedArticle.content13 }}</p>
               <p>{{ selectedArticle.content14 }}</p>
@@ -96,7 +95,7 @@
               <p>{{ selectedArticle.content18 }}</p>
               <p>{{ selectedArticle.content19 }}</p>
               <p>{{ selectedArticle.content20 }}</p>
-              <p>{{ selectedArticle.content21 }}</p>
+              <p>{{ selectedArticle.content21}}</p>
               <p>{{ selectedArticle.content22 }}</p>
             </div>
           </div>
@@ -110,16 +109,12 @@
                 :key="slide.title"
                 class="news-card"
               >
-                <img
-                  :src="slide.imageurl"
-                  class="img-fluid rounded-4"
-                  alt="news image"
-                />
+                <img :src="slide.imageurl" class="img-fluid rounded-4" alt="news image" />
                 <h5 class="fw-bold">{{ slide.title }}</h5>
                 <a :href="slide.url" target="_blank">
-                  <h6 class="news-title text-white">{{ slide.title }}</h6>
+                  <!-- <h6 class="news-title ">{{ slide.title }}</h6> -->
                   <p class="card-text ">
-                    <span style="color:cornflowerblue" > {{ formatDate(newsItem.published_on) }}</span>
+                    {{ formatDate(slide.published_on) }}
                   </p>
                 </a>
               </div>
@@ -137,14 +132,17 @@
   </div>
 </template>
 
+
 <script>
-import AdvancedNewsSection2 from "~/components/AdvancedNewsSection2.vue";
-import { useNewsStore } from "./stores/newsStore";
+import AdvancedNewsSection2 from '~/components/AdvancedNewsSection2.vue';
+import { useNewsStore } from './stores/newsStore';
 
 export default {
-  components: { AdvancedNewsSection2 },
+  components:{AdvancedNewsSection2},
   setup() {
     const newsStore = useNewsStore();
+
+    
 
     return {
       newsStore,
@@ -159,8 +157,8 @@ export default {
     return {
       sliderIndex: 0,
       slideSize: 2,
-
-      visibleArticlesCount: 8,
+   
+visibleArticlesCount: 8,
       selectedArticle: null,
       latestNews: [],
       latestNews2: [],
@@ -168,32 +166,37 @@ export default {
     };
   },
   beforeDestroy() {
-    window.removeEventListener("resize", this.updateCardWidth);
-    window.removeEventListener("resize", this.adjustSidebarHeight);
-  },
-  async mounted() {
-    this.updateCardWidth();
-    try {
-      await this.fetchLatestNews();
-      await this.fetchSliderNews();
-    } catch (error) {
-      console.error("Ошибка при инициализации данных:", error);
-    }
-    window.addEventListener("resize", this.adjustSidebarHeight);
-  },
+  window.removeEventListener('resize', this.updateCardWidth);
+  window.removeEventListener('resize', this.adjustSidebarHeight);
+},
+async mounted() {
+  this.updateCardWidth();
+  try {
+    await this.fetchLatestNews();
+    await this.fetchSliderNews();
+  } catch (error) {
+    console.error("Ошибка при инициализации данных:", error);
+  }
+  window.addEventListener('resize', this.adjustSidebarHeight);
+},
 
+  
+  
+  
   methods: {
-    updateCardWidth() {
-      this.$nextTick(() => {
-        const slider = this.$el.querySelector(".news-slider");
-        if (slider) {
-          const cardWidth = slider.clientWidth / this.slideSize;
-          this.$el.querySelectorAll(".news-card").forEach((card) => {
-            card.style.flex = `0 0 ${cardWidth}px`;
-          });
-        }
+  
+  updateCardWidth() {
+  this.$nextTick(() => {
+    const slider = this.$el.querySelector('.news-slider');
+    if (slider) {
+      const cardWidth = slider.clientWidth / this.slideSize;
+      this.$el.querySelectorAll('.news-card').forEach(card => {
+        card.style.flex = `0 0 ${cardWidth}px`;
       });
-    },
+    }
+  });
+}
+,
     loadMoreArticles() {
       this.visibleArticlesCount += 8;
     },
@@ -205,13 +208,13 @@ export default {
     scrollToTop() {
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     },
     async fetchLatestNews() {
       try {
         const response = await fetch(
-          "https://min-api.cryptocompare.com/data/v2/news/?categories=ADA,XRP,XLM,TRX,SHIBA,DOGE,EOS,LTC,USDT,&excludeCategories=Sponsored"
+           "https://min-api.cryptocompare.com/data/v2/news/?categories=ADA,XRP,XLM,TRX,SHIBA,DOGE,EOS,LTC,USDT,&excludeCategories=Sponsored"
         );
         const data = await response.json();
         this.latestNews = data.Data.slice(30);
@@ -220,73 +223,74 @@ export default {
       }
     },
     async fetchSliderNews() {
-      try {
-        const response = await fetch(
-          "https://min-api.cryptocompare.com/data/v2/news/?categories=Technology,Blockchain&excludeCategories=Defi,Nft"
-        );
-        const data = await response.json();
-        this.latestNews2 = data.Data || []; // Убедитесь, что массив определен
-        this.updateCurrentSlideArticles();
-      } catch (error) {
-        console.error("Ошибка при загрузке слайдера:", error);
-      }
-    },
-    updateCurrentSlideArticles() {
-      if (this.latestNews2.length > 0) {
-        const startIndex = this.sliderIndex * this.slideSize;
-        this.currentSlideArticles = this.latestNews2.slice(
-          startIndex,
-          startIndex + this.slideSize
-        );
-      } else {
-        this.currentSlideArticles = [];
-      }
-    },
-    updateCurrent(startIndex) {
-      const container = this.$el.querySelector(".news-cards");
-      const slider = this.$el.querySelector(".news-slider");
+  try {
+    const response = await fetch(
+      "https://min-api.cryptocompare.com/data/v2/news/?categories=Technology,Blockchain&excludeCategories=Defi,Nft"
+    );
+    const data = await response.json();
+    this.latestNews2 = data.Data || []; // Убедитесь, что массив определен
+    this.updateCurrentSlideArticles();
+  } catch (error) {
+    console.error("Ошибка при загрузке слайдера:", error);
+  }
+},
+updateCurrentSlideArticles() {
+  if (this.latestNews2.length > 0) {
+    const startIndex = this.sliderIndex * this.slideSize;
+    this.currentSlideArticles = this.latestNews2.slice(
+      startIndex,
+      startIndex + this.slideSize
+    );
+  } else {
+    this.currentSlideArticles = [];
+  }
+}
+,
+updateCurrent(startIndex) {
+    const container = this.$el.querySelector('.news-cards');
+    const slider = this.$el.querySelector('.news-slider');
 
-      if (container && slider) {
-        const sliderWidth = slider.clientWidth; // ширина видимого контейнера
-        const cardWidth = sliderWidth / 3; // динамически рассчитываем ширину одной новости (3 новости на экран)
+    if (container && slider) {
+      const sliderWidth = slider.clientWidth; // ширина видимого контейнера
+      const cardWidth = sliderWidth / 3; // динамически рассчитываем ширину одной новости (3 новости на экран)
 
-        container.style.transform = `translateX(-${startIndex * cardWidth}px)`;
-        container.style.transition = "transform 0.5s ease-in-out"; // добавляем плавность
-      }
-    },
-
+      container.style.transform = `translateX(-${startIndex * cardWidth}px)`;
+      container.style.transition = 'transform 0.5s ease-in-out'; // добавляем плавность
+    }
+  },
+    
     nextSlide() {
-      if (
-        this.latestNews2 &&
-        (this.sliderIndex + 1) * this.slideSize < this.latestNews2.length
-      ) {
-        this.sliderIndex++;
-        this.updateCurrentSlideArticles();
-      }
-    },
-    previousSlide() {
-      if (this.sliderIndex > 0) {
-        this.sliderIndex--;
-        this.updateCurrentSlideArticles();
-      }
-    },
-    formatDate(timestamp) {
-      const date = new Date(timestamp * 1000); // Умножаем на 1000 для преобразования секунд в миллисекунды
-      return date.toLocaleDateString("en-EN", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-    },
+    if (
+      this.latestNews2 &&
+      (this.sliderIndex + 1) * this.slideSize < this.latestNews2.length
+    ) {
+      this.sliderIndex++;
+      this.updateCurrentSlideArticles();
+    }
+  },
+  previousSlide() {
+    if (this.sliderIndex > 0) {
+      this.sliderIndex--;
+      this.updateCurrentSlideArticles();
+    }
+  },
+  formatDate(timestamp) {
+  const date = new Date(timestamp * 1000); // Умножаем на 1000 для преобразования секунд в миллисекунды
+  return date.toLocaleDateString("en-EN", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+},
     selectArticle(index) {
       this.selectedArticle = this.newsStore.articles1[index];
       this.scrollToTop();
     },
-
+    
     clearSelection() {
       this.selectedArticle = null;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -378,8 +382,8 @@ a:hover {
 }
 
 .slider-button {
-  background-color:transparent !important;
- 
+  background-color:transparent !important; 
+  /* color: white; */
   border: none;
   font-size: 24px;
   cursor: pointer;
@@ -406,9 +410,7 @@ a:hover {
 a {
   text-decoration: none;
 }
-.bg-white {
-  background-color: #fff;
-}
+
 .fixed {
   position: fixed;
 }
@@ -420,7 +422,7 @@ a {
   cursor: pointer;
 }
 .article-img {
-  border-radius: 10px;
+  border-radius:10px;
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -442,11 +444,11 @@ a {
 .news-title {
   font-size: 1rem;
   font-weight: bold;
-  /* color: #000; */
+  
 }
 .news-date {
   font-size: 0.8rem;
-  color: cornflowerblue;
+  color: #6c757d;
 }
 
 .article-container {
@@ -516,4 +518,5 @@ a {
     font-size: 18px; /* Уменьшаем размер кнопок для мобильных устройств */
   }
 }
+
 </style>
