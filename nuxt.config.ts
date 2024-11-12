@@ -41,6 +41,10 @@
 //   },
 // });
 export default defineNuxtConfig({
+  domains: [
+    'min-api.cryptocompare.com', // пример домена API с изображениями
+                 
+  ],
   modules: ['@pinia/nuxt', '@nuxt/image'],
   pinia: {
     autoImports: ['defineStore'],

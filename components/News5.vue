@@ -1,10 +1,9 @@
-
 <template>
   <div class="container-fluid">
     <div v-if="isLoading" class="preloader text-white">
       <p>
         <img
-          style="width: 300px;"
+          style="width: 300px"
           src="../public/bull.webp"
         />
       </p>
@@ -16,7 +15,6 @@
  
 </div> -->
     <div class="row top">
-      
       <!-- Основная колонка с карточками новостей (четыре карточки в ряд) -->
       <div class="col-12 col-md-9" ref="newsContainer">
         <div class="row">
@@ -35,7 +33,14 @@
               />
               <div class="card-body d-flex flex-column">
                 <p>
-                  <img  style="width: 35px;height: 35px;" :src="newsItem.source_info.img"> 
+                  <NuxtImg
+                    quality="80"
+                    fit="cover"
+                    placeholder="blur"
+                    decoding="async"
+                    style="width: 35px; height: 35px"
+                    :src="newsItem.source_info.img"
+                  />
                   {{ newsItem.source_info.name }}
                 </p>
                 <a :href="newsItem.url" target="_blank" class="mt-auto">
@@ -44,7 +49,7 @@
                 <p class="card-text text-muted">
                   {{ formatDate(newsItem.published_on) }}
                 </p>
-                <span style="font-size:10px;color:cornflowerblue;">
+                <span style="font-size: 10px; color: cornflowerblue">
                   {{ truncateCategory(newsItem.categories) }}
                 </span>
               </div>
@@ -63,7 +68,14 @@
             class="sidebar-news-item"
           >
             <p>
-              <img  style="width: 35px;height: 35px;" :src="newsItem.source_info.img"> 
+              <NuxtImg
+                quality="80"
+                fit="cover"
+                placeholder="blur"
+                decoding="async"
+                style="width: 35px; height: 35px"
+                :src="newsItem.source_info.img"
+              />
               {{ newsItem.source_info.name }}
             </p>
             <a :href="newsItem.url" target="_blank" class="mt-auto">
@@ -72,7 +84,7 @@
                 {{ formatDate(newsItem.published_on) }}
               </p>
             </a>
-            <span style="font-size:10px;color:cornflowerblue;">
+            <span style="font-size: 10px; color: cornflowerblue">
               {{ truncateCategory(newsItem.categories) }}
             </span>
           </div>
@@ -92,13 +104,12 @@
 </div> -->
     <br /><br />
   </div>
-  
 </template>
 
 <script>
-import TradingViewChart from './components/Chart.vue';
+import TradingViewChart from "./components/Chart.vue";
 export default {
-  components:{TradingViewChart},
+  components: { TradingViewChart },
   data() {
     return {
       news: [],

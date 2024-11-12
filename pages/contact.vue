@@ -20,8 +20,8 @@
         class="col-lg-2 col-md-6 col-12 mb-4"
       >
         <div class="personality-card text-center" @click="selectPerson(index)">
-          <NuxtImg 
-          format="webp"
+          <img 
+        
          @load="checkImagesLoaded"
             v-if="person.image"
             :src="person.image"

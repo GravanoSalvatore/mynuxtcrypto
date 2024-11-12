@@ -11,12 +11,7 @@
           class="article-card text-center"
           @click="selectArticle(index)"
         >
-          <NuxtImg
-            quality="80"
-            fit="cover"
-            placeholder="blur"
-            lazy
-            decoding="async"
+          <img
             :src="article.image"
             class="img-fluid article-img"
             alt="article image"
