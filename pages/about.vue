@@ -13,7 +13,8 @@
           class="article-card text-center"
           @click="selectArticle(index)"
         >
-          <img
+          <NuxtImg 
+            format="webp"
             :src="article.image"
             class="img-fluid article-img"
             alt="article image"

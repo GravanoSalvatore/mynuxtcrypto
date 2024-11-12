@@ -1,7 +1,7 @@
 <template>
   <div style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
     <div v-if="loading" class="preloader text-white">
-     <p> <img style="width: 300px;" src="../public/bull.png"></p>
+     <p> <img style="width: 300px;" src="../public/bull.webp"></p>
        
       <!-- <p style="font-size: 63px;font-weight: bold;">Crypto bulls</p>    -->
     </div>
@@ -15,7 +15,7 @@
             </NuxtLink>
            -->
            <NuxtLink to="/" class="navbar-brand" style="position: absolute; left: 10px;">
-            <img style="width: 50px;" src="../public/bull.png">
+            <img style="width: 50px;" src="../public/bull.webp">
             <span class="text-warning fw-bold" style="font-size: 16px;">CryptoCurrencyBulls</span>
         </NuxtLink>
         
@@ -136,7 +136,7 @@
         </button>
   
         <NuxtLink to="/" class="navbar-brand" style="">
-            <img style="width: 50px;" src="../public/bull.png">
+            <img style="width: 50px;" src="../public/bull.webp">
             <span class="text-warning fw-bold" style="font-size: 17px;">Crypto Bulls</span>
         </NuxtLink>
            
@@ -252,7 +252,7 @@
     </div>
     <div style="background-color: rgba(12, 31, 74, 0.9);" class="footer-bottom text-center py-3 px-3">
       &copy; 2024           <NuxtLink to="/" class="navbar-brand" style="">
-            <img style="width: 30px;" src="../public/bull.png">
+            <img style="width: 30px;" src="../public/bull.webp">
             <span class="text-warning fw-bold" style="font-size: 17px;"> Crypto Bulls</span>
         </NuxtLink>. All rights reserved.
     </div>
@@ -375,7 +375,7 @@
 
     <div class="footer-bottom text-center py-3" style="background-color: rgba(12, 31, 74, 0.9);">
       &copy; 2024   <NuxtLink to="/" class="navbar-brand" style="">
-            <img style="width: 30px;" src="../public/bull.png">
+            <img style="width: 30px;" src="../public/bull.webp">
             <span class="text-warning fw-bold" style="font-size: 14px;">Crypto Bulls</span>
         </NuxtLink>. All rights reserved.
     </div>

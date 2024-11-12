@@ -5,7 +5,7 @@
       <p>
         <img
           style="width: 300px;"
-          src="../public/bull.png"
+          src="../public/bull.webp"
         />
       </p>
     </div>
