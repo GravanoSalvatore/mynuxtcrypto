@@ -4,7 +4,7 @@
     <div v-if="bannerItem" ref="banner" class="banner-container text-center py-4 mb-5">
       <div ref="bannerContent" class="banner-content">
         <NuxtLink to="/" class="navbar-brand">
-          <NuxtImg format="webp"  style="width: 250px;" src="../public/solana.png"/>
+          <img style="width: 250px;" src="../public/solana.png"/>
         </NuxtLink>
         <!-- <p ref="slogan" class="slogan fw-bold" style="font-size: 36px; color: #3d96ef;">Crypto bulls!</p> -->
       </div>

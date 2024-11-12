@@ -55,7 +55,7 @@
    -->
    <template>
     <div style="background-color: white;">
-      <CookieConsent />
+      <!-- <CookieConsent /> -->
   
       <!-- Прелоадер отображается, пока компонент не загрузился -->
       <div v-if="loading" class="preloader text-white">
@@ -93,6 +93,7 @@
   import AdvancedNewsSection from '~/components/AdvancedNewsSection.vue';
   import News2 from '~/components/News2.vue';
   import News3a from '~/components/News3a.vue';
+  // import News3 from '~/components/News3.vue';
   import News4 from '~/components/News4.vue';
   import News5 from '~/components/News5.vue';
   import News6 from '~/components/News6.vue';
@@ -104,6 +105,7 @@
       NewsSection,
       AdvancedNewsSection,
       News2,
+     
       News3a,
       News4,
       News5,

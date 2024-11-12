@@ -581,12 +581,12 @@ export default {
         this.isDropdownOpen = false;
       }
     },
-    toggleSearch() {
-      this.isSearchVisible = !this.isSearchVisible;
-      if (!this.isSearchVisible) {
-        this.clearSearch(); // Очистка при скрытии поля
-      }
-    },
+    // toggleSearch() {
+    //   this.isSearchVisible = !this.isSearchVisible;
+    //   if (!this.isSearchVisible) {
+    //     this.clearSearch(); // Очистка при скрытии поля
+    //   }
+    // },
 
     //   toggleDropdown() {
     //   this.isDropdownOpen = !this.isDropdownOpen;
