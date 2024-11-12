@@ -51,15 +51,15 @@
           >
             <p>
               <img
-                style="width: 35px; height: 35px"
+                style="width: 45px; height: 45px"
                 :src="newsItem.source_info.img"
               />
               {{ newsItem.source_info.name }}
             </p>
             <a :href="newsItem.url" target="_blank">
-              <h6 class="news-title text-black">{{ newsItem.title }}</h6>
+              <h6 class="news-title ">{{ newsItem.title }}</h6>
             </a>
-            {{ formatDate(newsItem.published_on) }}
+          <span style="color:cornflowerblue" > {{ formatDate(newsItem.published_on) }}</span>
           </div>
         </div>
 
@@ -118,8 +118,8 @@
                 <h5 class="fw-bold">{{ slide.title }}</h5>
                 <a :href="slide.url" target="_blank">
                   <h6 class="news-title text-white">{{ slide.title }}</h6>
-                  <p class="card-text text-muted">
-                    {{ formatDate(slide.published_on) }}
+                  <p class="card-text ">
+                    <span style="color:cornflowerblue" > {{ formatDate(newsItem.published_on) }}</span>
                   </p>
                 </a>
               </div>
@@ -291,6 +291,60 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --link-color: #000000; /* Цвет ссылок в светлой теме */
+  --text-color: #000000; /* Основной цвет текста в светлой теме */
+  --box-shadow-color: rgba(73, 69, 69, 0.3); /* Тень для светлой темы */
+  background-color: #ffffff;
+}
+
+.dark-mode {
+  --link-color: #ffffff; /* Цвет ссылок в тёмной теме */
+  --text-color: #ffffff; /* Основной цвет текста в тёмной теме */
+  --box-shadow-color: rgba(238, 235, 235, 0.3); /* Светлая тень для тёмной темы */
+  /* background-color: #8a0d0d; */
+}
+
+body, .dark-mode {
+  color: var(--text-color); /* Использование переменной для цвета текста */
+}
+
+/* Стили для ссылок */
+a {
+  color: var(--link-color); /* Цвет ссылок будет зависеть от темы */
+  text-decoration: none;
+}
+
+a:hover {
+  /* text-decoration: underline; */
+}
+
+/* Стили для тени карточек */
+.car {
+  padding: 10px;
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень для карточек */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.car:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px var(--box-shadow-color); /* Более яркая тень при наведении */
+}
+
+  /* .card-body {
+    box-shadow: none !important;
+    border: none !important;
+  } */
+  .car {
+    padding: 10px;
+  box-shadow: 0 8px 16px var(--box-shadow-color);
+}
+
+.car:hover {
+  transition: transform 0.3s, box-shadow 0.3s;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень при наведении */
+}
 .news-section-wrapper {
   width: 100%;
   margin-top: 20px;
@@ -324,8 +378,8 @@ export default {
 }
 
 .slider-button {
-  /* background-color: #091520; */
-  color: white;
+  background-color:transparent !important;
+ 
   border: none;
   font-size: 24px;
   cursor: pointer;
@@ -378,9 +432,9 @@ a {
 
 .news-sidebar {
   /* overflow-y: auto; */
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   padding: 10px;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid cornflowerblue;
 }
 .sidebar-news-item {
   margin-bottom: 15px;
@@ -388,11 +442,11 @@ a {
 .news-title {
   font-size: 1rem;
   font-weight: bold;
-  color: #000;
+  /* color: #000; */
 }
 .news-date {
   font-size: 0.8rem;
-  color: #6c757d;
+  color: cornflowerblue;
 }
 
 .article-container {

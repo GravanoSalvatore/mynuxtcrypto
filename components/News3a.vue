@@ -15,17 +15,17 @@
       <h2 v-if="!isLoading" class="fw-bold">Defi & Nft</h2>
       <div class="row g-4" v-if="!isLoading">
         <div v-for="newsItem in displayedNewsItems" :key="newsItem.id" class="col-12 col-md-6 col-lg-3 news-card">
-          <div class="card h-100">
+          <div class="car h-100">
             <img v-if="newsItem.imageurl" :src="newsItem.imageurl" class="card-img-top" alt="news image" />
             <div class="card-body d-flex flex-column">
               <p><img style="width: 35px; height: 35px;" :src="newsItem.source_info.img"> {{ newsItem.source_info.name }}</p>
               <a :href="newsItem.url" target="_blank" class="mt-auto">
                 <h5 class="card-title fw-bold">{{ newsItem.title }}</h5>
               </a>
-              <p class="card-text text-muted">{{ formatDate(newsItem.published_on) }}</p>
-              <span style="font-size:10px;color:cornflowerblue;">
-                  {{ truncateCategory(newsItem.categories) }}
-                </span>
+              <p class="card-text ">{{ formatDate(newsItem.published_on) }}</p>
+              <span style="font-size:10px; color:cornflowerblue;">
+  {{ truncateCategory(newsItem.categories, 30) }}
+</span>
             </div>
           </div>
         </div>
@@ -51,9 +51,11 @@ export default {
     this.isLoading = false;
   },
   methods: {
-    truncateCategory(category) {
-      return category.length > 20 ? category.slice(0, 50) + "..." : category;
-    },
+    truncateCategory(text, maxLength) {
+      // Если длина текста превышает maxLength, обрезаем и добавляем "..."
+      return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+    }
+  ,
     formatDate(timestamp) {
       const date = new Date(timestamp * 1000);
       return date.toLocaleDateString("en-US", {
@@ -128,9 +130,108 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --link-color: #000000; /* Цвет ссылок в светлой теме */
+  --text-color: #000000; /* Основной цвет текста в светлой теме */
+  --box-shadow-color: rgba(73, 69, 69, 0.3); /* Тень для светлой темы */
+  background-color: #ffffff;
+}
+
+.dark-mode {
+  --link-color: #ffffff; /* Цвет ссылок в тёмной теме */
+  --text-color: #ffffff; /* Основной цвет текста в тёмной теме */
+  --box-shadow-color: rgba(238, 235, 235, 0.3); /* Светлая тень для тёмной темы */
+  /* background-color: #8a0d0d; */
+}
+
+body, .dark-mode {
+  color: var(--text-color); /* Использование переменной для цвета текста */
+}
+
+/* Стили для ссылок */
+a {
+  color: var(--link-color); /* Цвет ссылок будет зависеть от темы */
+  text-decoration: none;
+}
+
+a:hover {
+  /* text-decoration: underline; */
+}
+
+/* Стили для тени карточек */
+.car {
+  padding: 10px;
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень для карточек */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.car:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px var(--box-shadow-color); /* Более яркая тень при наведении */
+}
+
+  /* .card-body {
+    box-shadow: none !important;
+    border: none !important;
+  } */
+  .car {
+    padding: 10px;
+  box-shadow: 0 8px 16px var(--box-shadow-color);
+}
+
+.car:hover {
+  transition: transform 0.3s, box-shadow 0.3s;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень при наведении */
+}
+  
+.pointer {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  /* color: black; */
+}
+.fixed-sidebar {
+  max-height: 100vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+}
+.sidebar-crypto-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  /* background-color: #f8f9fa; */
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.crypto-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+.crypto-name {
+  font-size: 0.9rem;
+}
+.text-success {
+  color: #28a745;
+}
+.text-danger {
+  color: #dc3545;
+}
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.news-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+  
 a{
   text-decoration: none;
-  color: #040404;
+  /* color: #040404; */
 }
 .container {
   max-width: 1200px;

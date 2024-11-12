@@ -39,13 +39,13 @@ export default {
 }
 
 h1 {
-  color: #333;
+  /* color: #333; */
   margin-bottom: 20px;
 }
 
 p {
   line-height: 1.8;
-  color: #555;
+  /* color: #555; */
 }
 
 strong {

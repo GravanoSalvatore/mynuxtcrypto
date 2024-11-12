@@ -54,7 +54,7 @@
   
    -->
    <template>
-    <div style="background-color: white;">
+    <div style="">
       <!-- <CookieConsent /> -->
   
       <!-- Прелоадер отображается, пока компонент не загрузился -->
@@ -73,7 +73,7 @@
         <!-- <Price /> -->
         <News5 />
         <News3 />
-
+<Logo/>
         <br/>
         <!-- <Price /> -->
         <AdvancedNewsSection />
@@ -98,6 +98,7 @@
   import News5 from '~/components/News5.vue';
   import News6 from '~/components/News6.vue';
   import Price from '~/components/Price.vue';
+  import Logo from '~/components/Logo.vue';
   import CookieConsent from '~/components/CookieConsent.vue';
   
   export default {
@@ -105,7 +106,7 @@
       NewsSection,
       AdvancedNewsSection,
       News2,
-     
+     Logo,
       News3a,
       News4,
       News5,

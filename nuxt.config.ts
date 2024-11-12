@@ -109,6 +109,7 @@ export default defineNuxtConfig({
     }
   },
   css: [
+    '@/assets/css/theme.css' ,
     'bootstrap/dist/css/bootstrap.min.css',
   ],
   compatibilityDate: '2024-04-03',

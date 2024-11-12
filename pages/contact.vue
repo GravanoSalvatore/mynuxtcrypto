@@ -55,7 +55,7 @@
       />
       <div class="sidebar-text">
         <h6 class="news-title">{{ newsItem.title }}</h6>
-        <p class="card-text text-muted">
+        <p style="color:cornflowerblue" class="card-text ">
           {{ formatDate(newsItem.published_on) }}
         </p>
       </div>
@@ -77,6 +77,9 @@
               <p>{{ selectedPerson.bio }}</p>
             </div>
           </div>
+
+
+
           <div class="news-slider" v-if="currentSlideArticles.length">
   <button @click="previousSlide" class="slider-button">←</button>
   <div class="news-cards">
@@ -85,7 +88,7 @@
      
       <a :href="slide.url" target="_blank">
               <h6 class="news-title ">{{ slide.title }}</h6>
-              <p class="card-text text-muted">
+              <p style="color:cornflowerblue" class="card-text ">
                 {{formatDate( slide.published_on) }}
                   </p>
             </a>
@@ -246,6 +249,55 @@ nextSlide() {
 </script>
 
 <style scoped>
+:root {
+  --link-color: #000000; /* Цвет ссылок в светлой теме */
+  --text-color: #000000; /* Основной цвет текста в светлой теме */
+  --box-shadow-color: rgba(73, 69, 69, 0.3); /* Тень для светлой темы */
+  background-color: #ffffff;
+}
+
+.dark-mode {
+  --link-color: #ffffff; /* Цвет ссылок в тёмной теме */
+  --text-color: #ffffff; /* Основной цвет текста в тёмной теме */
+  --box-shadow-color: rgba(238, 235, 235, 0.3); /* Светлая тень для тёмной темы */
+  /* background-color: #8a0d0d; */
+}
+
+body, .dark-mode {
+  color: var(--text-color); /* Использование переменной для цвета текста */
+}
+
+/* Стили для ссылок */
+a {
+  color: var(--link-color); /* Цвет ссылок будет зависеть от темы */
+  text-decoration: none;
+}
+
+
+
+/* Стили для тени карточек */
+.car {
+  padding: 10px;
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень для карточек */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.car:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px var(--box-shadow-color); /* Более яркая тень при наведении */
+}
+
+  
+  .car {
+    padding: 10px;
+  box-shadow: 0 8px 16px var(--box-shadow-color);
+}
+
+.car:hover {
+  transition: transform 0.3s, box-shadow 0.3s;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень при наведении */
+}
 .preloader {
   position: fixed;
   top: 0;
@@ -265,8 +317,8 @@ nextSlide() {
 }
 
 .sidebar-image {
-  width: 50px; /* Задайте желаемый размер для изображения */
-  height: 50px;
+  width: 80px; /* Задайте желаемый размер для изображения */
+  height: 80px;
   object-fit: cover;
   margin-right: 10px;
   border-radius: 5px; /* Добавляет скругление углов для изображения */
@@ -296,8 +348,8 @@ nextSlide() {
 }
 
 .slider-button {
-  /* background-color: #091520; */
-  color: white;
+  background-color: transparent  !important;
+ 
   border: none;
   font-size: 24px;
   cursor: pointer;
@@ -326,7 +378,7 @@ nextSlide() {
 }
 a{
   text-decoration:none;
-  color:white
+  /* color:white */
 }
 .personalities {
   margin-top: 20px;
@@ -338,11 +390,7 @@ a{
   cursor: pointer;
   
 }
-.personality-card:hover {
-  /* transform: translateY(-5px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s; */
-}
+
 .personality-img {
   min-width: 185px;
   min-height: 250px;
@@ -360,9 +408,9 @@ a{
 .news-sidebar {
   max-height: 420vh;
   overflow-y: auto;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   padding: 10px;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid cornflowerblue;
 }
 .sidebar-news-item {
   margin-bottom: 15px;
@@ -370,7 +418,7 @@ a{
 .news-title {
   font-size: 1rem;
   font-weight: bold;
-  color: #000;
+  
 }
 .news-date {
   font-size: 0.8rem;
@@ -432,7 +480,7 @@ a{
   .news-sidebar {
     max-height: auto;
     border-right: none;
-    border-bottom: 1px solid #ddd;
+    
     margin-bottom: 20px;
   }
   .personality-container {

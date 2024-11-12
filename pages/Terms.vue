@@ -67,13 +67,13 @@ export default {
 }
 
 h1, h2 {
-  color: #333;
+  /* color: #333; */
   margin-bottom: 20px;
 }
 
 p, ul {
   line-height: 1.8;
-  color: #555;
+  /* color: #555; */
 }
 
 a {

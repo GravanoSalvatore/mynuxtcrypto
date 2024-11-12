@@ -14,7 +14,7 @@
   </div>
  
 </div> -->
-    <div class="row top">
+    <div v-else class="row top">
       <!-- Основная колонка с карточками новостей (четыре карточки в ряд) -->
       <div class="col-12 col-md-9" ref="newsContainer">
         <div class="row">
@@ -33,11 +33,7 @@
               />
               <div class="card-body d-flex flex-column">
                 <p>
-                  <NuxtImg
-                    quality="80"
-                    fit="cover"
-                    placeholder="blur"
-                    decoding="async"
+                  <img
                     style="width: 35px; height: 35px"
                     :src="newsItem.source_info.img"
                   />
@@ -46,7 +42,7 @@
                 <a :href="newsItem.url" target="_blank" class="mt-auto">
                   <h5 class="card-title">{{ newsItem.title }}</h5>
                 </a>
-                <p class="card-text text-muted">
+                <p class="card-text ">
                   {{ formatDate(newsItem.published_on) }}
                 </p>
                 <span style="font-size: 10px; color: cornflowerblue">
@@ -68,11 +64,7 @@
             class="sidebar-news-item"
           >
             <p>
-              <NuxtImg
-                quality="80"
-                fit="cover"
-                placeholder="blur"
-                decoding="async"
+              <img
                 style="width: 35px; height: 35px"
                 :src="newsItem.source_info.img"
               />
@@ -80,7 +72,7 @@
             </p>
             <a :href="newsItem.url" target="_blank" class="mt-auto">
               <h5 class="sidebar-news-title">{{ newsItem.title }}</h5>
-              <p class="card-text text-muted">
+              <p class="card-text ">
                 {{ formatDate(newsItem.published_on) }}
               </p>
             </a>
@@ -180,6 +172,31 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --link-color: #000000; /* Цвет ссылок в светлой теме */
+  --text-color: #000000; /* Основной цвет текста в светлой теме */
+  background-color: #ffffff;
+}
+
+.dark-mode {
+  --link-color: #ffffff; /* Цвет ссылок в тёмной теме */
+  --text-color: #ffffff; /* Основной цвет текста в тёмной теме */
+  background-color: #8a0d0d;
+}
+
+body, .dark-mode {
+  color: var(--text-color); /* Использование переменной для цвета текста */
+}
+
+/* Стили для ссылок */
+a {
+  color: var(--link-color); /* Цвет ссылок будет зависеть от темы */
+  text-decoration: none;
+}
+
+a:hover {
+  /* text-decoration: underline; */
+}
 .preloader {
   position: fixed;
   top: 0;
@@ -201,7 +218,7 @@ export default {
 }
 a {
   text-decoration: none;
-  color: black;
+  /* color: black; */
 }
 
 .fixed-sidebar {
@@ -214,7 +231,7 @@ a {
 .sidebar-news-item {
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   border-radius: 5px;
 }
 
@@ -231,7 +248,7 @@ a {
 
 .card-text {
   font-size: 0.9rem;
-  color: #6c757d;
+  /* color: #6c757d; */
 }
 
 @media (max-width: 767px) {

@@ -15,7 +15,7 @@
               />
               <a :href="newsItem.url" target="_blank" class="mt-auto">
                 <h5 class="sidebar-news-title">{{ newsItem.title }}</h5>
-                <p class="card-text text-muted">
+                <p class="card-text ">
                   {{ formatDate(newsItem.published_on) }}
                 </p>
                 <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
@@ -35,7 +35,7 @@
             :key="newsItem.id"
             class="col-12 col-md-6 col-lg-4 mb-4"
           >
-            <div class="card h-100 news-card" style="max-height: 500px; background-color: #f8f9fa;">
+            <div class="car h-100 news-card" style="max-height: 500px; ">
               <img
                 v-if="newsItem.imageurl"
                 :src="newsItem.imageurl"
@@ -50,7 +50,7 @@
                 <a :href="newsItem.url" target="_blank" class="mt-auto">
                   <h5 class="card-title">{{ newsItem.title }}</h5>
                 </a>
-                <p class="card-text text-muted">
+                <p class="card-text ">
                   {{ formatDate(newsItem.published_on) }}
                 </p>
                 
@@ -160,12 +160,67 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --link-color: #000000; /* Цвет ссылок в светлой теме */
+  --text-color: #000000; /* Основной цвет текста в светлой теме */
+  --box-shadow-color: rgba(73, 69, 69, 0.3); /* Тень для светлой темы */
+  background-color: #ffffff;
+}
+
+.dark-mode {
+  --link-color: #ffffff; /* Цвет ссылок в тёмной теме */
+  --text-color: #ffffff; /* Основной цвет текста в тёмной теме */
+  --box-shadow-color: rgba(238, 235, 235, 0.3); /* Светлая тень для тёмной темы */
+  /* background-color: #8a0d0d; */
+}
+
+body, .dark-mode {
+  color: var(--text-color); /* Использование переменной для цвета текста */
+}
+
+/* Стили для ссылок */
+a {
+  color: var(--link-color); /* Цвет ссылок будет зависеть от темы */
+  text-decoration: none;
+}
+
+a:hover {
+  /* text-decoration: underline; */
+}
+
+/* Стили для тени карточек */
+.car {
+  padding: 10px;
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень для карточек */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.car:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px var(--box-shadow-color); /* Более яркая тень при наведении */
+}
+
+  /* .card-body {
+    box-shadow: none !important;
+    border: none !important;
+  } */
+  .car {
+    padding: 10px;
+  box-shadow: 0 8px 16px var(--box-shadow-color);
+}
+
+.car:hover {
+  transition: transform 0.3s, box-shadow 0.3s;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень при наведении */
+}
+  
 .pointer {
   cursor: pointer;
 }
 a {
   text-decoration: none;
-  color: black;
+  /* color: black; */
 }
 
 .fixed-sidebar {
@@ -178,7 +233,7 @@ a {
 .sidebar-news-item {
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   border-radius: 5px;
 }
 

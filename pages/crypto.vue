@@ -50,7 +50,7 @@
                 <img v-if="newsItem.imageurl" :src="newsItem.imageurl" class="sidebar-news-img" alt="news image" />
                 <a :href="newsItem.url" target="_blank" class="mt-auto">
                   <h5 class="sidebar-news-title">{{ newsItem.title }}</h5>
-                  <p class="card-text text-muted">{{ formatDate(newsItem.published_on) }}</p>
+                  <p class="card-text">{{ formatDate(newsItem.published_on) }}</p>
                   <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
                   <p class="card-text">{{ newsItem.body || 'Описание отсутствует' }}</p>
                 </a>
@@ -77,7 +77,7 @@
   <br/>
           <div class="row">
             <div v-for="newsItem in paginatedNews" :key="newsItem.id" class="col-12 col-md-6 col-lg-4 mb-4">
-              <div class="card h-100 news-card" style="max-height: 500px; background-color: #f8f9fa;">
+              <div class="car h-100 news-car" style="max-height: 500px;">
                 <img
                   v-if="newsItem.imageurl"
                   :src="newsItem.imageurl"
@@ -92,7 +92,7 @@
                   <a :href="newsItem.url" target="_blank" class="mt-auto">
                     <h5 class="card-title">{{ newsItem.title }}</h5>
                   </a>
-                  <p class="card-text text-muted">{{ formatDate(newsItem.published_on) }}</p>
+                  <p class="card-text ">{{ formatDate(newsItem.published_on) }}</p>
 
                   <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
                   <div class="card-content-scroll">
@@ -399,7 +399,7 @@ export default {
 }
 a {
   text-decoration: none;
-  color: black;
+  /* color: black; */
 }
 
 .fixed-sidebar {
@@ -412,7 +412,7 @@ a {
 .sidebar-news-item {
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f8f9fa;
+ 
   border-radius: 5px;
 }
 

@@ -10,9 +10,9 @@
               <img style="width: 35px; height: 35px;" :src="newsItem.source_info.img"> {{ newsItem.source_info.name }}
             </p>
             <a :href="newsItem.url" target="_blank" class="mt-auto">
-              <h5 class="sidebar-news-title">{{ newsItem.title }}</h5>
+              <h5 class="sidebar-news-title fw-bold">{{ newsItem.title }}</h5>
               <p class="card-text">{{ newsItem.body || 'Описание отсутствует' }}</p>
-              <p class="card-text text-muted">{{ formatDate(newsItem.published_on) }}</p>
+              <p class="card-text ">{{ formatDate(newsItem.published_on) }}</p>
             </a>
             <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
           </div>
@@ -23,7 +23,7 @@
       <div class="col-12 col-md-8" ref="newsContainer" v-if="!isLoading">
         <div class="row">
           <div v-for="newsItem in paginatedNews" :key="newsItem.id" class="col-12 col-md-6 mb-4">
-            <div class="card h-100 news-card" style="max-height: 500px;">
+            <div class="car h-100 news-card" style="max-height: 500px;">
               <img
                 v-if="newsItem.imageurl"
                 :src="newsItem.imageurl"
@@ -36,9 +36,9 @@
                   <img style="width: 35px; height: 35px;" :src="newsItem.source_info.img"> {{ newsItem.source_info.name }}
                 </p>
                 <a :href="newsItem.url" target="_blank" class="mt-auto">
-                  <h5 class="card-title">{{ newsItem.title }}</h5>
+                  <h5 class="card-title fw-bold">{{ newsItem.title }}</h5>
                 </a>
-                <p class="card-text text-muted">
+                <p class="card-text ">
                   {{ formatDate(newsItem.published_on) }}
                   <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
                 </p>
@@ -139,12 +139,38 @@ export default {
 </script>
 
 <style scoped>
+
+:root {
+  --link-color: #000000; /* Цвет ссылок в светлой теме */
+  --text-color: #000000; /* Основной цвет текста в светлой теме */
+  background-color: #ffffff;
+}
+
+.dark-mode {
+  --link-color: #ffffff; /* Цвет ссылок в тёмной теме */
+  --text-color: #ffffff; /* Основной цвет текста в тёмной теме */
+  background-color: #8a0d0d;
+}
+
+body, .dark-mode {
+  color: var(--text-color); /* Использование переменной для цвета текста */
+}
+
+/* Стили для ссылок */
+a {
+  color: var(--link-color); /* Цвет ссылок будет зависеть от темы */
+  text-decoration: none;
+}
+
+a:hover {
+  /* text-decoration: underline; */
+}
 .pointer {
   cursor: pointer;
 }
 a {
   text-decoration: none;
-  color: black;
+  
 }
 
 .fixed-sidebar {
@@ -157,40 +183,43 @@ a {
 .sidebar-news-item {
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   border-radius: 5px;
 }
 
 .sidebar-news-title {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: bold;
   margin-top: 5px;
 }
 
-.card {
+.car {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.news-card:hover {
+.news-car:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card-content-scroll {
+.car-content-scroll {
   max-height: 100px;
   overflow-y: auto;
 }
 
-.card-title {
+.car-title {
   font-size: 1.1rem;
   font-weight: bold;
 }
 
-.card-text {
+.car-text {
   font-size: 0.9rem;
   color: #6c757d;
 }
-
+.car{
+  padding: 10px;
+}
 @media (max-width: 767px) {
   .fixed-sidebar {
     max-height: auto;

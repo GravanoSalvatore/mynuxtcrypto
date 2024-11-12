@@ -1,6 +1,8 @@
 <template>
-  <div style="font-family: Verdana, Geneva, Tahoma, sans-serif">
-    <div v-if="loading" class="preloader text-white">
+ <div :class="{ 'dark-mode': isDarkMode }" style="font-family: Verdana, Geneva, Tahoma, sans-serif">
+  <!-- {{ isDarkMode ? 'Dark mode активен' : 'Light mode активен' }}
+     -->
+  <div v-if="loading" class="preloader text-white">
       <p>
         <img
           
@@ -32,10 +34,12 @@
            style="width: 50px;font-size: 15px" 
            src="../public/bull.webp" />
             <span  style="font-size: 16px"  class="text-warning fw-bold" 
-              >CryptoCurrencyBulls</span
+              >Crypto Bulls</span
             >
           </NuxtLink>
-
+          <button @click="toggleThemeWithLog" class="theme-toggle-btn mx-auto">
+            <i :class="isDarkMode ? 'fas fa-moon' : 'fas fa-sun text-white'"></i>
+          </button>
           <button
             style="
               border: none !important;
@@ -74,7 +78,7 @@
                   </span>
                 </span>
 
-                <span class="text-primary">ETH:</span>
+                <span style="color: cornflowerblue;" class="">ETH:</span>
                 <span class="text-white">
                   ${{ ethPrice }}
                   <span :class="ethChangeClass" class="ms-1">
@@ -86,7 +90,7 @@
                 <a href="#" class="nav-link text-white" @click="toggleDropdown"
                   >Crypto base</a
                 >
-                <ul v-if="isDropdownOpen" class="dropdown-menu">
+                <ul  :class="['dropdown-menu', isDarkMode ? 'dark-dropdown' : 'light-dropdown']" v-if="isDropdownOpen">
                   <li>
                     <NuxtLink to="/ai" class="dropdown-item"
                       >Artificial intelligence</NuxtLink
@@ -161,6 +165,7 @@
               @submit.prevent="search"
             >
               <input
+              style="background-color: transparent !important;"
                 v-model="searchQuery"
                 type="text"
                 class="form-control me-1 text-white"
@@ -174,6 +179,10 @@
           </div>
         </div>
       </nav>
+      
+      <!-- <button @click="toggleThemeWithLog">{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</button>
+    -->
+   
 
       <aside
         style="background-color: rgba(12, 31, 74, 1); color: white"
@@ -212,7 +221,7 @@
                 </span>
               </span>
               <br />
-              <span class="text-primary">ETH:</span>
+              <span style="color: cornflowerblue;" class="">ETH:</span>
               <span class="">
                 ${{ ethPrice }}
                 <span :class="ethChangeClass" class="ms-1">
@@ -231,9 +240,10 @@
             @submit.prevent="search"
           >
             <input
+            style="background-color: transparent !important;"
               v-model="searchQuery"
               type="text"
-              class="form-control me-1"
+              class="form-control me-1 text-white"
               placeholder="Search..."
               aria-label="Search"
             />
@@ -255,7 +265,7 @@
           </form>
         </div>
 
-        <ul class="sidebar-nav">
+        <ul style="" class="sidebar-nav">
           <li class="sidebar-item">
             <NuxtLink to="/" class="sidebar-link" @click="toggleSidebar"
               >News</NuxtLink
@@ -350,8 +360,8 @@
         >
           &copy; 2024
           <NuxtLink to="/" class="navbar-brand" style="">
-            <img style="width: 30px" src="../public/bull.webp" />
-            <span class="text-warning fw-bold" style="font-size: 17px">
+            <img style="width: 25px" src="../public/bull.webp" />
+            <span class="text-warning " style="font-size: 15px">
               Crypto Bulls</span
             > </NuxtLink
           >. All rights reserved.
@@ -407,6 +417,7 @@
       <br />
       <br />
       <Price />
+     
       <NuxtPage />
 
       <button
@@ -464,6 +475,7 @@
               <h5 class="fw-bold">Newsletter Subscription</h5>
               <form @submit.prevent="subscribeNewsletter">
                 <input
+                style="background-color: transparent !important;"
                   type="email"
                   v-model="email"
                   class="form-control text-white"
@@ -515,8 +527,42 @@
 </template>
 
 <script>
+import { useThemeStore } from '../stores/themeStore.js';
+import { ref, onMounted, watch } from 'vue';
 import Price from "../components/Price.vue";
 export default {
+  setup() {
+    const themeStore = useThemeStore();
+    const isDarkMode = computed(() => themeStore.isDarkMode);  // Создаём реактивную переменную
+    const loading = ref(true);
+
+    onMounted(() => {
+      console.log('Mounted: Initializing theme...');
+      themeStore.loadTheme();
+      console.log('isDarkMode после загрузки:', themeStore.isDarkMode);
+      
+      setTimeout(() => {
+        loading.value = false;
+        console.log('Loading complete:', loading.value);
+      }, 500);
+    });
+    watch(isDarkMode, (newVal) => {
+      console.log('Тема обновлена:', newVal ? 'Dark mode' : 'Light mode');
+    });
+
+    function toggleThemeWithLog() {
+      console.log('Toggle theme clicked');
+      themeStore.toggleTheme(); // Меняем тему в хранилище
+      console.log('New isDarkMode value after toggle:', isDarkMode.value);
+    }
+
+    return {
+      loading,
+      toggleThemeWithLog,
+      isDarkMode,
+    };
+
+  },
   components: { Price },
   beforeUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -531,7 +577,7 @@ export default {
       isSearchVisible: false,
       // isScrolled: false,
       isDropdownOpen: false,
-      loading: true,
+      
       showScrollTopButton: false,
       email: "",
       btcPrice: null,
@@ -548,9 +594,9 @@ export default {
     };
   },
   async mounted() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 500);
+   
+   
+
     await this.fetchCryptoPrices();
     setInterval(this.fetchCryptoPrices, 60000);
     setTimeout(() => {
@@ -682,67 +728,90 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: white; /* Поддержка изменения цвета в зависимости от темы */
+  transition: color 0.3s ease;
+  position: absolute;
+  right: 60px; /* Подгоните это значение под ваше меню */
+}
+
+.theme-toggle-btn i {
+  color: var(--text-color);
+}
+
+
+/* Стили для светлой темы dropdown */
+.light-dropdown {
+  background-color: #ffffff;
+  color: #091520;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* .light-dropdown .dropdown-item:hover {
+  background-color: rgba(230, 230, 230, 0.9);
+  color: #091520;
+} */
+
+/* Стили для темной темы dropdown */
+.dark-dropdown {
+  background-color: #091520;
+  color: white; /* Устанавливает белый цвет текста в тёмной теме */
+  box-shadow: 0 4px 8px rgba(238, 235, 235, 0.3);
+}
+
+.dark-dropdown .dropdown-item {
+  background-color: #091520;
+  color: white; /* Устанавливает белый цвет текста для каждого элемента */
+}
+
+/* .dark-dropdown .dropdown-item:hover {
+  background-color: #555555;
+  color: white;
+} */
+
+.dark-mode {
+  background-color: #091520; /* или другой цвет для темной темы */
+  color:white; /* для текста */
+}
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+.dark-mode {
+  --background-color:#091520;
+  --text-color: white;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
 .btn-danger3:hover {
   transform: perspective(500px) translateZ(20px);
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.8),
-    inset 0px -3px 12px rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.8), inset 0px -3px 12px rgba(255, 255, 255, 0.2);
 }
 .btn-danger3 {
-  border-radius: none !important;
   z-index: 1;
-  left: 5px;
   color: white;
   font-weight: bold;
-  margin-top: 10px;
   font-size: 13px;
   padding: 10px 9px;
   border: 2px solid orange;
   border-radius: 17px;
-  background: linear-gradient(135deg, #123c63 0%, #0a243d 50%, #291919 100%);
+  background: linear-gradient(135deg,#123c63 0%,#0a243d 50%, #291919 100%);
   background-size: 200% 200%;
   animation: marbleGradientAnimation 5s ease infinite;
-  /* box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.6), inset 0px -2px 8px rgba(255, 255, 255, 0.2);
-  transform: perspective(500px) translateZ(30px); */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #091520;
-  background-size: 200% 200%;
-
-  transform: perspective(500px) translateZ(30px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-::placeholder {
-  color: white;
-}
-.input-group-text {
-  cursor: pointer;
-  background: none; /* Убирает фон */
-  border: none; /* Убирает границу */
-}
 
-.input-group {
-  position: relative;
-  display: flex;
-}
-
-.form-control {
-  background-color: transparent !important;
-  padding-right: 2.5rem; /* Добавляем пространство для кнопки справа */
-}
-
-.input-btn {
-  position: absolute;
-  right: 5px; /* Отступ от правого края поля ввода */
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-/* ::placeholder{
-    background-color: (12, 31, 74, 0.9);
-  } */
 .text-success {
   color: green;
 }
@@ -823,7 +892,7 @@ input,
 }
 .search-result-card .card-text {
   font-size: 0.9rem;
-  color: #6c757d;
+  /* color: #6c757d; */
 }
 
 /* Стили для бокового меню */
@@ -870,18 +939,15 @@ input,
 }
 
 .sidebar-link {
-  color: white;
+  color: cornflowerblue;
+  /* color: white; */
   text-decoration: none;
   padding: 0.5rem 1rem;
   display: block;
   transition: background-color 0.3s ease;
 }
 
-.sidebar-link:hover {
-  /* border-radius: 13px; */
-  background-color: #f0f0f0;
-  color: #091520;
-}
+
 
 .btn-close {
   cursor: pointer;
@@ -975,7 +1041,7 @@ input,
 .dropdown-menu {
   position: absolute;
   right: 0px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 5px;
   list-style: none;
@@ -986,18 +1052,11 @@ input,
 
 .dropdown-item {
   padding: 8px 12px;
-  color: #091520;
+  /* color: #091520; */
   text-decoration: none;
   display: block;
   transition: background-color 0.3s ease;
 }
 
-.dropdown-item:hover {
-  background-color: rgba(12, 31, 74, 0.9);
-  color: white;
-}
-/* .dropdown-menu:hover {
-  background-color:rgba(12, 31, 74, 0.9); 
-  color: white;
-} */
+
 </style>
