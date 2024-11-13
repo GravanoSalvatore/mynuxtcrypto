@@ -149,7 +149,8 @@ export default defineNuxtConfig({
         { hid: 'description', name: 'description', content: 'Stay updated with the latest cryptocurrency news, insights, and trends.' },
         { name: 'keywords', content: 'cryptocurrency, blockchain, Bitcoin, Ethereum, crypto news, crypto trends' },
         { name: 'robots', content: 'index, follow' },
-
+        { name: 'google-site-verification', content: 'XObUUdqlyM3Jepzd5cDkiSgUpELW3pQRPpQjY2folIA' },
+        
         // Open Graph метатеги для соцсетей
         { property: 'og:title', content: 'CryptoBulls - Latest Cryptocurrency News' },
         { property: 'og:description', content: 'Stay updated with the latest cryptocurrency news, insights, and trends.' },
