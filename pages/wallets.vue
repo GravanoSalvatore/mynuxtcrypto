@@ -5,7 +5,7 @@
     <br/><br/>
     <!-- Article Heading -->
     <div class="text-center mb-5">
-      <h1 class="fw-bold">Popular Cryptocurrency Wallets: MetaMask, Electrum, Ledger, and More</h1>
+      <h2 class="">Popular Cryptocurrency Wallets: MetaMask, Electrum, Ledger, and More</h2>
       <p>A comprehensive guide on using, installing, and securing your cryptocurrency wallets.</p>
     </div>
 

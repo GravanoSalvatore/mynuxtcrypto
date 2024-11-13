@@ -10,7 +10,7 @@
           src="../public/bull.webp"
         />
       </p>
-
+     
       <!-- <p style="font-size: 63px;font-weight: bold;">Crypto bulls</p>    -->
     </div>
     <header>
@@ -68,7 +68,14 @@
             </svg>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto text">
+           
+            <ul class="navbar-nav ms-auto text align-items-center">
+              
+              <li class="nav-item">
+                <NuxtLink to="/" class="nav-link text-white" aria-current="page"
+                  >Home</NuxtLink
+                >
+              </li>
               <span class="nav-link">
                 <span class="text-warning">BTC:</span>
                 <span class="text-white">
@@ -86,6 +93,12 @@
                   </span>
                 </span>
               </span>
+             
+              <span class="nav-link">
+               <Top/>
+              </span>
+             
+             
               <li class="nav-item dropdown" ref="dropdownMenu">
                 <a href="#" class="nav-link text-white" @click="toggleDropdown"
                   >Crypto labs</a
@@ -147,11 +160,7 @@
                 </ul>
               </li>
 
-              <li class="nav-item">
-                <NuxtLink to="/" class="nav-link text-white" aria-current="page"
-                  >Crypto bulls news</NuxtLink
-                >
-              </li>
+             
               <!--              
               <li class="sidebar-item">
             <NuxtLink to="/privacy" class="nav-link text-white" >Privacy Policy</NuxtLink>
@@ -219,9 +228,13 @@
             >Crypto Bulls</span
           >
         </NuxtLink>
-
+        
         <div class="sidebar-crypto-search d-lg-none mb-4">
           <div class="p-3">
+            <span class="nav-link ">
+               <Top/>
+              </span>
+              <br/>
             <span class="nav-link">
               <span class="text-warning">BTC:</span>
               <span class="">
@@ -426,7 +439,7 @@
       <br />
       <br />
       <Price />
-     
+      
       <NuxtPage />
 
       <button
@@ -530,7 +543,7 @@
   </div>
             </div>
            
-            <div class="col-12 col-md-3 mb-4">
+            <div class="col-12 col-md-3 mb-4" style="color:#6c757d;">
               <h5 class="fw-bold">
                 <!-- <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> -->
                 Crypto bulls
@@ -547,7 +560,7 @@ Our goal is to be a reliable source of information for everyone interested in cr
               </p>
             </div>
            
-            <div class="col-12 col-md-3 mb-4">
+            <div class="col-12 col-md-3 mb-4" style="color:#6c757d;">
               
               <h5 class="fw-bold">Subscription</h5>
               <img style="max-width: 150px;" src="../public/bull.webp"><br/>
@@ -596,8 +609,8 @@ Our goal is to be a reliable source of information for everyone interested in cr
 
             <NuxtLink to="/" class="navbar-brand" style="">
               <img style="width: 30px" src="../public/bull.webp" />
-              <span class="text-warning fw-bold" style="font-size: 14px"
-                >Crypto Bulls</span
+              <span class="text-warning " style="font-size: 14px"
+                > Crypto Bulls</span
               > </NuxtLink
             >. All rights reserved.&copy; 2024
           </div>
@@ -611,6 +624,7 @@ Our goal is to be a reliable source of information for everyone interested in cr
 import { useThemeStore } from '../stores/themeStore.js';
 import { ref, onMounted, watch } from 'vue';
 import Price from "../components/Price.vue";
+import Top from "../components/TopGainer.vue";
 export default {
   setup() {
     const themeStore = useThemeStore();
@@ -644,7 +658,7 @@ export default {
     };
 
   },
-  components: { Price },
+  components: { Price,Top},
   beforeUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
     document.removeEventListener("click", this.closeDropdownOnClickOutside);
@@ -818,6 +832,10 @@ export default {
 </script>
 
 <style scoped>
+/* .navbar-nav .nav-item {
+  display: flex;
+  align-items: center;
+} */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

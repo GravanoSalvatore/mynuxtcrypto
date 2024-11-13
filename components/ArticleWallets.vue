@@ -2,15 +2,15 @@
     <div class="container mt-5">
       <!-- Article Heading -->
       <div class="text-center mb-5">
-        <h1 class="fw-bold">A Comprehensive Guide to Cryptocurrency Wallets</h1>
+        <h2 class="">A Comprehensive Guide to Cryptocurrency Wallets</h2>
         <p>Explore the history, types, top wallets, security practices, and major events in cryptocurrency wallets.</p>
       </div>
   
       <!-- Sections with Collapsible Details -->
       <div v-for="section in sections" :key="section.title" class="mb-4">
-        <h3 @click="toggleSection(section)" class="fw-bold" style="cursor: pointer;color: ;">
+        <h4 @click="toggleSection(section)" class="" style="cursor: pointer;color: ;">
           {{ section.title }}
-        </h3>
+        </h4>
         <div v-if="section.open">
           <p style="color: #6c757d;" v-for="paragraph in section.content" :key="paragraph">{{ paragraph }}</p>
         </div>
