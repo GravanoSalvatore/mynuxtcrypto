@@ -22,7 +22,7 @@
            'https://img.cryptorank.io/coins/blockworks1683708145136.png', 
            'https://007tg.com/wp-content/uploads/2022/04/4babb-www.newsbtc.com.png',
           'https://img.cryptorank.io/funds/bitcoin_magazine1696865224067.png', 
-          'https://st2.latoken.com/cms/dataroom/4c6bce18-f9b4-46de-adf2-4a98480036d6.png', 
+          'https://pbs.twimg.com/profile_images/1506297729861005329/PyZpphFU_400x400.jpg', 
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdhtEeglaATnXUtduoDsQ-X-lrUG0aYtji3g&s', 
           'https://f8n-production-collection-assets.imgix.net/0x99fD887EBc6dB7BD99dF05a496A4475b84395f94/41/nft.png',
           'https://w7.pngwing.com/pngs/126/248/png-transparent-cryptocompare-bitcoin-cryptocurrency-exchange-digital-currency-blockchain-company-text-service.png',

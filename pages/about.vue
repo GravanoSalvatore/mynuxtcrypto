@@ -384,7 +384,7 @@ a:hover {
 
 .slider-button {
   background-color:transparent !important; 
-  /* color: white; */
+  color:cornflowerblue;
   border: none;
   font-size: 24px;
   cursor: pointer;

@@ -120,7 +120,11 @@
                       >Blockchain people</NuxtLink
                     >
                   </li>
-
+                  <li>
+                    <NuxtLink to="/chartsCrypto" class="dropdown-item"
+                      >Charts
+                    </NuxtLink>
+                  </li>
                   <li class="nav-item">
                     <NuxtLink to="/defi" class="dropdown-item">Defi</NuxtLink>
                   </li>
@@ -191,7 +195,7 @@
    
 
       <aside
-        style="background-color: rgba(12, 31, 74, 1); color: white"
+        style="background-color:  #091520; color: white"
         :class="['sidebar', { open: isSidebarOpen }]"
       >
         <button class="btn-close text-reset" @click="toggleSidebar">
@@ -297,6 +301,11 @@
               >Altcoins</NuxtLink
             >
           </li>
+          <li>
+                    <NuxtLink to="/chartsCrypto" class="sidebar-link"
+                      >Charts
+                    </NuxtLink>
+                  </li>
           <li class="sidebar-item">
             <NuxtLink to="/defi" class="sidebar-link" @click="toggleSidebar"
               >Defi</NuxtLink
@@ -312,6 +321,9 @@
               >Exchange</NuxtLink
             >
           </li>
+          <NuxtLink to="/wallets" class="sidebar-link"
+                      >Wallets
+                    </NuxtLink>
           <li class="sidebar-item">
             <NuxtLink to="/privacy" class="sidebar-link" @click="toggleSidebar"
               >Privacy Policy</NuxtLink
@@ -327,6 +339,7 @@
               >About Us</NuxtLink
             >
           </li>
+         
           <!-- <li class="sidebar-item">
             <NuxtLink to="/contact" class="sidebar-link" @click="toggleSidebar">Контакты</NuxtLink>
           </li> -->
@@ -426,49 +439,120 @@
       <br />
       <br />
       <br />
-
+      <hr/>
       <footer class="footer">
         <div class="container">
           <div class="row text-center text-md-start">
-            <div class="col-12 col-md-4 mb-4">
-              <h5 class="fw-bold">
-                <!-- <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> -->
-                Crypto bulls
-              </h5>
-              <p>
-                Get the latest cryptocurrency news, analysis and more. Subscribe
-                so you don't miss anything important!
-              </p>
-            </div>
-
-            <div class="col-12 col-md-4 mb-4">
+            <div class="col-12 col-md-3 mb-4">
               <h5 class="fw-bold">Quick Links</h5>
               <ul class="list-unstyled">
-                <li><NuxtLink to="/" class="footer-link">Home</NuxtLink></li>
+                <li><NuxtLink to="/" class="nav-link">Home</NuxtLink></li>
+                <li>
+                    <NuxtLink to="/ai" class="nav-link"
+                      >Artificial intelligence</NuxtLink
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <NuxtLink to="/altcoins" class="nav-link"
+                      >Altcoins</NuxtLink
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <NuxtLink
+                      to="/about"
+                      class="nav-link"
+                      aria-current="page"
+                      >Articles</NuxtLink
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <NuxtLink to="/crypto" class="nav-link"
+                      >Bitcoin & Ethereum</NuxtLink
+                    >
+                  </li>
+
+                  <li class="nav-item">
+                    <NuxtLink to="/contact" class="nav-link"
+                      >Blockchain people</NuxtLink
+                    >
+                  </li>
+                  <li>
+                    <NuxtLink to="/chartsCrypto" class="nav-link"
+                      >Charts
+                    </NuxtLink>
+                  </li>
+                  <li class="nav-item">
+                    <NuxtLink to="/defi" class="nav-link">Defi</NuxtLink>
+                  </li>
+                  <li>
+                    <NuxtLink to="/it" class="nav-link"
+                      >Information technology
+                    </NuxtLink>
+                  </li>
+
+                  <li>
+                    <NuxtLink to="/ex" class="nav-link"
+                      >Exchanges
+                    </NuxtLink>
+                  </li>
+                  <li>
+                    <NuxtLink to="/wallets" class="nav-link"
+                      >Wallets
+                    </NuxtLink>
+                  </li>
                 <li class="sidebar-item">
-                  <NuxtLink to="/privacy" class="nav-link text-white"
+                  <NuxtLink to="/privacy" class="nav-link "
                     >Privacy Policy</NuxtLink
                   >
                 </li>
                 <li class="sidebar-item">
-                  <NuxtLink to="/terms" class="nav-link text-white"
+                  <NuxtLink to="/terms" class="nav-link "
                     >Terms of servise</NuxtLink
                   >
                 </li>
                 <li class="sidebar-item">
-                  <NuxtLink to="/aboutUs" class="nav-link text-white"
+                  <NuxtLink to="/aboutUs" class="nav-link"
                     >About Us</NuxtLink
                   >
                 </li>
                 <!-- <li><NuxtLink to="/about" class="footer-link">About Us</NuxtLink></li> -->
                 <li>
-                  <NuxtLink to="/contact" class="footer-link">Contact</NuxtLink>
+                  <NuxtLink to="/contact" class="nav-link">Contact</NuxtLink>
                 </li>
               </ul>
             </div>
+            <div class="col-12 col-md-3 mb-4">
+              <h5 class="fw-bold">Crypto News</h5>
+              <div class="image-grid">
+    <div v-for="(image, index) in images" :key="index" class="image-item">
+   <a :href="image.url2"  target="_blank">  <img style="border:1px solid orange" :src="image.url" alt="News Image" /></a>
+    </div>
+  </div>
+            </div>
+           
+            <div class="col-12 col-md-3 mb-4">
+              <h5 class="fw-bold">
+                <!-- <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> -->
+                Crypto bulls
+              </h5>
+              <p>
 
-            <div class="col-12 col-md-4 mb-4">
-              <h5 class="fw-bold">Newsletter Subscription</h5>
+                is an innovative platform for distributing news about blockchain, cryptocurrencies, and IT technologies from around the world. We specialize in providing up-to-date and quality information and content.
+
+Our goal is to be a reliable source of information for everyone interested in cryptocurrencies and technology. We strive to keep our users informed of the latest events and trends in the crypto world.
+
+
+                
+            
+              </p>
+            </div>
+           
+            <div class="col-12 col-md-3 mb-4">
+              
+              <h5 class="fw-bold">Subscription</h5>
+              <img style="max-width: 150px;" src="../public/bull.webp"><br/>
+              Get the latest cryptocurrency news, analysis and more. Subscribe
+              so you don't miss anything important!
               <form @submit.prevent="subscribeNewsletter">
                 <input
                 style="background-color: transparent !important;"
@@ -482,6 +566,7 @@
                 </div>
               </form>
             </div>
+         
           </div>
 
           <!-- Социальные иконки -->
@@ -506,15 +591,15 @@
 
           <div
             class="footer-bottom text-center py-3"
-            style="background-color: rgba(12, 31, 74, 0.9)"
+            style=""
           >
-            &copy; 2024
+
             <NuxtLink to="/" class="navbar-brand" style="">
               <img style="width: 30px" src="../public/bull.webp" />
               <span class="text-warning fw-bold" style="font-size: 14px"
                 >Crypto Bulls</span
               > </NuxtLink
-            >. All rights reserved.
+            >. All rights reserved.&copy; 2024
           </div>
         </div>
       </footer>
@@ -573,7 +658,7 @@ export default {
       isSearchVisible: false,
       // isScrolled: false,
       isDropdownOpen: false,
-      
+      images: [],
       showScrollTopButton: false,
       email: "",
       btcPrice: null,
@@ -591,7 +676,7 @@ export default {
   },
   async mounted() {
    
-   
+    await this.fetchImages();
 
     await this.fetchCryptoPrices();
     setInterval(this.fetchCryptoPrices, 60000);
@@ -603,6 +688,15 @@ export default {
     document.addEventListener("click", this.closeDropdownOnClickOutside);
   },
   methods: {
+    async fetchImages() {
+      try {
+        const response = await fetch("https://min-api.cryptocompare.com/data/v2/news/?lang=EN");
+        const data = await response.json();
+        this.images = data.Data.slice(0, 12).map(item => ({ url: item.imageurl,url2:item.url}));
+      } catch (error) {
+        console.error("Ошибка загрузки изображений:", error);
+      }
+    },
     //   handleScroll() {
     //   this.showScrollTopButton = window.scrollY > 200;
     //   this.isScrolled = window.scrollY > 50; // обновляем состояние при прокрутке
@@ -724,6 +818,21 @@ export default {
 </script>
 
 <style scoped>
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.image-item img {
+  
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
 .pointer{
   cursor: pointer;
 }
@@ -823,7 +932,7 @@ body {
 }
 
 .social-icon {
-  color: #ffffff;
+  /* color: #ffffff; */
   font-size: 24px;
   margin: 0 10px;
   transition: color 0.3s ease;
@@ -848,7 +957,7 @@ a {
   transition: color 0.3s;
 }
 .nav-link:hover {
-  color: #ff7f50;
+  color:orange;
 }
 
 /* Стили для поля поиска */
@@ -980,15 +1089,15 @@ input,
 
 /* Футер */
 .footer {
-  background-color: rgba(12, 31, 74, 0.9);
-  color: #ffffff;
+  /* background-color: rgba(12, 31, 74, 0.9); */
+  /* color: #ffffff; */
   padding: 30px 0;
 }
 .footer h5 {
   color:cornflowerblue;
 }
 .footer-link {
-  color: #ffffff;
+  
   transition: color 0.3s;
 }
 .footer-link:hover {

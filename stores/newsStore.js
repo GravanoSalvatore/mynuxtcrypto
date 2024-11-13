@@ -90,7 +90,7 @@ export const useNewsStore = defineStore('news', {
         content3: "Polygon's ecosystem is actively growing, attracting the attention of developers and large investors. Since its launch, the platform has hosted numerous successful projects, including protocols for decentralized finance, NFT marketplaces, and games.",
         content4: "Polygon focuses on security and decentralization. The platform provides reliable data protection and anti-censorship mechanisms, and thanks to its inter-network capabilities, developers can create applications capable of working on various blockchains.",
         content5: "In conclusion, Polygon continues to attract attention with its innovative approach and ability to solve key blockchain problems. The platform provides developers with powerful tools, high security, and accessibility while actively developing in the areas of DeFi and NFT.",
-        image: "https://lh5.googleusercontent.com/proxy/H_HSBYMO7aoCDAd57LK75KToyFcwn6WsaDQ1YDOxWbrJC1YVwe2W_Mg0Vmc5bhMDAOptvuU_W2yG077ppLJ679ew"
+        image: "https://forkast.news/wp-content/uploads/2022/02/BFX_8.png"
       }
 ,
 

@@ -70,12 +70,12 @@
               />
               {{ newsItem.source_info.name }}
             </p>
-            <a :href="newsItem.url" target="_blank" class="mt-auto">
+            <NuxtLink :to="`/news/${newsItem.id}`" class="mt-auto">
               <h5 class="sidebar-news-title">{{ newsItem.title }}</h5>
               <p class="card-text ">
                 {{ formatDate(newsItem.published_on) }}
               </p>
-            </a>
+            </NuxtLink>
             <span style="font-size: 10px; color: cornflowerblue">
               {{ truncateCategory(newsItem.categories) }}
             </span>

@@ -62,17 +62,7 @@
 
         <!-- Основная колонка с карточками новостей -->
         <div class="col-12 col-md-9" ref="newsContainer">
-          <div class="tradingview-widgets-container">
-  <div class="tradingview-widget">
-    <TradingViewChart :symbol="'BINANCE:BTCUSDT'" :width="300" :height="300" containerId="tradingview_btc_chart" />
-  </div>
-  <div class="tradingview-widget">
-    <TradingViewChart :symbol="'BINANCE:ETHUSDT'" :width="300" :height="300" containerId="tradingview_eth_chart" />
-  </div>
-  <div class="tradingview-widget">
-    <TradingViewChart :symbol="'KRAKEN:USDTUSD'" :width="300" :height="300" containerId="tradingview_usdt_chart" />
-  </div>
-</div>
+         
 
   <br/>
           <div class="row">

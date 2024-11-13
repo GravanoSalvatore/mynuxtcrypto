@@ -324,7 +324,7 @@ a:hover {
 }
 .banner {
  
-  background-image: url('../public/it.webp');
+  background-image: url('../public/defi.webp');
   background-size: cover; /* Заполняет баннер, сохраняя пропорции */
   background-position: center;
   background-repeat: no-repeat;
