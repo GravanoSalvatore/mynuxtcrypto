@@ -27,7 +27,7 @@ export const useNewsStore = defineStore('news', {
         // "content20": "- **4V.ROBOT for Automated Content Aggregation**: With its 4V.ROBOT, the platform gathers and categorizes content, distributing it on social media and messaging apps based on tags and user schedules.",
         // "content21": "Technology and Innovation in 4V Platform. With systems like GLIDE, an AI-powered dynamic engine that curates location-specific news, and the CONTENTWISE tool for content filtering, 4V offers a unique user experience. 4V.Coin also supports various blockchain networks and uses smart contracts to facilitate transactions across DeFi tools, enhancing security and transparency.",
         // "content22": "Future Potential and Decentralization. FVX is integrated into 4V’s decentralized structure, where it plays a central role in platform governance through staking and voting. Part of the platform’s revenue will support FVX buyback initiatives, further incentivizing user engagement.",
-        "image": "https://forklog.com.ua/wp-content/uploads/2023/01/binance2.webp"
+        "image": "https://financefeeds.com/wp-content/uploads/2024/07/binance-1.jpg"
       }
 ,      
       {

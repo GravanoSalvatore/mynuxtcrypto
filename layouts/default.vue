@@ -88,7 +88,7 @@
               </span>
               <li class="nav-item dropdown" ref="dropdownMenu">
                 <a href="#" class="nav-link text-white" @click="toggleDropdown"
-                  >Crypto base</a
+                  >Crypto labs</a
                 >
                 <ul  :class="['dropdown-menu', isDarkMode ? 'dark-dropdown' : 'light-dropdown']" v-if="isDropdownOpen">
                   <li>
@@ -135,6 +135,11 @@
                       >Exchanges
                     </NuxtLink>
                   </li>
+                  <li>
+                    <NuxtLink to="/wallets" class="dropdown-item"
+                      >Wallets
+                    </NuxtLink>
+                  </li>
                 </ul>
               </li>
 
@@ -156,7 +161,7 @@
             </ul>
 
             <button class="btn" @click="toggleSearch">
-              <img style="width: 20px;" src="https://static.vecteezy.com/system/resources/previews/017/784/742/non_2x/magnifying-glass-loupe-icon-button-search-icon-png.png"/>
+              <img style="width: 35px;height: 35px;" src="https://static.vecteezy.com/system/resources/thumbnails/037/047/109/small_2x/ai-generated-stylized-globe-icon-symbol-3d-isolated-on-transparent-background-png.png"/>
               <!-- <i class="fa-brands fa-searchengin text-white"></i> -->
             </button>
 
@@ -174,7 +179,7 @@
                 aria-label="Search"
               />
               <button type="button" class="btn" @click="search">
-                <i class="bi bi-search"></i>
+                <i style="font-size: 10px" class="bi bi-search"></i>
               </button>
             </form>
           </div>
@@ -232,38 +237,27 @@
             </span>
           </div>
           <button class="btn" @click="toggleSearch">
-            <i class="fa-brands fa-searchengin text-white"></i>
-          </button>
-
-          <form
-            v-if="isSearchVisible"
-            class="d-flex align-items-center"
-            @submit.prevent="search"
-          >
-            <input
-            style="background-color: transparent !important;"
-              v-model="searchQuery"
-              type="text"
-              class="form-control me-1 text-white"
-              placeholder="Search..."
-              aria-label="Search"
-            />
-            <button type="button" class="btn" @click="search">
-              <i class="bi bi-search"></i>
+              <img style="width: 35px;height: 35px;" src="https://static.vecteezy.com/system/resources/thumbnails/037/047/109/small_2x/ai-generated-stylized-globe-icon-symbol-3d-isolated-on-transparent-background-png.png"/>
+              <!-- <i class="fa-brands fa-searchengin text-white"></i> -->
             </button>
-            <!-- <div class="input-group">
-  <input
-    v-model="searchQuery"
-    type="text"
-    class="form-control"
-    placeholder="Search..."
-    aria-label="Search"
-  />
-  <span class="input-group-text" @click="search">
-    <i class="bi bi-search"></i>
-  </span>
-</div> -->
-          </form>
+
+            <form
+              v-if="isSearchVisible"
+              class="d-flex align-items-center"
+              @submit.prevent="search"
+            >
+              <input
+              style="background-color: transparent !important;"
+                v-model="searchQuery"
+                type="text"
+                class="form-control me-1 text-white"
+                placeholder="Search..."
+                aria-label="Search"
+              />
+              <button type="button" class="btn" @click="search">
+                <i style="font-size: 10px" class="bi bi-search"></i>
+              </button>
+            </form>
         </div>
 
         <ul style="" class="sidebar-nav">

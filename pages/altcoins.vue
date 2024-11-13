@@ -306,7 +306,7 @@ a:hover {
 
 .marquee-content {
   display: inline-block;
-  animation: marquee 115s linear infinite;
+  animation: marquee 215s linear infinite;
 }
 
 @keyframes marquee {

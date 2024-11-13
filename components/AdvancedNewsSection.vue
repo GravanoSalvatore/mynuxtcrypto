@@ -208,7 +208,7 @@ a:hover {
   }
   
   .large-overlay {
-    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(0, 0, 0, 0.6); */
     padding: 1rem;
     width: 100%;
     text-align: center;

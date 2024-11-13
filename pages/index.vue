@@ -74,11 +74,13 @@
         <News5 />
         <News3 />
 <Logo/>
+<Video/>
         <br/>
         <!-- <Price /> -->
         <AdvancedNewsSection />
         
         <News6 />
+        
         <News3a />
         <NewsSection />
         <br />
@@ -99,10 +101,12 @@
   import News6 from '~/components/News6.vue';
   import Price from '~/components/Price.vue';
   import Logo from '~/components/Logo.vue';
+  import Video from '~/components/Video.vue';
   import CookieConsent from '~/components/CookieConsent.vue';
   
   export default {
     components: {
+      Video,
       NewsSection,
       AdvancedNewsSection,
       News2,

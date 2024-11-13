@@ -260,7 +260,8 @@ export default {
 }
 
 .crypto-change {
-  font-size: 8px;
+  font-weight: bold;
+  font-size: 10px;
   display: flex;
   align-items: center;
 }
