@@ -106,6 +106,7 @@ export default defineNuxtConfig({
         { rel: "preload", href: "/crypto.webp", as: "image" },
         { rel: "preload", href: "/defi.webp", as: "image" },
         { rel: "preload", href: "/it.webp", as: "image" },
+        { rel: "preload", href: "/bull.webp", as: "image" },
         {
           rel: "stylesheet",
           href: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css",
@@ -116,10 +117,10 @@ export default defineNuxtConfig({
         },
       ],
       script: [
-        {
-          src: "https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js",
-          defer: true,
-        },
+        // {
+        //   src: "https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js",
+        //   defer: true,
+        // },
       ],
     },
   },

@@ -71,39 +71,17 @@
            
             <ul class="navbar-nav ms-auto text align-items-center">
               
-              <li class="nav-item">
-                <NuxtLink to="/" class="nav-link text-white" aria-current="page"
-                  >Home</NuxtLink
-                >
-              </li>
-              <span class="nav-link">
-                <span class="text-warning">BTC:</span>
-                <span class="text-white">
-                  ${{ btcPrice }}
-                  <span :class="btcChangeClass" class="ms-1">
-                    <i class="bi" :class="btcArrow"></i>
-                  </span>
-                </span>
-
-                <span style="color: cornflowerblue;" class="">ETH:</span>
-                <span class="text-white">
-                  ${{ ethPrice }}
-                  <span :class="ethChangeClass" class="ms-1">
-                    <i class="bi" :class="ethArrow"></i>
-                  </span>
-                </span>
-              </span>
-             
-              <span class="nav-link">
-               <Top/>
-              </span>
-             
              
               <li class="nav-item dropdown" ref="dropdownMenu">
                 <a href="#" class="nav-link text-white" @click="toggleDropdown"
-                  >Crypto labs</a
+                  >Crypto Bulls Lab</a
                 >
                 <ul  :class="['dropdown-menu', isDarkMode ? 'dark-dropdown' : 'light-dropdown']" v-if="isDropdownOpen">
+                  <li class="nav-item">
+                <NuxtLink to="/" class="dropdown-item " aria-current="page"
+                  >Home</NuxtLink
+                >
+              </li>
                   <li>
                     <NuxtLink to="/ai" class="dropdown-item"
                       >Artificial intelligence</NuxtLink
@@ -159,6 +137,30 @@
                   </li>
                 </ul>
               </li>
+              <span class="nav-link">
+                <span class="text-warning">BTC:</span>
+                <span class="text-white">
+                  ${{ btcPrice }}
+                  <span :class="btcChangeClass" class="ms-1">
+                    <i class="bi" :class="btcArrow"></i>
+                  </span>
+                </span>
+
+                <span style="color: cornflowerblue;" class="">ETH:</span>
+                <span class="text-white">
+                  ${{ ethPrice }}
+                  <span :class="ethChangeClass" class="ms-1">
+                    <i class="bi" :class="ethArrow"></i>
+                  </span>
+                </span>
+              </span>
+             
+              <span class="nav-link">
+               <Top/>
+              </span>
+             
+             
+         
 
              
               <!--              
@@ -278,6 +280,11 @@
         </div>
 
         <ul style="" class="sidebar-nav">
+          <li class="sidebar-item">
+                <NuxtLink to="/" class="sidebar-link" aria-current="page"
+                  >Home</NuxtLink
+                >
+              </li>
           <li class="sidebar-item">
             <NuxtLink to="/" class="sidebar-link" @click="toggleSidebar"
               >News</NuxtLink
@@ -439,7 +446,7 @@
       <br />
       <br />
       <Price />
-      
+      <!-- <News/> -->
       <NuxtPage />
 
       <button
@@ -608,7 +615,7 @@ Our goal is to be a reliable source of information for everyone interested in cr
           >
 
             <NuxtLink to="/" class="navbar-brand" style="">
-              <img style="width: 30px" src="../public/bull.webp" />
+              <!-- <img style="width: 30px" src="../public/bull.webp" /> -->
               <span class="text-warning " style="font-size: 14px"
                 > Crypto Bulls</span
               > </NuxtLink
@@ -624,6 +631,7 @@ Our goal is to be a reliable source of information for everyone interested in cr
 import { useThemeStore } from '../stores/themeStore.js';
 import { ref, onMounted, watch } from 'vue';
 import Price from "../components/Price.vue";
+import News from "../components/NewsGrid.vue";
 import Top from "../components/TopGainer.vue";
 export default {
   setup() {
@@ -658,7 +666,7 @@ export default {
     };
 
   },
-  components: { Price,Top},
+  components: { Price,Top,News},
   beforeUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
     document.removeEventListener("click", this.closeDropdownOnClickOutside);

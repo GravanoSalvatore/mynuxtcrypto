@@ -1,73 +1,50 @@
 <template>
-  <div v-if="isLoading" class="preloader text-white">
-    <p>Загрузка новости...</p>
-  </div>
-  <div v-else class="news-detail-container">
+  <div v-if="news" class="news-detail">
     <h1>{{ news.title }}</h1>
-    <p class="news-date">{{ formatDate(news.published_on) }}</p>
-    <img v-if="news.imageurl" :src="news.imageurl" alt="News image" class="news-image" />
-    <p class="news-body">{{ news.body || "Описание отсутствует" }}</p>
+    <img :src="news.image" alt="news image" class="news-image" />
+    <p>{{ news.content }}</p>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  data() {
-    return {
-      news: {},
-      isLoading: true,
-    };
-  },
-  async asyncData({ params, $axios }) {
-    const newsId = params.id;
-    try {
-      const response = await $axios.$get("https://min-api.cryptocompare.com/data/v2/news/?lang=EN");
-      const newsItem = response.Data.find((item) => item.id == newsId);
-      return { news: newsItem || {} };
-    } catch (error) {
-      console.error("Ошибка при загрузке новости:", error);
-      return { news: {} };
-    }
-  },
-  mounted() {
-    this.isLoading = false;
-  },
-  methods: {
-    formatDate(timestamp) {
-      const date = new Date(timestamp * 1000);
-      return date.toLocaleDateString("ru-RU", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-    },
+  async asyncData({ params }) {
+    console.log("Получен params:", params);
+
+    // Подключение к API для получения данных статьи
+    const response = await axios.get(
+      "https://min-api.cryptocompare.com/data/v2/news/?lang=EN"
+    );
+    const newsItem = response.data.Data.find(
+      (item) => item.id == params.id
+    );
+
+    return { news: newsItem || null };
   },
 };
 </script>
 
 <style scoped>
-.preloader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.news-detail-container {
+.news-detail {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-}
-.news-date {
-  color: #888;
-  font-size: 0.9rem;
+  text-align: center;
 }
 .news-image {
   width: 100%;
   height: auto;
-  margin: 20px 0;
+  border-radius: 8px;
+  margin-top: 10px;
 }
-.news-body {
+.news-detail h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.news-detail p {
   font-size: 1rem;
-  line-height: 1.6;
+  color: #666;
 }
 </style>
