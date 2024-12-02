@@ -28,7 +28,7 @@
     </div>
     <div class="container-fluid">
       <div class="heading-marquee-container">
-        <h2 v-if="!isLoading" class="heading-left fw-bold">DEFI</h2>
+        <h3 v-if="!isLoading" class="heading-left fw-bold">ДЕФИ</h3>
 
         <!-- Бегущая строка -->
         <div v-if="!isLoading" class="marquee">

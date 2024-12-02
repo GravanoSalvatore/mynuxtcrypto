@@ -1,53 +1,53 @@
 <template>
   <div class="terms-of-service container my-4">
-    <h1 class="text-center mb-4 ">Terms of Service</h1>
+    <h1 class="text-center mb-4">Условия использования</h1>
     <p>
-      Welcome to our website. Please read these Terms of Service carefully before using our site. By using our site, you agree to these terms.
+      Добро пожаловать на наш сайт. Пожалуйста, внимательно ознакомьтесь с настоящими Условиями использования перед использованием нашего сайта. Используя наш сайт, вы соглашаетесь с этими условиями.
     </p>
 
-    <h2>1. Acceptance of Terms</h2>
+    <h2>1. Принятие условий</h2>
     <p>
-      By using our site, you confirm that you accept and agree to these Terms of Service. If you do not agree, please discontinue using our site.
+      Используя наш сайт, вы подтверждаете, что принимаете и соглашаетесь с настоящими Условиями использования. Если вы не согласны, пожалуйста, прекратите использование нашего сайта.
     </p>
 
-    <h2>2. Changes to Terms</h2>
+    <h2>2. Изменения условий</h2>
     <p>
-      We reserve the right to change these Terms of Service at any time. Updates will be posted on this page. Continuing to use the site after any changes means you accept the new terms.
+      Мы оставляем за собой право изменять настоящие Условия использования в любое время. Обновления будут размещены на этой странице. Продолжение использования сайта после любых изменений означает ваше согласие с новыми условиями.
     </p>
 
-    <h2>3. Site Usage</h2>
+    <h2>3. Использование сайта</h2>
     <p>
-      You agree to use the site legally and not infringe upon the rights of others. You may not use the site to spread harmful content or misinformation.
+      Вы соглашаетесь использовать сайт в соответствии с законодательством и не нарушать права других лиц. Запрещается использовать сайт для распространения вредоносного контента или дезинформации.
     </p>
 
-    <h2>4. Intellectual Property</h2>
+    <h2>4. Интеллектуальная собственность</h2>
     <p>
-      All content on the site, including text, images, logos, and software, is our property or the property of our partners and is protected by copyright and other laws. You may not use this content without our prior written consent.
+      Весь контент на сайте, включая текст, изображения, логотипы и программное обеспечение, является нашей собственностью или собственностью наших партнеров и защищен авторским правом и другими законами. Вы не можете использовать этот контент без нашего предварительного письменного согласия.
     </p>
 
-    <h2>5. Limitation of Liability</h2>
+    <h2>5. Ограничение ответственности</h2>
     <p>
-      We are not responsible for any loss or damage arising from the use of or inability to use the site. We do not guarantee the accuracy or completeness of the information on the site.
+      Мы не несем ответственности за любые убытки или ущерб, возникающие в результате использования или невозможности использования сайта. Мы не гарантируем точность или полноту информации на сайте.
     </p>
 
-    <h2>6. External Links</h2>
+    <h2>6. Внешние ссылки</h2>
     <p>
-      Our site may contain links to external resources. We are not responsible for the content or privacy policies of these sites. Using these resources is at your own risk.
+      На нашем сайте могут быть ссылки на внешние ресурсы. Мы не несем ответственности за контент или политику конфиденциальности этих сайтов. Использование этих ресурсов осуществляется на ваш собственный риск.
     </p>
 
-    <h2>7. Termination of Use</h2>
+    <h2>7. Прекращение использования</h2>
     <p>
-      We reserve the right to terminate or restrict your access to the site at any time without prior notice if you violate these Terms of Service.
+      Мы оставляем за собой право прекратить или ограничить ваш доступ к сайту в любое время без предварительного уведомления, если вы нарушаете настоящие Условия использования.
     </p>
 
-    <h2>8. Governing Law</h2>
+    <h2>8. Применимое право</h2>
     <p>
-      These Terms of Service are governed by the laws of [your country]. Any disputes related to the site will be resolved in the competent courts of [your country].
+      Настоящие Условия использования регулируются законодательством [вашей страны]. Все споры, связанные с сайтом, будут решаться в компетентных судах [вашей страны].
     </p>
 
-    <h2>9. Contact Information</h2>
+    <h2>9. Контактная информация</h2>
     <p>
-      If you have any questions or comments regarding these Terms of Service, please contact us at: <a href="mailto:cryptocurrencybulls.com">cryptocurrencybulls.com</a>.
+      Если у вас есть вопросы или комментарии по поводу настоящих Условий использования, пожалуйста, свяжитесь с нами по адресу: <a href="mailto:cryptocurrencybulls.com">cryptocurrencybulls.com</a>.
     </p>
   </div>
 </template>

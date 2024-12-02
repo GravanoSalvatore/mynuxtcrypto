@@ -31,7 +31,7 @@
     </div>
     <div class="container-fluid">
       <div class="heading-marquee-container">
-        <h2 v-if="!isLoading" class="heading-left fw-bold">IT TECHNOLOGY </h2>
+        <h2 v-if="!isLoading" class="heading-left fw-bold">ИНФОРМАЦИОННЫЕ ТЕХНОЛОГИИ </h2>
 
         <!-- Бегущая строка -->
         <div v-if="!isLoading" class="marquee">

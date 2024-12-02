@@ -30,7 +30,7 @@
     </div>
     <div class="container-fluid">
       <div class="heading-marquee-container">
-        <h2 v-if="!isLoading" class="heading-left fw-bold">BITCOIN & ETHEREUM </h2>
+        <h2 v-if="!isLoading" class="heading-left fw-bold">БИТКОИН И ЭФИРИУМ </h2>
 
         <!-- Бегущая строка -->
         <div v-if="!isLoading" class="marquee">

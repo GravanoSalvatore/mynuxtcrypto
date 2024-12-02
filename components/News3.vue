@@ -6,12 +6,12 @@
       v-for="(banner, index) in currentBanners"
       :key="index"
       class="banner"
-      :style="{ backgroundImage: `url(${banner.imageurl})` }"
+      :style="{ backgroundImage: `url(${banner.urlToImage})` }"
     >
       <div class="banner-content">
         <h1 class="banner-title" :class="{ fadeIn: showTitle }">{{ banner.title }}</h1>
-        <p v-if="banner.published_on" class="banner-date" :class="{ fadeIn: showTitle }">
-          {{ formatDate(banner.published_on) }}
+        <p v-if="banner.publishedAt" class="banner-date" :class="{ fadeIn: showTitle }">
+          {{ formatDate(banner.publishedAt) }}
         </p>
       </div>
     </div>
@@ -41,11 +41,11 @@ export default {
     async fetchBannerData() {
       try {
         const response = await fetch(
-          "https://min-api.cryptocompare.com/data/v2/news/?lang=EN"
+          "https://4v-news-api.azurewebsites.net/News?SiteId=1&CategoryId=16&Page=1&PageSize=100"
         );
         const data = await response.json();
-        if (data.Data && data.Data.length > 0) {
-          this.banners = data.Data;
+        if (data.items && data.items.length > 0) {
+          this.banners = data.items; // выбираем первые 6 новостей для баннеров
           this.updateCurrentBanners();
           this.fadeInTitle();
         }
@@ -71,9 +71,9 @@ export default {
         this.showTitle = true;
       }, 500);
     },
-    formatDate(timestamp) {
-      const date = new Date(timestamp * 1000);
-      return date.toLocaleDateString("en-US", {
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString("ru-RU", {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -85,10 +85,9 @@ export default {
 
 <style scoped>
 .banner-container {
-  /* margin-top: 58px; */
   display: flex;
   gap: 10px;
-  flex-direction: row; /* Горизонтальное расположение баннеров на больших экранах */
+  flex-direction: row;
 }
 
 .banner {
@@ -143,21 +142,19 @@ export default {
   opacity: 1;
 }
 
-/* Адаптивные стили */
 @media (max-width: 768px) {
   .banner-container {
-    flex-direction: column; /* Вертикальное расположение баннеров на мобильных устройствах */
+    flex-direction: column;
   }
   .banner {
-    width: 100%; /* Каждый баннер занимает всю ширину на мобильных устройствах */
-    height: 300px; /* Уменьшенная высота баннера на мобильных устройствах */
+    width: 100%;
+    height: 300px;
   }
   .banner-title {
-    font-size: 1.5rem; /* Уменьшенный размер заголовка */
+    font-size: 1.5rem;
   }
   .banner-date {
-    font-size: 1rem; /* Уменьшенный размер даты */
+    font-size: 1rem;
   }
 }
 </style>
-

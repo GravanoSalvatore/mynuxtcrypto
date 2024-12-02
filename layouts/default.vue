@@ -34,7 +34,7 @@
            style="width: 50px;font-size: 15px" 
            src="../public/bull.webp" />
             <span  style="font-size: 16px"  class="text-warning fw-bold" 
-              >Crypto Bulls</span
+              > Крипто Быки</span
             >
           </NuxtLink>
           <button @click="toggleThemeWithLog" class="theme-toggle-btn mx-auto">
@@ -74,22 +74,22 @@
              
               <li class="nav-item dropdown" ref="dropdownMenu">
                 <a href="#" class="nav-link text-white" @click="toggleDropdown"
-                  >Crypto Bulls Lab</a
+                  > Крипто Лаборатория</a
                 >
                 <ul  :class="['dropdown-menu', isDarkMode ? 'dark-dropdown' : 'light-dropdown']" v-if="isDropdownOpen">
                   <li class="nav-item">
                 <NuxtLink to="/" class="dropdown-item " aria-current="page"
-                  >Home</NuxtLink
+                  >Главная</NuxtLink
                 >
               </li>
                   <li>
                     <NuxtLink to="/ai" class="dropdown-item"
-                      >Artificial intelligence</NuxtLink
+                      >Искусственный Интелект</NuxtLink
                     >
                   </li>
                   <li class="nav-item">
                     <NuxtLink to="/altcoins" class="dropdown-item"
-                      >Altcoins</NuxtLink
+                      >Альткоины</NuxtLink
                     >
                   </li>
                   <li class="nav-item">
@@ -97,42 +97,42 @@
                       to="/about"
                       class="dropdown-item"
                       aria-current="page"
-                      >Articles</NuxtLink
+                      >Статьи</NuxtLink
                     >
                   </li>
                   <li class="nav-item">
                     <NuxtLink to="/crypto" class="dropdown-item"
-                      >Bitcoin & Ethereum</NuxtLink
+                      >Биткоин и Эфириум</NuxtLink
                     >
                   </li>
 
                   <li class="nav-item">
                     <NuxtLink to="/contact" class="dropdown-item"
-                      >Blockchain people</NuxtLink
+                      >Люди блокчейна</NuxtLink
                     >
                   </li>
                   <li>
                     <NuxtLink to="/chartsCrypto" class="dropdown-item"
-                      >Charts
+                      >Графики
                     </NuxtLink>
                   </li>
                   <li class="nav-item">
-                    <NuxtLink to="/defi" class="dropdown-item">Defi</NuxtLink>
+                    <NuxtLink to="/defi" class="dropdown-item">Дефи</NuxtLink>
                   </li>
                   <li>
                     <NuxtLink to="/it" class="dropdown-item"
-                      >Information technology
+                      >Информационные технологии
                     </NuxtLink>
                   </li>
 
                   <li>
                     <NuxtLink to="/ex" class="dropdown-item"
-                      >Exchanges
+                      >Биржи
                     </NuxtLink>
                   </li>
                   <li>
                     <NuxtLink to="/wallets" class="dropdown-item"
-                      >Wallets
+                      >Крипто кошельки
                     </NuxtLink>
                   </li>
                 </ul>
@@ -227,7 +227,7 @@
         <NuxtLink to="/" class="navbar-brand" style="">
           <img style="width: 50px" src="../public/bull.webp" />
           <span class="text-warning fw-bold" style="font-size: 17px"
-            >Crypto Bulls</span
+            >Крипто Быки</span
           >
         </NuxtLink>
         
@@ -282,17 +282,17 @@
         <ul style="" class="sidebar-nav">
           <li class="sidebar-item">
                 <NuxtLink to="/" class="sidebar-link" aria-current="page"
-                  >Home</NuxtLink
+                  >Главная</NuxtLink
                 >
               </li>
-          <li class="sidebar-item">
+          <!-- <li class="sidebar-item">
             <NuxtLink to="/" class="sidebar-link" @click="toggleSidebar"
               >News</NuxtLink
             >
-          </li>
+          </li> -->
           <li class="sidebar-item">
             <NuxtLink to="/about" class="sidebar-link" @click="toggleSidebar"
-              >Articles</NuxtLink
+              >Статьи</NuxtLink
             >
           </li>
           <!-- <li class="sidebar-item">
@@ -300,7 +300,7 @@
           </li> -->
           <li class="sidebar-item">
             <NuxtLink to="/ai" class="sidebar-link" @click="toggleSidebar"
-              >AI</NuxtLink
+              >Искусственный интелект</NuxtLink
             >
           </li>
           <!-- <li class="sidebar-item">
@@ -308,17 +308,17 @@
           </li> -->
           <li class="sidebar-item">
             <NuxtLink to="/contact" class="sidebar-link" @click="toggleSidebar"
-              >Blockchain People</NuxtLink
+              >Люди блокчейна</NuxtLink
             >
           </li>
           <li class="sidebar-item">
             <NuxtLink to="/crypto" class="sidebar-link" @click="toggleSidebar"
-              >Bitcoin & Ethereum</NuxtLink
+              >Биткоин и Эфириум</NuxtLink
             >
           </li>
           <li class="sidebar-item">
             <NuxtLink to="/altcoins" class="sidebar-link" @click="toggleSidebar"
-              >Altcoins</NuxtLink
+              >Альткоины</NuxtLink
             >
           </li>
           <li>
@@ -328,35 +328,35 @@
                   </li>
           <li class="sidebar-item">
             <NuxtLink to="/defi" class="sidebar-link" @click="toggleSidebar"
-              >Defi</NuxtLink
+              >Дефи</NuxtLink
             >
           </li>
           <li class="sidebar-item">
             <NuxtLink to="/it" class="sidebar-link" @click="toggleSidebar"
-              >Information technology
+              >Информационные технологии
             </NuxtLink>
           </li>
           <li class="sidebar-item">
             <NuxtLink to="/ex" class="sidebar-link" @click="toggleSidebar"
-              >Exchange</NuxtLink
+              >Биржи</NuxtLink
             >
           </li>
           <NuxtLink to="/wallets" class="sidebar-link"
-                      >Wallets
+                      >Крипто кошельки
                     </NuxtLink>
           <li class="sidebar-item">
             <NuxtLink to="/privacy" class="sidebar-link" @click="toggleSidebar"
-              >Privacy Policy</NuxtLink
+              >Политика конфиденциальности</NuxtLink
             >
           </li>
           <li class="sidebar-item">
             <NuxtLink to="/terms" class="sidebar-link" @click="toggleSidebar"
-              >Terms of servise</NuxtLink
+              >Условия использования</NuxtLink
             >
           </li>
           <li class="sidebar-item">
             <NuxtLink to="/aboutUs" class="sidebar-link" @click="toggleSidebar"
-              >About Us</NuxtLink
+              >О нас</NuxtLink
             >
           </li>
          
@@ -464,17 +464,17 @@
         <div class="container">
           <div class="row text-center text-md-start">
             <div class="col-12 col-md-3 mb-4">
-              <h5 class="fw-bold">Quick Links</h5>
+              <h5 class="fw-bold">Быстрые ссылки</h5>
               <ul class="list-unstyled">
-                <li><NuxtLink to="/" class="nav-link">Home</NuxtLink></li>
+                <li><NuxtLink to="/" class="nav-link">Главная</NuxtLink></li>
                 <li>
                     <NuxtLink to="/ai" class="nav-link"
-                      >Artificial intelligence</NuxtLink
+                      >Искусственный интелект</NuxtLink
                     >
                   </li>
                   <li class="nav-item">
                     <NuxtLink to="/altcoins" class="nav-link"
-                      >Altcoins</NuxtLink
+                      >Альткоины</NuxtLink
                     >
                   </li>
                   <li class="nav-item">
@@ -482,57 +482,57 @@
                       to="/about"
                       class="nav-link"
                       aria-current="page"
-                      >Articles</NuxtLink
+                      >Статьи</NuxtLink
                     >
                   </li>
                   <li class="nav-item">
                     <NuxtLink to="/crypto" class="nav-link"
-                      >Bitcoin & Ethereum</NuxtLink
+                      >Биткоин и Эфириум</NuxtLink
                     >
                   </li>
 
                   <li class="nav-item">
                     <NuxtLink to="/contact" class="nav-link"
-                      >Blockchain people</NuxtLink
+                      >Люди блокчейна</NuxtLink
                     >
                   </li>
                   <li>
                     <NuxtLink to="/chartsCrypto" class="nav-link"
-                      >Charts
+                      >Графики
                     </NuxtLink>
                   </li>
                   <li class="nav-item">
-                    <NuxtLink to="/defi" class="nav-link">Defi</NuxtLink>
+                    <NuxtLink to="/defi" class="nav-link">Дефи</NuxtLink>
                   </li>
                   <li>
                     <NuxtLink to="/it" class="nav-link"
-                      >Information technology
+                      >Информационные технологии
                     </NuxtLink>
                   </li>
 
                   <li>
                     <NuxtLink to="/ex" class="nav-link"
-                      >Exchanges
+                      >Крипто биржи
                     </NuxtLink>
                   </li>
                   <li>
                     <NuxtLink to="/wallets" class="nav-link"
-                      >Wallets
+                      >Крипто кошельки
                     </NuxtLink>
                   </li>
                 <li class="sidebar-item">
                   <NuxtLink to="/privacy" class="nav-link "
-                    >Privacy Policy</NuxtLink
+                    >Политика конфиденциальности</NuxtLink
                   >
                 </li>
                 <li class="sidebar-item">
                   <NuxtLink to="/terms" class="nav-link "
-                    >Terms of servise</NuxtLink
+                    >Условия использования</NuxtLink
                   >
                 </li>
                 <li class="sidebar-item">
                   <NuxtLink to="/aboutUs" class="nav-link"
-                    >About Us</NuxtLink
+                    >О нас</NuxtLink
                   >
                 </li>
                 <!-- <li><NuxtLink to="/about" class="footer-link">About Us</NuxtLink></li> -->
@@ -542,7 +542,7 @@
               </ul>
             </div>
             <div class="col-12 col-md-3 mb-4">
-              <h5 class="fw-bold">Crypto News</h5>
+              <h5 class="fw-bold">Крипто новости</h5>
               <div class="image-grid">
     <div v-for="(image, index) in images" :key="index" class="image-item">
    <a :href="image.url2"  target="_blank">  <img style="border:1px solid orange" :src="image.url" alt="News Image" /></a>
@@ -553,15 +553,11 @@
             <div class="col-12 col-md-3 mb-4" style="color:#6c757d;">
               <h5 class="fw-bold">
                 <!-- <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> -->
-                Crypto bulls
+                Крипто Быки
               </h5>
               <p>
 
-                is an innovative platform for distributing news about blockchain, cryptocurrencies, and IT technologies from around the world. We specialize in providing up-to-date and quality information and content.
-
-Our goal is to be a reliable source of information for everyone interested in cryptocurrencies and technology. We strive to keep our users informed of the latest events and trends in the crypto world.
-
-
+                инновационная платформа для распространения новостей о блокчейне, криптовалютах и ​​IT-технологиях со всего мира. Мы специализируемся на предоставлении актуальной и качественной информации и контента. Наша цель — быть надежным источником информации для всех, кто интересуется криптовалютами и технологиями. Мы стремимся держать наших пользователей в курсе последних событий и тенденций в мире криптовалют.
                 
             
               </p>
@@ -569,10 +565,10 @@ Our goal is to be a reliable source of information for everyone interested in cr
            
             <div class="col-12 col-md-3 mb-4" style="color:#6c757d;">
               
-              <h5 class="fw-bold">Subscription</h5>
+              <h5 class="fw-bold">Подписка</h5>
               <img style="max-width: 150px;" src="../public/bull.webp"><br/>
-              Get the latest cryptocurrency news, analysis and more. Subscribe
-              so you don't miss anything important!
+              Получайте последние новости о криптовалютах, анализ и многое другое. Подписаться
+              так что вы не пропустите ничего важного!
               <form @submit.prevent="subscribeNewsletter">
                 <input
                 style="background-color: transparent !important;"
@@ -582,7 +578,7 @@ Our goal is to be a reliable source of information for everyone interested in cr
                   placeholder="Your Email"
                 />
                 <div class="container">
-                  <button class="btn-danger3 mt-2 w-100">Subscribe</button>
+                  <button class="btn-danger3 mt-2 w-100">Подписаться</button>
                 </div>
               </form>
             </div>
@@ -617,7 +613,7 @@ Our goal is to be a reliable source of information for everyone interested in cr
             <NuxtLink to="/" class="navbar-brand" style="">
               <!-- <img style="width: 30px" src="../public/bull.webp" /> -->
               <span class="text-warning " style="font-size: 14px"
-                > Crypto Bulls</span
+                > Крипто Быки</span
               > </NuxtLink
             >. All rights reserved.&copy; 2024
           </div>

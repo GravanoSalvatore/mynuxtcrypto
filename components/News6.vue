@@ -1,21 +1,30 @@
 <template>
   <div class="container-fluid">
-    <h2 v-if="!isLoading" class="fw-bold">Bitcoin and Ethereum</h2>
+    <h2 v-if="!isLoading" class="fw-bold">Биткоин и Эфириум</h2>
     <div class="row">
       <!-- Левая колонка для новостей (шире правой колонки) -->
       <div class="col-12 col-md-4 fixed-sidebar mb-4 mb-md-0" v-if="!isLoading">
         <div class="sidebar-content">
           <div v-for="(newsItem, index) in latestNews.slice(9)" :key="index" class="sidebar-news-item">
-            <p>
-              <img style="width: 35px; height: 35px;" :src="newsItem.source_info.img"> {{ newsItem.source_info.name }}
-            </p>
+            <!-- <p>
+              <img style="width: 35px; height: 35px;" :src="newsItem.source.uiTitle"> {{ newsItem.source.name }}
+            </p> -->
             <a :href="newsItem.url" target="_blank" class="mt-auto">
               <h5 class="sidebar-news-title fw-bold">{{ newsItem.title }}</h5>
-              <p class="card-text">{{ newsItem.body || 'Описание отсутствует' }}</p>
-              <p class="card-text ">{{ formatDate(newsItem.published_on) }}</p>
-            </a>
-            <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
+              <p class="card-text grey">{{ newsItem.content || 'Описание отсутствует' }}</p>
+              <p class="card-text">{{ formatDate(newsItem.publishedAt) }}</p>
+            </a> <p>
+                  {{ newsItem.source.uiTitle }}<br/>
+                  {{ newsItem.author }}
+                  
+                </p>
+                <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categoryName }}</span>
+                <hr/>
+                <!-- <a :href="newsItem.url" target="_blank" class="mt-auto fw-bold">{{ newsItem.title }}</a>
+                <p class="card-text">{{ formatDate(newsItem.publishedAt) }}</p>
+            <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categoryName }}</span> -->
           </div>
+        
         </div>
       </div>
 
@@ -25,27 +34,28 @@
           <div v-for="newsItem in paginatedNews" :key="newsItem.id" class="col-12 col-md-6 mb-4">
             <div class="car h-100 news-card" style="max-height: 500px;">
               <img
-                v-if="newsItem.imageurl"
-                :src="newsItem.imageurl"
+                v-if="newsItem.urlToImage"
+                :src="newsItem.urlToImage"
                 class="card-img-top"
                 alt="news image"
                 style="height: 200px; object-fit: cover;"
               />
               <div class="card-body d-flex flex-column">
-                <p>
-                  <img style="width: 35px; height: 35px;" :src="newsItem.source_info.img"> {{ newsItem.source_info.name }}
-                </p>
+                <!-- <p>
+                  <img style="width: 35px; height: 35px;" :src="newsItem.source.uiTitle"> {{ newsItem.source.name }}
+                </p> -->
                 <a :href="newsItem.url" target="_blank" class="mt-auto">
                   <h5 class="card-title fw-bold">{{ newsItem.title }}</h5>
                 </a>
                 <p class="card-text ">
-                  {{ formatDate(newsItem.published_on) }}
-                  <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categories }}</span>
+                  {{ formatDate(newsItem.publishedAt) }}
+                 
                 </p>
+                <span style="font-size:10px;color:cornflowerblue;">{{ newsItem.categoryName }}</span>
                 <div class="card-content-scroll">
-                  <p class="card-text">
-                    {{ truncateText(newsItem.body || 'Описание отсутствует', 150) }}
-                  </p>
+                  <!-- <p class="card-text">
+                    {{ truncateText(newsItem.description || 'Описание отсутствует', 150) }}
+                  </p> -->
                 </div>
               </div>
             </div>
@@ -86,10 +96,10 @@ export default {
     async fetchNews() {
       try {
         const response = await fetch(
-          "https://min-api.cryptocompare.com/data/v2/news/?categories=BTC,ETH&excludeCategories=Sponsored"
+          "https://4v-news-api.azurewebsites.net/News?SiteId=1&CategoryId=16&Page=1&PageSize=100"
         );
         const data = await response.json();
-        this.news = data.Data.slice(0, 16); // Начинаем с 16-й новости
+        this.news = data.items.slice(0, 16); // Начинаем с 16-й новости
       } catch (error) {
         console.error("Ошибка при загрузке новостей:", error);
       }
@@ -97,16 +107,16 @@ export default {
     async fetchLatestNews() {
       try {
         const response = await fetch(
-          "https://min-api.cryptocompare.com/data/v2/news/?categories=BTC,ETH&excludeCategories=Sponsored"
+          "https://4v-news-api.azurewebsites.net/News?SiteId=1&CategoryId=16&Page=1&PageSize=100"
         );
         const data = await response.json();
-        this.latestNews = data.Data.slice(16, 41); // Последующие новости для правой колонки
+        this.latestNews = data.items.slice(16, 41); // Последующие новости для правой колонки
       } catch (error) {
         console.error("Ошибка при загрузке последних новостей:", error);
       }
     },
-    formatDate(timestamp) {
-      const date = new Date(timestamp * 1000);
+    formatDate(dateString) {
+      const date = new Date(dateString);
       return date.toLocaleDateString("ru-RU", {
         year: "numeric",
         month: "long",
@@ -139,7 +149,9 @@ export default {
 </script>
 
 <style scoped>
-
+.grey{
+  color: #6c757d;
+}
 :root {
   --link-color: #000000; /* Цвет ссылок в светлой теме */
   --text-color: #000000; /* Основной цвет текста в светлой теме */

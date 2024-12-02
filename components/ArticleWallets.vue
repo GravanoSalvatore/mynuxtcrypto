@@ -1,125 +1,124 @@
 <template>
-    <div class="container mt-5">
-      <!-- Article Heading -->
-      <div class="text-center mb-5">
-        <h2 class="">A Comprehensive Guide to Cryptocurrency Wallets</h2>
-        <p>Explore the history, types, top wallets, security practices, and major events in cryptocurrency wallets.</p>
-      </div>
-  
-      <!-- Sections with Collapsible Details -->
-      <div v-for="section in sections" :key="section.title" class="mb-4">
-        <h4 @click="toggleSection(section)" class="" style="cursor: pointer;color: ;">
-          {{ section.title }}
-        </h4>
-        <div v-if="section.open">
-          <p style="color: #6c757d;" v-for="paragraph in section.content" :key="paragraph">{{ paragraph }}</p>
-        </div>
+  <div class="container mt-5">
+    <!-- Заголовок статьи -->
+    <div class="text-center mb-5">
+      <h2 class="">Полное руководство по криптовалютным кошелькам</h2>
+      <p>Изучите историю, виды, лучшие кошельки, практики безопасности и важные события в мире криптовалютных кошельков.</p>
+    </div>
+
+    <!-- Разделы с раскрывающимися деталями -->
+    <div v-for="section in sections" :key="section.title" class="mb-4">
+      <h4 @click="toggleSection(section)" class="" style="cursor: pointer;color: ;">
+        {{ section.title }}
+      </h4>
+      <div v-if="section.open">
+        <p style="color: #6c757d;" v-for="paragraph in section.content" :key="paragraph">{{ paragraph }}</p>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        sections: [
-          {
-            title: "Introduction to Cryptocurrency Wallets",
-            open: true,
-            content: [
-              "Cryptocurrency wallets are digital tools that allow users to store and manage their cryptocurrencies. They play a crucial role in the crypto ecosystem, enabling users to send, receive, and safeguard their digital assets. Unlike traditional wallets, cryptocurrency wallets don't store the currency itself; rather, they store private keys essential for accessing and managing the crypto funds stored on the blockchain.",
-              "There are two main types of wallets: custodial and non-custodial. Custodial wallets are managed by third parties, usually exchanges, while non-custodial wallets are fully controlled by the user, offering more security and privacy."
-            ]
-          },
-          {
-            title: "History of Cryptocurrency Wallets",
-            open: false,
-            content: [
-              "The history of cryptocurrency wallets begins with the inception of Bitcoin in 2009. As Bitcoin gained popularity, users required secure ways to store their funds, leading to the development of early software wallets.",
-              "In 2011, the first physical hardware wallet was introduced, enhancing security by allowing offline storage of private keys. Since then, wallet technology has evolved, with advancements like multi-signature wallets and mobile wallets emerging to cater to diverse user needs."
-            ]
-          },
-          {
-            title: "Types of Cryptocurrency Wallets",
-            open: false,
-            content: [
-              "There are several types of wallets catering to different needs and security preferences. The two primary categories are hot wallets and cold wallets. Hot wallets, such as software and online wallets, are connected to the internet and are suitable for frequent transactions. Cold wallets, like hardware and paper wallets, are offline, providing enhanced security for long-term storage.",
-              "Popular examples of hot wallets include MetaMask, Trust Wallet, and Electrum. For cold wallets, Ledger Nano and Trezor are among the most widely used devices."
-            ]
-          },
-          {
-            title: "Top 10 Cryptocurrency Wallets of 2024",
-            open: false,
-            content: [
-              "Hot Wallets:",
-              "1. MetaMask: A widely-used Ethereum wallet.",
-              "2. Trust Wallet: A versatile mobile wallet with support for various cryptocurrencies.",
-              "3. Coinbase Wallet: A popular choice for users who prefer integration with the Coinbase exchange.",
-              "4. Mycelium: Known for advanced features catering to Bitcoin users.",
-              "5. Exodus: A beginner-friendly wallet with an intuitive design.",
-              "Cold Wallets:",
-              "1. Ledger Nano X: A secure hardware wallet with Bluetooth support.",
-              "2. Trezor Model T: A robust hardware wallet with multi-currency support.",
-              "3. KeepKey: An easy-to-use cold storage option.",
-              "4. SafePal: A Binance-endorsed hardware wallet with air-gapped security.",
-              "5. BitBox02: A compact and secure cold wallet solution."
-            ]
-          },
-          {
-            title: "Cryptocurrency Wallets on Exchanges",
-            open: false,
-            content: [
-              "Many users opt for exchange wallets for convenience, especially if they frequently trade. However, exchange wallets come with risks, as demonstrated by significant hacks in history. Using exchange wallets for long-term storage is not advisable due to the centralized control by exchanges, exposing assets to potential vulnerabilities.",
-              "Popular exchanges with wallet services include Binance, Coinbase, and Kraken. While these wallets provide ease of access, users should weigh the trade-offs in security."
-            ]
-          },
-          {
-            title: "Security in Cryptocurrency Wallets",
-            open: false,
-            content: [
-              "Hot wallets, while convenient, are prone to hacking risks as they are always connected to the internet. Cold wallets, on the other hand, offer increased security due to their offline nature, making them ideal for large holdings.",
-              "To secure a wallet, users should back up their private keys and use two-factor authentication. Additionally, using hardware wallets like Ledger or Trezor is recommended for enhanced security."
-            ]
-          },
-          {
-            title: "Major Hacks and Security Breaches in Wallet History",
-            open: false,
-            content: [
-              "Notable hacks in cryptocurrency history highlight the importance of security. The Mt. Gox hack in 2014, for instance, led to the loss of over 850,000 Bitcoins. Other hacks include the 2016 Bitfinex breach, where hackers exploited weaknesses in multi-signature wallet security.",
-              "These events underscore the importance of using secure, non-custodial wallets for storing substantial amounts of cryptocurrency."
-            ]
-          },
-          {
-            title: "Advantages and Disadvantages of Hot and Cold Wallets",
-            open: false,
-            content: [
-              "Hot wallets offer accessibility and convenience for frequent transactions. However, they are susceptible to online threats like hacking and phishing attacks. Cold wallets, while more secure, are less convenient for regular transactions as they require additional steps to access funds.",
-              "Choosing between hot and cold wallets depends on the user's needs and risk tolerance. Generally, a combination of both types provides flexibility and security."
-            ]
-          }
-        ]
-      };
-    },
-    methods: {
-      toggleSection(section) {
-        section.open = !section.open;
-      }
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      sections: [
+        {
+          title: "Введение в криптовалютные кошельки",
+          open: true,
+          content: [
+            "Криптовалютные кошельки — это цифровые инструменты, которые позволяют пользователям хранить и управлять своими криптовалютами. Они играют важную роль в крипто-экосистеме, позволяя пользователям отправлять, получать и защищать свои цифровые активы. В отличие от традиционных кошельков, криптовалютные кошельки не хранят саму валюту; вместо этого они хранят приватные ключи, необходимые для доступа к средствам на блокчейне.",
+            "Существуют два основных типа кошельков: кастодиальные и некостодиальные. Кастодиальные кошельки управляются третьими сторонами, обычно биржами, а некостодиальные кошельки полностью контролируются пользователем, что обеспечивает больше безопасности и конфиденциальности."
+          ]
+        },
+        {
+          title: "История криптовалютных кошельков",
+          open: false,
+          content: [
+            "История криптовалютных кошельков начинается с появлением биткоина в 2009 году. С ростом популярности биткоина пользователи нуждались в безопасных способах хранения своих средств, что привело к разработке первых программных кошельков.",
+            "В 2011 году был представлен первый физический аппаратный кошелек, улучшивший безопасность за счет возможности оффлайн-хранения приватных ключей. С тех пор технология кошельков эволюционировала, и появились такие инновации, как мультиподпись и мобильные кошельки."
+          ]
+        },
+        {
+          title: "Типы криптовалютных кошельков",
+          open: false,
+          content: [
+            "Существует несколько типов кошельков, которые соответствуют различным требованиям к безопасности. Основные категории — это горячие и холодные кошельки. Горячие кошельки, такие как программные и онлайн-кошельки, подключены к интернету и подходят для частых транзакций. Холодные кошельки, такие как аппаратные и бумажные кошельки, находятся в офлайне, что обеспечивает повышенную безопасность для долгосрочного хранения.",
+            "Популярные примеры горячих кошельков включают MetaMask, Trust Wallet и Electrum. Среди холодных кошельков наиболее востребованы устройства Ledger Nano и Trezor."
+          ]
+        },
+        {
+          title: "Топ-10 криптовалютных кошельков 2024 года",
+          open: false,
+          content: [
+            "Горячие кошельки:",
+            "1. MetaMask: Широко используемый Ethereum-кошелек.",
+            "2. Trust Wallet: Многофункциональный мобильный кошелек с поддержкой различных криптовалют.",
+            "3. Coinbase Wallet: Популярный выбор для пользователей, предпочитающих интеграцию с биржей Coinbase.",
+            "4. Mycelium: Известен своими расширенными функциями для пользователей биткоина.",
+            "5. Exodus: Простой в использовании кошелек с интуитивным дизайном.",
+            "Холодные кошельки:",
+            "1. Ledger Nano X: Надежный аппаратный кошелек с поддержкой Bluetooth.",
+            "2. Trezor Model T: Защищенный аппаратный кошелек с поддержкой множества валют.",
+            "3. KeepKey: Удобное решение для холодного хранения.",
+            "4. SafePal: Аппаратный кошелек, одобренный Binance, с безопасностью через QR-коды.",
+            "5. BitBox02: Компактное и надежное решение для холодного хранения."
+          ]
+        },
+        {
+          title: "Криптовалютные кошельки на биржах",
+          open: false,
+          content: [
+            "Многие пользователи предпочитают кошельки на биржах из-за удобства, особенно если они часто торгуют. Однако биржевые кошельки сопряжены с рисками, что доказано значительными хакерскими атаками в прошлом. Использование биржевых кошельков для долгосрочного хранения не рекомендуется из-за централизованного контроля со стороны биржи, что делает активы уязвимыми.",
+            "Популярные биржи с кошельками включают Binance, Coinbase и Kraken. Хотя такие кошельки удобны, пользователи должны учитывать компромиссы в безопасности."
+          ]
+        },
+        {
+          title: "Безопасность в криптовалютных кошельках",
+          open: false,
+          content: [
+            "Горячие кошельки, несмотря на удобство, подвержены рискам взлома, так как они всегда подключены к интернету. Холодные кошельки, напротив, обеспечивают повышенную безопасность благодаря своему оффлайн-режиму, что делает их идеальными для хранения крупных сумм.",
+            "Для обеспечения безопасности кошелька пользователи должны создавать резервные копии приватных ключей и использовать двухфакторную аутентификацию. Также рекомендуется использовать аппаратные кошельки, такие как Ledger или Trezor, для повышения безопасности."
+          ]
+        },
+        {
+          title: "Крупные взломы и утечки безопасности в истории кошельков",
+          open: false,
+          content: [
+            "Известные взломы в истории криптовалют подчеркивают важность безопасности. Взлом Mt. Gox в 2014 году, например, привел к потере более 850 000 биткоинов. Другие взломы включают атаку на Bitfinex в 2016 году, когда хакеры использовали уязвимости в мультиподписных кошельках.",
+            "Эти события подчеркивают важность использования надежных, некостодиальных кошельков для хранения значительных сумм криптовалюты."
+          ]
+        },
+        {
+          title: "Преимущества и недостатки горячих и холодных кошельков",
+          open: false,
+          content: [
+            "Горячие кошельки обеспечивают доступность и удобство для частых транзакций. Однако они уязвимы перед онлайн-угрозами, такими как взлом и фишинговые атаки. Холодные кошельки более безопасны, но менее удобны для регулярных транзакций, так как требуют дополнительных шагов для доступа к средствам.",
+            "Выбор между горячими и холодными кошельками зависит от потребностей пользователя и уровня допустимого риска. В целом, комбинация обоих типов обеспечивает гибкость и безопасность."
+          ]
+        }
+      ]
+    };
+  },
+  methods: {
+    toggleSection(section) {
+      section.open = !section.open;
     }
-  };
-  </script>
-  
-  <style scoped>
-  .container {
-    max-width: 900px;
   }
-  h2 {
-    transition: color 0.3s;
-  }
-  h2:hover {
-    color: #007bff;
-  }
-  .text-primary {
-    color: #007bff;
-  }
-  </style>
-  
+};
+</script>
+
+<style scoped>
+.container {
+  max-width: 900px;
+}
+h2 {
+  transition: color 0.3s;
+}
+h2:hover {
+  color: #007bff;
+}
+.text-primary {
+  color: #007bff;
+}
+</style>

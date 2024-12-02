@@ -30,7 +30,7 @@
     
     <div class="container-fluid">
       <div class="heading-marquee-container">
-        <h2 v-if="!isLoading" class="heading-left fw-bold">AI </h2>
+        <h3 v-if="!isLoading" class="heading-left fw-bold">Искусственный интелект</h3>
 
         <!-- Бегущая строка -->
         <div v-if="!isLoading" class="marquee">

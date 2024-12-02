@@ -4,12 +4,12 @@ async function fetchNewsRoutes() {
   try {
     // Подключение к вашему API
     const response = await axios.get(
-      "https://min-api.cryptocompare.com/data/v2/news/?lang=EN"
+      "https://min-api.cryptocompare.com/data/v2/news/?lang=RU"
     );
     const data = response.data.Data;
 
     // Преобразование данных в формат маршрутов
-    const routes = data.map((article) => `/news/${article.id}`); // Например, используем `id` как slug
+    const routes = data.map((article) => `/news/${article.id}`);
 
     return routes;
   } catch (error) {
@@ -20,26 +20,22 @@ async function fetchNewsRoutes() {
 
 export default defineNuxtConfig({
   router: {
-    
     scrollBehavior(to, from, savedPosition) {
-      // Если есть сохранённая позиция, переместитесь к ней
       if (savedPosition) {
         return savedPosition;
       }
-      // Иначе начинайте с начала страницы
       return { x: 0, y: 0 };
     },
   },
   domains: [
-    "min-api.cryptocompare.com", // пример домена API с изображениями
+    "min-api.cryptocompare.com",
   ],
   modules: ["@nuxtjs/sitemap", "@pinia/nuxt", "@nuxt/image"],
 
   sitemap: {
-    hostname: "https://cryptocurrencybulls.com", // Ваш домен
-    gzip: true, // Сжимает sitemap для улучшения производительности
+    hostname: "https://cryptocurrencybulls.com",
+    gzip: true,
     routes: async () => {
-      // Используем асинхронную функцию для добавления динамических маршрутов
       const newsRoutes = await fetchNewsRoutes();
       return newsRoutes;
     },
@@ -51,7 +47,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "CryptoBulls - Latest Cryptocurrency News",
+      title: "CryptoBulls - Последние новости криптовалют",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -59,12 +55,12 @@ export default defineNuxtConfig({
           hid: "description",
           name: "description",
           content:
-            "Stay updated with the latest cryptocurrency news, insights, and trends.",
+            "Будьте в курсе последних новостей криптовалют, аналитики и трендов.",
         },
         {
           name: "keywords",
           content:
-            "cryptocurrency, blockchain, Bitcoin, Ethereum, crypto news, crypto trends",
+            "криптовалюты, блокчейн, Биткоин, Эфириум, новости криптовалют, тренды криптовалют",
         },
         { name: "robots", content: "index, follow" },
         {
@@ -75,12 +71,12 @@ export default defineNuxtConfig({
         // Open Graph метатеги для соцсетей
         {
           property: "og:title",
-          content: "CryptoBulls - Latest Cryptocurrency News",
+          content: "CryptoBulls - Последние новости криптовалют",
         },
         {
           property: "og:description",
           content:
-            "Stay updated with the latest cryptocurrency news, insights, and trends.",
+            "Будьте в курсе последних новостей криптовалют, аналитики и трендов.",
         },
         { property: "og:image", content: "/og-image.png" },
         { property: "og:url", content: "https://cryptobulls.com" },
@@ -90,12 +86,12 @@ export default defineNuxtConfig({
         { name: "twitter:card", content: "summary_large_image" },
         {
           name: "twitter:title",
-          content: "CryptoBulls - Latest Cryptocurrency News",
+          content: "CryptoBulls - Последние новости криптовалют",
         },
         {
           name: "twitter:description",
           content:
-            "Stay updated with the latest cryptocurrency news, insights, and trends.",
+            "Будьте в курсе последних новостей криптовалют, аналитики и трендов.",
         },
         { name: "twitter:image", content: "/og-image.png" },
       ],
@@ -115,12 +111,6 @@ export default defineNuxtConfig({
           rel: "stylesheet",
           href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css",
         },
-      ],
-      script: [
-        // {
-        //   src: "https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js",
-        //   defer: true,
-        // },
       ],
     },
   },

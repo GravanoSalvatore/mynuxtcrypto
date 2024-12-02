@@ -1,19 +1,18 @@
 <template>
   <div class="about-us container my-4">
-    <h1 class="text-center mb-4">About Us</h1>
+    <h1 class="text-center mb-4">О нас</h1>
    
     <p>
-      <!-- <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> -->
-      <strong>Crypto bulls</strong> is an innovative platform for distributing news about blockchain, cryptocurrencies, and IT technologies from around the world. We specialize in providing up-to-date and quality information and content.
+      <strong>Крипто Быки</strong> — это инновационная платформа для распространения новостей о блокчейне, криптовалютах и IT-технологиях со всего мира. Мы специализируемся на предоставлении актуальной и качественной информации и контента.
     </p>
     <p>
-      Our goal is to be a reliable source of information for everyone interested in cryptocurrencies and technology. We strive to keep our users informed of the latest events and trends in the crypto world.
+      Наша цель — быть надежным источником информации для всех, кто интересуется криптовалютами и технологиями. Мы стремимся держать наших пользователей в курсе последних событий и трендов в мире криптовалют.
     </p>
     <p>
-      <strong>Crypto bulls</strong> is not just a platform, but a comprehensive crypto news website where everyone can find useful information, analytical articles, and expert opinions.
+      <strong>Крипто Быки</strong> — это не просто платформа, а полноценный сайт криптовалютных новостей, где каждый может найти полезную информацию, аналитические статьи и экспертные мнения.
     </p>
     <p>
-      Thank you for trusting and choosing <strong>Crypto bulls</strong> as your source for crypto news.
+      Спасибо за доверие и выбор <strong>Крипто Быки</strong> в качестве источника новостей о криптовалютах.
     </p>
   </div>
 </template>
@@ -49,6 +48,6 @@ p {
 }
 
 strong {
-  color:orange;
+  color: orange;
 }
 </style>
