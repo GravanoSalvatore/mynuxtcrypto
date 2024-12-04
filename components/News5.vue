@@ -94,7 +94,7 @@
     <TradingViewChart :symbol="'BINANCE:USDTUSD'" :width="300" :height="300" containerId="tradingview_usdt_chart" />
   </div>
 </div> -->
-    <br /><br />
+    <br />
   </div>
 </template>
 
