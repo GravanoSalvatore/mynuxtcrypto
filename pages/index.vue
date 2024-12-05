@@ -42,6 +42,7 @@
   import AdvancedNewsSection from '~/components/AdvancedNewsSection.vue';
   import News2 from '~/components/News2.vue';
   import News3a from '~/components/News3a.vue';
+  import News3 from '~/components/News3.vue';
   import Popular from '~/components/PopularNews.vue';
   import News4 from '~/components/News4.vue';
   import News5 from '~/components/News5.vue';
@@ -60,6 +61,7 @@
       News2,
      Logo,
       News3a,
+      News3,
       News4,
       News5,
       News6,
@@ -71,14 +73,7 @@
         loading: true, // начальное состояние
       };
     },
-    async created() {
-      // Асинхронная загрузка компонента News3
-      const { default: News3 } = await import('~/components/News3.vue');
-      this.$options.components.News3 = News3;
-  
-      // Установка флага после загрузки News3
-      this.loading = false;
-    },
+    
   };
   </script>
   
