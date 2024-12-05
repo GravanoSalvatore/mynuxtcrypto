@@ -28,7 +28,7 @@
     </div>
     <div class="container-fluid">
       <div class="heading-marquee-container">
-        <h3 v-if="!isLoading" class="heading-left fw-bold">АЛЬТКОИНЫ</h3>
+        <!-- <h3 v-if="!isLoading" class="heading-left fw-bold">АЛЬТКОИНЫ</h3> -->
 
         <!-- Бегущая строка -->
         <div v-if="!isLoading" class="marquee">
@@ -248,9 +248,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  /* text-decoration: underline; */
-}
+
 
 /* Стили для тени карточек */
 .car {

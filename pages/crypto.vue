@@ -30,7 +30,7 @@
     </div>
     <div class="container-fluid">
       <div class="heading-marquee-container">
-        <h2 v-if="!isLoading" class="heading-left fw-bold">БИТКОИН И ЭФИРИУМ </h2>
+        <!-- <h2 v-if="!isLoading" class="heading-left fw-bold">БИТКОИН И ЭФИРИУМ </h2> -->
 
         <!-- Бегущая строка -->
         <div v-if="!isLoading" class="marquee">
@@ -233,10 +233,7 @@ export default {
   flex-wrap: nowrap; /* Чтобы не было переноса на больших экранах */
 }
 
-.tradingview-widget {
-  /* width: 400px;
-  height: 400px; */
-}
+
 
 @media (max-width: 768px) {
   .tradingview-widgets-container {

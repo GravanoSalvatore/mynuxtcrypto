@@ -1,3 +1,4 @@
+
 <template>
   <div class="container articles">
    
@@ -18,14 +19,14 @@
             class="img-fluid article-img"
             alt="article image"
           />
-          <!-- <div class="text">
+          <div class="text">
             <h5 class="card-title fw-bold">{{ article.title }}</h5>
-          </div> -->
+          </div>
         </div>
       </div>
       <div class="col-12 text-center fw-bold">
         <span
-          v-if="visibleArticlesCount < newsStore.articles1.length"
+          v-if="visibleArticlesCount < newsStore.articles.length"
           @click="loadMoreArticles"
           class="pointer"
           >Show more
@@ -150,7 +151,7 @@ export default {
   },
   computed: {
     visibleArticles() {
-      return this.newsStore.articles1.slice(0, this.visibleArticlesCount);
+      return this.newsStore.articles.slice(0, this.visibleArticlesCount);
     },
   },
   data() {
@@ -283,7 +284,7 @@ updateCurrent(startIndex) {
   });
 },
     selectArticle(index) {
-      this.selectedArticle = this.newsStore.articles1[index];
+      this.selectedArticle = this.newsStore.articles[index];
       this.scrollToTop();
     },
     
@@ -319,9 +320,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  /* text-decoration: underline; */
-}
+
 
 /* Стили для тени карточек */
 .car {
@@ -383,7 +382,7 @@ a:hover {
 
 .slider-button {
   background-color:transparent !important; 
-  /* color: white; */
+  color:cornflowerblue;
   border: none;
   font-size: 24px;
   cursor: pointer;

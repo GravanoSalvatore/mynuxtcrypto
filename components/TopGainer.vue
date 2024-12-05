@@ -109,14 +109,14 @@
    <template>
     <div class="crypto-container">
       <div class="crypto-card">
-        <img :src="topGainer.imageUrl" alt="crypto logo" class="crypto-logo" />
+        <img :src="topGainer.imageUrl" alt="Top Gainer" class="crypto-logo" />
         <div class="crypto-info">
           <span class="change-positive ">{{ topGainer.change }}%</span>
           <span class="crypto-name positive">{{ topGainer.name }}</span>
         </div>
       </div>
       <div class="crypto-card">
-        <img :src="topLoser.imageUrl" alt="crypto logo" class="crypto-logo" />
+        <img :src="topLoser.imageUrl" alt="Top Loser" class="crypto-logo" />
         <div class="crypto-info">
           <span class="change-negative">{{ topLoser.change }}%</span>
           <span class="crypto-name negative">{{ topLoser.name }}</span>
@@ -139,39 +139,49 @@
     async mounted() {
       try {
         const response = await axios.get(
-          "https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD"
+          "https://api.coingecko.com/api/v3/coins/markets",
+          {
+            params: {
+              vs_currency: "usd",
+              order: "market_cap_desc",
+              per_page: 100,
+              page: 1,
+              price_change_percentage: "24h",
+            },
+          }
         );
   
-        const data = response.data.Data;
+        const data = response.data;
+  
         let topGainer = data[0];
         let topLoser = data[0];
   
-        data.forEach((item) => {
-          const changePct = item.RAW.USD.CHANGEPCT24HOUR;
+        data.forEach((coin) => {
+          const changePct = coin.price_change_percentage_24h;
   
-          if (changePct > topGainer.RAW.USD.CHANGEPCT24HOUR) {
-            topGainer = item;
+          if (changePct > topGainer.price_change_percentage_24h) {
+            topGainer = coin;
           }
   
-          if (changePct < topLoser.RAW.USD.CHANGEPCT24HOUR) {
-            topLoser = item;
+          if (changePct < topLoser.price_change_percentage_24h) {
+            topLoser = coin;
           }
         });
   
         this.topGainer = {
-          name: topGainer.CoinInfo.FullName,
-          symbol: topGainer.CoinInfo.Name,
-          price: topGainer.RAW.USD.PRICE.toFixed(2),
-          change: topGainer.RAW.USD.CHANGEPCT24HOUR.toFixed(2),
-          imageUrl: `https://www.cryptocompare.com${topGainer.CoinInfo.ImageUrl}`,
+          name: topGainer.name,
+          symbol: topGainer.symbol.toUpperCase(),
+          price: topGainer.current_price.toFixed(2),
+          change: topGainer.price_change_percentage_24h.toFixed(2),
+          imageUrl: topGainer.image,
         };
   
         this.topLoser = {
-          name: topLoser.CoinInfo.FullName,
-          symbol: topLoser.CoinInfo.Name,
-          price: topLoser.RAW.USD.PRICE.toFixed(2),
-          change: topLoser.RAW.USD.CHANGEPCT24HOUR.toFixed(2),
-          imageUrl: `https://www.cryptocompare.com${topLoser.CoinInfo.ImageUrl}`,
+          name: topLoser.name,
+          symbol: topLoser.symbol.toUpperCase(),
+          price: topLoser.current_price.toFixed(2),
+          change: topLoser.price_change_percentage_24h.toFixed(2),
+          imageUrl: topLoser.image,
         };
       } catch (error) {
         console.error("Ошибка при загрузке данных:", error);
@@ -183,11 +193,11 @@
   </script>
   
   <style scoped>
-  .negative{
+  .negative {
     color: #ff0000;
   }
-  .positive{
-    color: #00ff00;
+  .positive {
+    color: #03cd03;
   }
   .crypto-container {
     display: flex;
@@ -213,7 +223,7 @@
   
   .change-positive {
     font-size: 10px;
-    color: #00ff00;
+    color: #03cd03;
   }
   
   .change-negative {
@@ -223,7 +233,6 @@
   
   .crypto-name {
     font-size: 0.7rem;
-   
     margin-top: 2px;
     text-align: center;
   }

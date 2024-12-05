@@ -8,7 +8,14 @@
         />
       </p>
     </div>
+    <!-- <div class="tradingview-widgets-container">
+  <div class="tradingview-widget">
+    <TradingViewChart :symbol="'BINANCE:BTCUSDT'" :width="300" :height="300" containerId="tradingview_btc_chart" />
+  </div>
+ 
+</div> -->
     <div v-else class="row top">
+      <!-- Основная колонка с карточками новостей (четыре карточки в ряд) -->
       <div class="col-12 col-md-9" ref="newsContainer">
         <div class="row">
           <div
@@ -18,30 +25,28 @@
           >
             <div class="h-100 news-card" style="max-height: 500px">
               <img
-                v-if="newsItem.urlToImage"
-                :src="newsItem.urlToImage"
+                v-if="newsItem.imageurl"
+                :src="newsItem.imageurl"
                 class="card-img-top"
                 alt="news image"
                 style="height: 200px; object-fit: cover"
               />
               <div class="card-body d-flex flex-column">
                 <p>
-                  <!-- <img
+                  <img
                     style="width: 35px; height: 35px"
-                    :src="newsItem.source.uiTitle"
-                  /> -->
-                  {{ newsItem.source.uiTitle }}<br/>
-                  {{ newsItem.author }}
+                    :src="newsItem.source_info.img"
+                  />
+                  {{ newsItem.source_info.name }}
                 </p>
-
                 <a :href="newsItem.url" target="_blank" class="mt-auto">
                   <h5 class="card-title">{{ newsItem.title }}</h5>
                 </a>
                 <p class="card-text ">
-                  {{ formatDate(newsItem.publishedAt) }}
+                  {{ formatDate(newsItem.published_on) }}
                 </p>
                 <span style="font-size: 10px; color: cornflowerblue">
-                  {{ truncateCategory(newsItem.tags) }}
+                  {{ truncateCategory(newsItem.categories) }}
                 </span>
               </div>
             </div>
@@ -49,8 +54,9 @@
         </div>
       </div>
 
+      <!-- Правая колонка для оставшихся новостей -->
       <div class="col-12 col-md-3 fixed-sidebar mb-4 mb-md-0">
-        <h3 v-if="!isLoading" class="fw-bold">Главное сегодня</h3>
+        <h3 v-if="!isLoading" class="fw-bold">Latest news</h3>
         <div class="sidebar-content">
           <div
             v-for="(newsItem, index) in remainingNews"
@@ -58,26 +64,27 @@
             class="sidebar-news-item"
           >
             <p>
-              <!-- <img
+              <img
                 style="width: 35px; height: 35px"
-                :src="newsItem.source.uiTitle"
-              /> -->
-              {{ newsItem.source.uiTitle }}
+                :src="newsItem.source_info.img"
+              />
+              {{ newsItem.source_info.name }}
             </p>
             <NuxtLink :to="`/news/${newsItem.id}`" class="mt-auto">
               <h5 class="sidebar-news-title">{{ newsItem.title }}</h5>
               <p class="card-text ">
-                {{ formatDate(newsItem.publishedAt) }}
+                {{ formatDate(newsItem.published_on) }}
               </p>
             </NuxtLink>
             <span style="font-size: 10px; color: cornflowerblue">
-              {{ truncateCategory(newsItem.tags) }}
+              {{ truncateCategory(newsItem.categories) }}
             </span>
           </div>
         </div>
       </div>
     </div>
-    <br /><br />
+    
+  
   </div>
 </template>
 
@@ -112,26 +119,25 @@ export default {
     async fetchNews() {
       try {
         const response = await fetch(
-          "https://4v-news-api.azurewebsites.net/News?SiteId=1&CategoryId=16&Page=1&PageSize=100"
+          "https://min-api.cryptocompare.com/data/v2/news/?lang=EN"
         );
         const data = await response.json();
-        this.news = data.items.slice(0, 8);
-        this.remainingNews = data.items.slice(8);
+        this.news = data.Data.slice(15, 23);
+        this.remainingNews = data.Data.slice(23);
       } catch (error) {
         console.error("Ошибка при загрузке новостей:", error);
       }
     },
-    formatDate(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleDateString("ru-RU", {
+    formatDate(timestamp) {
+      const date = new Date(timestamp * 1000);
+      return date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
       });
     },
-    truncateCategory(tags) {
-      const categories = tags.map(tag => tag.name).join(", ");
-      return categories.length > 50 ? categories.slice(0, 50) + "..." : categories;
+    truncateCategory(category) {
+      return category.length > 20 ? category.slice(0, 20) + "..." : category;
     },
     prevPage() {
       if (this.currentPage > 1) {
@@ -156,10 +162,6 @@ export default {
 </script>
 
 <style scoped>
-/* Ваши стили остаются такими же */
-</style>
-
-<style scoped>
 :root {
   --link-color: #000000; /* Цвет ссылок в светлой теме */
   --text-color: #000000; /* Основной цвет текста в светлой теме */
@@ -169,7 +171,7 @@ export default {
 .dark-mode {
   --link-color: #ffffff; /* Цвет ссылок в тёмной теме */
   --text-color: #ffffff; /* Основной цвет текста в тёмной теме */
-  background-color: #8a0d0d;
+  
 }
 
 body, .dark-mode {
@@ -232,6 +234,9 @@ a {
 .card-title {
   font-size: 1.1rem;
   font-weight: bold;
+}
+.card-title:hover {
+  color: cornflowerblue;
 }
 
 .card-text {

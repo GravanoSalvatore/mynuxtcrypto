@@ -3,33 +3,29 @@
     <!-- Баннер -->
     <div v-if="bannerItem" ref="banner" class="banner-container text-center py-4 mb-5">
       <div ref="bannerContent" class="banner-content">
-        <!-- <NuxtLink to="/" class="navbar-brand"> -->
-          <img style="width: 250px;" src="https://cdn.prod.website-files.com/62f387a85a056619ebadb8de/62ffa256a99af5585079805f_%D0%B7%D1%89%D0%B4%D0%B3%D0%BF%D1%89%D1%82.png"/>
-        <!-- </NuxtLink> --><p class="fw-bold fs-2">MATIC</p>
+        <NuxtLink to="/" class="navbar-brand">
+          <img style="width: 250px;" src="../public/solana.png"/>
+        </NuxtLink>
+        <!-- <p ref="slogan" class="slogan fw-bold" style="font-size: 36px; color: #3d96ef;">Crypto bulls!</p> -->
       </div>
     </div>
 
     <!-- Карточки -->
     <div class="container">
-      <h2 v-if="!isLoading" class="fw-bold">Новости</h2>
+      <!-- <h2 v-if="!isLoading" class="fw-bold">Defi & Nft</h2> -->
       <div class="row g-4" v-if="!isLoading">
         <div v-for="newsItem in displayedNewsItems" :key="newsItem.id" class="col-12 col-md-6 col-lg-3 news-card">
           <div class="car h-100">
-            <img v-if="newsItem.urlToImage" :src="newsItem.urlToImage" class="card-img-top" alt="news image" />
+            <img v-if="newsItem.imageurl" :src="newsItem.imageurl" class="card-img-top" alt="news image" />
             <div class="card-body d-flex flex-column">
-              <p>
-                 
-                  {{ newsItem.author }}
-                </p>
-           
-            
+              <p><img style="width: 35px; height: 35px;" :src="newsItem.source_info.img"> {{ newsItem.source_info.name }}</p>
               <a :href="newsItem.url" target="_blank" class="mt-auto">
                 <h5 class="card-title fw-bold">{{ newsItem.title }}</h5>
               </a>
-              <p class="card-text ">{{ formatDate(newsItem.publishedAt) }}</p>
+              <p class="card-text ">{{ formatDate(newsItem.published_on) }}</p>
               <span style="font-size:10px; color:cornflowerblue;">
-                {{ truncateCategory(newsItem.categoryName, 30) }}
-              </span>
+  {{ truncateCategory(newsItem.categories, 30) }}
+</span>
             </div>
           </div>
         </div>
@@ -44,8 +40,8 @@ export default {
     return {
       newsItems: [],
       bannerItem: null,
-      displayedNewsItems: [],
-      initialDisplayCount: 16,
+      displayedNewsItems: [], // Новости, которые будут отображаться
+      initialDisplayCount: 16, // Начальное количество отображаемых новостей
       isLoading: true,
     };
   },
@@ -56,11 +52,13 @@ export default {
   },
   methods: {
     truncateCategory(text, maxLength) {
+      // Если длина текста превышает maxLength, обрезаем и добавляем "..."
       return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
-    },
-    formatDate(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleDateString("ru-RU", {
+    }
+  ,
+    formatDate(timestamp) {
+      const date = new Date(timestamp * 1000);
+      return date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -69,12 +67,12 @@ export default {
     async fetchNews() {
       try {
         const response = await fetch(
-          "https://4v-news-api.azurewebsites.net/News?SiteId=1&CategoryId=16&Page=1&PageSize=100"
+          "https://min-api.cryptocompare.com/data/v2/news/?categories=Technology,Blockchain&excludeCategories=Defi,Nft"
         );
         const data = await response.json();
-        this.bannerItem = data.items[0] || null;
-        this.newsItems = data.items.slice(1); 
-        this.displayedNewsItems = this.newsItems.slice(0, this.initialDisplayCount); 
+        this.bannerItem = data.Data[0] || null;
+        this.newsItems = data.Data.slice(1); // Остальные новости для карточек
+        this.displayedNewsItems = this.newsItems.slice(0, this.initialDisplayCount); // Отображаем первые 12
       } catch (error) {
         console.error("Ошибка при загрузке новостей:", error);
       }
@@ -133,60 +131,114 @@ export default {
 
 <style scoped>
 :root {
-  --link-color: #000000;
-  --text-color: #000000;
-  --box-shadow-color: rgba(73, 69, 69, 0.3);
+  --link-color: #000000; /* Цвет ссылок в светлой теме */
+  --text-color: #000000; /* Основной цвет текста в светлой теме */
+  --box-shadow-color: rgba(73, 69, 69, 0.3); /* Тень для светлой темы */
   background-color: #ffffff;
 }
 
 .dark-mode {
-  --link-color: #ffffff;
-  --text-color: #ffffff;
-  --box-shadow-color: rgba(238, 235, 235, 0.3);
+  --link-color: #ffffff; /* Цвет ссылок в тёмной теме */
+  --text-color: #ffffff; /* Основной цвет текста в тёмной теме */
+  --box-shadow-color: rgba(238, 235, 235, 0.3); /* Светлая тень для тёмной темы */
+  /* background-color: #8a0d0d; */
 }
 
 body, .dark-mode {
-  color: var(--text-color);
+  color: var(--text-color); /* Использование переменной для цвета текста */
 }
 
+/* Стили для ссылок */
 a {
-  color: var(--link-color);
+  color: var(--link-color); /* Цвет ссылок будет зависеть от темы */
   text-decoration: none;
 }
 
+a:hover {
+  /* text-decoration: underline; */
+}
+
+/* Стили для тени карточек */
 .car {
   padding: 10px;
-  box-shadow: 0 8px 16px var(--box-shadow-color);
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень для карточек */
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .car:hover {
   transform: scale(1.05);
-  box-shadow: 0 12px 20px var(--box-shadow-color);
+  box-shadow: 0 12px 20px var(--box-shadow-color); /* Более яркая тень при наведении */
 }
 
+  /* .card-body {
+    box-shadow: none !important;
+    border: none !important;
+  } */
+  .car {
+    padding: 10px;
+  box-shadow: 0 8px 16px var(--box-shadow-color);
+}
+
+.car:hover {
+  transition: transform 0.3s, box-shadow 0.3s;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px var(--box-shadow-color); /* Тень при наведении */
+}
+  
 .pointer {
   cursor: pointer;
 }
-
+a {
+  text-decoration: none;
+  /* color: black; */
+}
 .fixed-sidebar {
   max-height: 100vh;
   overflow-y: auto;
   position: sticky;
   top: 0;
 }
-
 .sidebar-crypto-item {
   margin-bottom: 10px;
   padding: 10px;
+  /* background-color: #f8f9fa; */
   border-radius: 5px;
   display: flex;
   align-items: center;
 }
-
+.crypto-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+.crypto-name {
+  font-size: 0.9rem;
+}
+.text-success {
+  color: #28a745;
+}
+.text-danger {
+  color: #dc3545;
+}
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.news-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+  
+a{
+  text-decoration: none;
+  /* color: #040404; */
+}
+.container {
+  max-width: 1200px;
+}
 .banner-container {
-  height: 330px;
-  /* background-color: rgba(12, 31, 74, 0.9); */
+  height: 250px;
+  background-color: rgba(12, 31, 74, 0.9);
   padding: 30px;
   overflow: hidden;
   position: relative;
@@ -194,18 +246,15 @@ a {
   align-items: center;
   justify-content: center;
 }
-
 .banner-content {
   border-radius: 8px;
   opacity: 0;
   transition: opacity 2s ease-in-out;
   position: relative;
 }
-
 .banner-content.fade-in {
   opacity: 1;
 }
-
 .slogan {
   margin-top: 1rem;
   font-size: 1.2rem;
@@ -214,17 +263,16 @@ a {
   transform: translateY(30px);
   transition: opacity 1.5s ease, transform 1.5s ease;
 }
-
 .slogan.slide-in {
   opacity: 1;
   transform: translateY(0);
 }
-
-.news-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+.news-card {
+  transition: transform 0.3s ease;
 }
-
+.news-card:hover {
+  transform: scale(1.02);
+}
 .card-img-top {
   height: 200px;
   object-fit: cover;

@@ -243,9 +243,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  /* text-decoration: underline; */
-}
 
 /* Стили для тени карточек */
 .car {

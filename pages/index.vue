@@ -1,59 +1,5 @@
-<!-- <template>
-    <div style="background-color: white;">
-    
-    <CookieConsent/>
-    
-    <News3 />
-    <Price/>
-    
-        <AdvancedNewsSection />
-        
-        <News5 />
-        <News6 />
-        <News3a />
-        
-      <NewsSection />
-      <br/>
-
-     
-      <News4 />
-      <br/>
-     
-
-     
-    </div>
-  </template>
   
-  <script>
-  import NewsSection from '~/components/NewsSection.vue';
-  import AdvancedNewsSection from '~/components/AdvancedNewsSection.vue';
-  import News2 from '~/components/News2.vue';
-  import News3 from '~/components/News3.vue';
-  import News3a from '~/components/News3a.vue';
-  import News4 from '~/components/News4.vue';
-  import News5 from '~/components/News5.vue';
-  import News6 from '~/components/News6.vue';
-  import Price from '~/components/Price.vue';
-  import CookieConsent from '~/components/CookieConsent.vue';
-  export default {
-    data(){},
-    components: {
-      NewsSection,
-      AdvancedNewsSection,
-      News2,
-      News3,
-      News3a,
-      News4,
-      News5,
-      News6,
-      Price,
-      CookieConsent
-    },
-  };
-  </script>
-  
-   -->
-   <template>
+  <template>
     <div style="">
       <!-- <CookieConsent /> -->
   
@@ -72,6 +18,7 @@
         <!-- <br/> <br/> -->
         <!-- <Price /> -->
         <News5 />
+        <Popular/>
         <News3 />
 <Logo/>
 <Video/>
@@ -95,7 +42,7 @@
   import AdvancedNewsSection from '~/components/AdvancedNewsSection.vue';
   import News2 from '~/components/News2.vue';
   import News3a from '~/components/News3a.vue';
-  // import News3 from '~/components/News3.vue';
+  import Popular from '~/components/PopularNews.vue';
   import News4 from '~/components/News4.vue';
   import News5 from '~/components/News5.vue';
   import News6 from '~/components/News6.vue';
@@ -106,6 +53,7 @@
   
   export default {
     components: {
+      Popular,
       Video,
       NewsSection,
       AdvancedNewsSection,
