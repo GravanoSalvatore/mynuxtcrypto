@@ -4,17 +4,17 @@
       <!-- <CookieConsent /> -->
   
       <!-- Прелоадер отображается, пока компонент не загрузился -->
-      <div v-if="loading" class="preloader text-white">
+      <!-- <div v-if="loading" class="preloader text-white">
         <p>
           <img
             style="width: 300px;"
             src="../public/bull.webp"
           />
         </p>
-      </div>
+      </div> -->
   
       <!-- Отображение компонентов, когда loading становится false -->
-      <div v-else>
+      <div >
         <!-- <br/> <br/> -->
         <!-- <Price /> -->
         <News5 />
