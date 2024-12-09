@@ -10,20 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/image": "^1.8.1",
-    "@nuxtjs/meta": "^3.0.0-beta.16",
-    "@pinia/nuxt": "^0.7.0",
-    "@popperjs/core": "^2.11.8",
-    "axios": "^1.7.7",
+   
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "nuxt": "^3.14.0",
-    "pinia": "^2.2.6",
-    "vue": "latest",
+    "@pinia/nuxt": "^0.8.0",  
+  "pinia": "^2.2.8",  
+  "vue": "^3.2.47" ,
+    "vue-device-detector": "^1.1.6",
     "vue-router": "latest"
-  },
-  "devDependencies": {
-    "@nuxt/types": "^2.18.1",
-    "@nuxt/typescript-build": "^3.0.2",
-    "@nuxtjs/sitemap": "^6.1.5"
   }
 }
