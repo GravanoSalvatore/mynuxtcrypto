@@ -109,14 +109,14 @@
    <template>
     <div class="crypto-container">
       <div class="crypto-card">
-        <img :src="topGainer.imageUrl" alt="Top Gainer" class="crypto-logo" />
+        <img :src="topGainer.imageUrl" alt="" class="crypto-logo" />
         <div class="crypto-info">
           <span class="change-positive ">{{ topGainer.change }}%</span>
           <span class="crypto-name positive">{{ topGainer.name }}</span>
         </div>
       </div>
       <div class="crypto-card">
-        <img :src="topLoser.imageUrl" alt="Top Loser" class="crypto-logo" />
+        <img :src="topLoser.imageUrl" alt="" class="crypto-logo" />
         <div class="crypto-info">
           <span class="change-negative">{{ topLoser.change }}%</span>
           <span class="crypto-name negative">{{ topLoser.name }}</span>
