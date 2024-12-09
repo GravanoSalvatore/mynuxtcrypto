@@ -634,217 +634,219 @@
  </template>
  
  <script>
- import { useThemeStore } from '../stores/themeStore.js';
- import { ref, onMounted, watch } from 'vue';
- import Price from "../components/Price.vue";
- import News from "../components/NewsGrid.vue";
- import Top from "../components/TopGainer.vue";
- export default {
-   setup() {
-     const themeStore = useThemeStore();
-     const isDarkMode = computed(() => themeStore.isDarkMode);  // Создаём реактивную переменную
-     const loading = ref(true);
- 
-     onMounted(() => {
-       console.log('Mounted: Initializing theme...');
-       themeStore.loadTheme();
-       console.log('isDarkMode после загрузки:', themeStore.isDarkMode);
-       
-       setTimeout(() => {
-         loading.value = false;
-         console.log('Loading complete:', loading.value);
-       }, 500);
-     });
-     watch(isDarkMode, (newVal) => {
-       console.log('Тема обновлена:', newVal ? 'Dark mode' : 'Light mode');
-     });
- 
-     function toggleThemeWithLog() {
-       console.log('Toggle theme clicked');
-       themeStore.toggleTheme(); // Меняем тему в хранилище
-       console.log('New isDarkMode value after toggle:', isDarkMode.value);
-     }
- 
-     return {
-       loading,
-       toggleThemeWithLog,
-       isDarkMode,
-     };
- 
-   },
-   components: { Price,Top,News},
-   beforeUnmount() {
-     window.removeEventListener("scroll", this.handleScroll);
-     document.removeEventListener("click", this.closeDropdownOnClickOutside);
-   },
- 
-   // beforeDestroy() {
-   //   window.removeEventListener("scroll", this.handleScroll);
-   // },
-   data() {
-     return {
-       isSearchVisible: false,
-       // isScrolled: false,
-       isDropdownOpen: false,
-       images: [],
-       showScrollTopButton: false,
-       email: "",
-       btcPrice: null,
-       ethPrice: null,
-       prevBtcPrice: null,
-       prevEthPrice: null,
-       btcArrow: "",
-       ethArrow: "",
-       btcChangeClass: "",
-       ethChangeClass: "",
-       isSidebarOpen: false,
-       searchQuery: "",
-       searchResults: [],
-     };
-   },
-   async mounted() {
-    
-     await this.fetchImages();
- 
-     await this.fetchCryptoPrices();
-     setInterval(this.fetchCryptoPrices, 60000);
-     setTimeout(() => {
-       this.loading = false;
-     }, 500);
-     await this.fetchCryptoPrices();
-     window.addEventListener("scroll", this.handleScroll);
-     document.addEventListener("click", this.closeDropdownOnClickOutside);
-   },
-   methods: {
-     async fetchImages() {
-       try {
-         const response = await fetch("https://min-api.cryptocompare.com/data/v2/news/?lang=EN");
-         const data = await response.json();
-         this.images = data.Data.slice(0, 12).map(item => ({ url: item.imageurl,url2:item.url}));
-       } catch (error) {
-         console.error("Ошибка загрузки изображений:", error);
-       }
-     },
-     //   handleScroll() {
-     //   this.showScrollTopButton = window.scrollY > 200;
-     //   this.isScrolled = window.scrollY > 50; // обновляем состояние при прокрутке
-     // },
-     toggleSearch() {
-       this.isSearchVisible = !this.isSearchVisible;
-       if (!this.isSearchVisible) {
-         this.clearSearch(); // Очистка при скрытии поля
-       }
-     },
-     toggleDropdown(event) {
-       this.isDropdownOpen = !this.isDropdownOpen;
-       event.stopPropagation(); // Останавливаем всплытие события для открытия dropdown
-     },
-     closeDropdownOnClickOutside(event) {
-       const dropdownMenu = this.$refs.dropdownMenu;
-       if (dropdownMenu && !dropdownMenu.contains(event.target)) {
-         this.isDropdownOpen = false;
-       }
-     },
-     // toggleSearch() {
-     //   this.isSearchVisible = !this.isSearchVisible;
-     //   if (!this.isSearchVisible) {
-     //     this.clearSearch(); // Очистка при скрытии поля
-     //   }
-     // },
- 
-     //   toggleDropdown() {
-     //   this.isDropdownOpen = !this.isDropdownOpen;
-     // },
-     handleScroll() {
-       this.showScrollTopButton = window.scrollY > 200;
-     },
-     scrollToTop() {
-       window.scrollTo({
-         top: 0,
-         behavior: "smooth",
-       });
-     },
-     subscribeNewsletter() {
-       if (this.email) {
-         alert(`Спасибо за подписку, ${this.email}!`);
-         this.email = "";
-       } else {
-         alert("Введите корректный email.");
-       }
-     },
- 
-     async fetchCryptoPrices() {
-       try {
-         const response = await fetch(
-           "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd"
-         );
-         const data = await response.json();
-         this.updatePrice("btc", data.bitcoin.usd);
-         this.updatePrice("eth", data.ethereum.usd);
-       } catch (error) {
-         console.error("Ошибка при получении курсов криптовалют:", error);
-       }
-     },
-     updatePrice(type, newPrice) {
-       if (type === "btc") {
-         this.prevBtcPrice = this.btcPrice;
-         this.btcPrice = newPrice.toFixed(2);
-         this.setChangeIndicator("btc");
-       } else if (type === "eth") {
-         this.prevEthPrice = this.ethPrice;
-         this.ethPrice = newPrice.toFixed(2);
-         this.setChangeIndicator("eth");
-       }
-     },
-     setChangeIndicator(type) {
-       if (type === "btc" && this.prevBtcPrice !== null) {
-         this.btcArrow =
-           this.btcPrice > this.prevBtcPrice ? "bi-arrow-up" : "bi-arrow-down";
-         this.btcChangeClass =
-           this.btcPrice > this.prevBtcPrice ? "text-success" : "text-danger";
-       }
-       if (type === "eth" && this.prevEthPrice !== null) {
-         this.ethArrow =
-           this.ethPrice > this.prevEthPrice ? "bi-arrow-up" : "bi-arrow-down";
-         this.ethChangeClass =
-           this.ethPrice > this.prevEthPrice ? "text-success" : "text-danger";
-       }
-     },
- 
-     toggleSidebar() {
-       this.isSidebarOpen = !this.isSidebarOpen;
-     },
-     async search() {
-       if (!this.searchQuery) return;
- 
-       try {
-         const response = await fetch(
-           `https://min-api.cryptocompare.com/data/v2/news/?categories=BTC,ETH,ADA,XRP,XLM,TRX,SHIBA,DOGE,EOS,LTC,USDT,&excludeCategories=Sponsored`
-         );
-         const data = await response.json();
-         this.searchResults = data.Data.filter((item) =>
-           item.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-         );
-       } catch (error) {
-         console.error("Ошибка при поиске новостей:", error);
-       }
-     },
-     clearSearch() {
-       this.searchQuery = "";
-       this.searchResults = [];
-     },
-     formatDate(timestamp) {
-       const date = new Date(timestamp * 1000); // Преобразование Unix timestamp в миллисекунды
-       return date.toLocaleDateString("en-US", {
-         year: "numeric",
-         month: "long",
-         day: "numeric",
-       });
-     },
-   },
- };
- </script>
- 
+import { ref, onMounted, watch, computed } from "vue";
+import Price from "../components/Price.vue";
+import News from "../components/NewsGrid.vue";
+import Top from "../components/TopGainer.vue";
+
+export default {
+  setup() {
+    // Переменные для хранения темы
+    const isDarkMode = ref(false);
+
+    // Функция загрузки темы
+    function loadTheme() {
+      const savedTheme = localStorage.getItem("isDarkMode");
+      if (savedTheme !== null) {
+        isDarkMode.value = JSON.parse(savedTheme);
+        console.log("Загруженная тема из localStorage:", isDarkMode.value);
+      } else {
+        console.log(
+          "Тема не найдена в localStorage, устанавливаем по умолчанию:",
+          isDarkMode.value
+        );
+      }
+    }
+
+    // Функция переключения темы
+    function toggleTheme() {
+      isDarkMode.value = !isDarkMode.value;
+      localStorage.setItem("isDarkMode", JSON.stringify(isDarkMode.value));
+      console.log("Новая тема после переключения:", isDarkMode.value);
+    }
+
+    // Отслеживание изменений темы
+    watch(isDarkMode, (newVal) => {
+      console.log("Тема обновлена:", newVal ? "Dark mode" : "Light mode");
+    });
+
+    // Управление загрузкой
+    const loading = ref(true);
+
+    onMounted(() => {
+      console.log("Mounted: Initializing theme...");
+      loadTheme(); // Загружаем тему при монтировании
+      console.log("isDarkMode после загрузки:", isDarkMode.value);
+
+      setTimeout(() => {
+        loading.value = false;
+        console.log("Loading complete:", loading.value);
+      }, 500);
+    });
+
+    // Функция переключения темы с логами
+    function toggleThemeWithLog() {
+      console.log("Toggle theme clicked");
+      toggleTheme();
+      console.log("New isDarkMode value after toggle:", isDarkMode.value);
+    }
+
+    return {
+      loading,
+      toggleThemeWithLog,
+      isDarkMode: computed(() => isDarkMode.value), // Превращаем в computed
+    };
+  },
+  components: { Price, Top, News },
+  data() {
+    return {
+      isSearchVisible: false,
+      isDropdownOpen: false,
+      images: [],
+      showScrollTopButton: false,
+      email: "",
+      btcPrice: null,
+      ethPrice: null,
+      prevBtcPrice: null,
+      prevEthPrice: null,
+      btcArrow: "",
+      ethArrow: "",
+      btcChangeClass: "",
+      ethChangeClass: "",
+      isSidebarOpen: false,
+      searchQuery: "",
+      searchResults: [],
+    };
+  },
+  async mounted() {
+    await this.fetchImages();
+    await this.fetchCryptoPrices();
+    setInterval(this.fetchCryptoPrices, 60000);
+    setTimeout(() => {
+      this.loading = false;
+    }, 500);
+    window.addEventListener("scroll", this.handleScroll);
+    document.addEventListener("click", this.closeDropdownOnClickOutside);
+  },
+  methods: {
+    async fetchImages() {
+      try {
+        const response = await fetch(
+          "https://min-api.cryptocompare.com/data/v2/news/?lang=EN"
+        );
+        const data = await response.json();
+        this.images = data.Data.slice(0, 12).map((item) => ({
+          url: item.imageurl,
+          url2: item.url,
+        }));
+      } catch (error) {
+        console.error("Ошибка загрузки изображений:", error);
+      }
+    },
+    toggleSearch() {
+      this.isSearchVisible = !this.isSearchVisible;
+      if (!this.isSearchVisible) {
+        this.clearSearch();
+      }
+    },
+    toggleDropdown(event) {
+      this.isDropdownOpen = !this.isDropdownOpen;
+      event.stopPropagation();
+    },
+    closeDropdownOnClickOutside(event) {
+      const dropdownMenu = this.$refs.dropdownMenu;
+      if (dropdownMenu && !dropdownMenu.contains(event.target)) {
+        this.isDropdownOpen = false;
+      }
+    },
+    handleScroll() {
+      this.showScrollTopButton = window.scrollY > 200;
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+    subscribeNewsletter() {
+      if (this.email) {
+        alert(`Спасибо за подписку, ${this.email}!`);
+        this.email = "";
+      } else {
+        alert("Введите корректный email.");
+      }
+    },
+    async fetchCryptoPrices() {
+      try {
+        const response = await fetch(
+          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd"
+        );
+        const data = await response.json();
+        this.updatePrice("btc", data.bitcoin.usd);
+        this.updatePrice("eth", data.ethereum.usd);
+      } catch (error) {
+        console.error("Ошибка при получении курсов криптовалют:", error);
+      }
+    },
+    updatePrice(type, newPrice) {
+      if (type === "btc") {
+        this.prevBtcPrice = this.btcPrice;
+        this.btcPrice = newPrice.toFixed(2);
+        this.setChangeIndicator("btc");
+      } else if (type === "eth") {
+        this.prevEthPrice = this.ethPrice;
+        this.ethPrice = newPrice.toFixed(2);
+        this.setChangeIndicator("eth");
+      }
+    },
+    setChangeIndicator(type) {
+      if (type === "btc" && this.prevBtcPrice !== null) {
+        this.btcArrow =
+          this.btcPrice > this.prevBtcPrice ? "bi-arrow-up" : "bi-arrow-down";
+        this.btcChangeClass =
+          this.btcPrice > this.prevBtcPrice ? "text-success" : "text-danger";
+      }
+      if (type === "eth" && this.prevEthPrice !== null) {
+        this.ethArrow =
+          this.ethPrice > this.prevEthPrice ? "bi-arrow-up" : "bi-arrow-down";
+        this.ethChangeClass =
+          this.ethPrice > this.prevEthPrice ? "text-success" : "text-danger";
+      }
+    },
+    toggleSidebar() {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    },
+    async search() {
+      if (!this.searchQuery) return;
+
+      try {
+        const response = await fetch(
+          `https://min-api.cryptocompare.com/data/v2/news/?categories=BTC,ETH,ADA,XRP,XLM,TRX,SHIBA,DOGE,EOS,LTC,USDT,&excludeCategories=Sponsored`
+        );
+        const data = await response.json();
+        this.searchResults = data.Data.filter((item) =>
+          item.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
+      } catch (error) {
+        console.error("Ошибка при поиске новостей:", error);
+      }
+    },
+    clearSearch() {
+      this.searchQuery = "";
+      this.searchResults = [];
+    },
+    formatDate(timestamp) {
+      const date = new Date(timestamp * 1000);
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    },
+  },
+};
+</script>
+
  <style scoped >
  .dark-mode {
    background-color: #091520; /* или другой цвет для темной темы */

@@ -42,21 +42,19 @@ export default defineNuxtConfig({
   domains: [
     "min-api.cryptocompare.com", // пример домена API с изображениями
   ],
-  modules: ["@nuxtjs/sitemap", "@pinia/nuxt", "@nuxt/image"],
+  modules: [ ],
 
-  sitemap: {
-    hostname: "https://cryptocurrencybulls.com", // Ваш домен
-    gzip: true, // Сжимает sitemap для улучшения производительности
-    routes: async () => {
-      // Используем асинхронную функцию для добавления динамических маршрутов
-      const newsRoutes = await fetchNewsRoutes();
-      return newsRoutes;
-    },
-  },
+  // sitemap: {
+  //   hostname: "https://cryptocurrencybulls.com", // Ваш домен
+  //   gzip: true, // Сжимает sitemap для улучшения производительности
+  //   routes: async () => {
+  //     // Используем асинхронную функцию для добавления динамических маршрутов
+  //     const newsRoutes = await fetchNewsRoutes();
+  //     return newsRoutes;
+  //   },
+  // },
 
-  pinia: {
-    autoImports: ["defineStore",'storeToRefs'],
-  },
+ 
 
   app: {
     head: {
@@ -148,6 +146,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
 
   nitro: {
+    
     watchOptions: {
       usePolling: true,
       interval: 1000,
