@@ -1,18 +1,19 @@
 <template>
   <div class="about-us container my-4">
-    <h1 class="text-center mb-4">О нас</h1>
+    <h1 class="text-center mb-4">About Us</h1>
    
     <p>
-      <strong>Крипто Быки</strong> — это инновационная платформа для распространения новостей о блокчейне, криптовалютах и IT-технологиях со всего мира. Мы специализируемся на предоставлении актуальной и качественной информации и контента.
+      <!-- <img style="width: 30px;" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Buffalo_Bulls_Athletic_Logo.svg/640px-Buffalo_Bulls_Athletic_Logo.svg.png"> -->
+      <strong>Crypto bulls</strong> is an innovative platform for distributing news about blockchain, cryptocurrencies, and IT technologies from around the world. We specialize in providing up-to-date and quality information and content.
     </p>
     <p>
-      Наша цель — быть надежным источником информации для всех, кто интересуется криптовалютами и технологиями. Мы стремимся держать наших пользователей в курсе последних событий и трендов в мире криптовалют.
+      Our goal is to be a reliable source of information for everyone interested in cryptocurrencies and technology. We strive to keep our users informed of the latest events and trends in the crypto world.
     </p>
     <p>
-      <strong>Крипто Быки</strong> — это не просто платформа, а полноценный сайт криптовалютных новостей, где каждый может найти полезную информацию, аналитические статьи и экспертные мнения.
+      <strong>Crypto bulls</strong> is not just a platform, but a comprehensive crypto news website where everyone can find useful information, analytical articles, and expert opinions.
     </p>
     <p>
-      Спасибо за доверие и выбор <strong>Крипто Быки</strong> в качестве источника новостей о криптовалютах.
+      Thank you for trusting and choosing <strong>Crypto bulls</strong> as your source for crypto news.
     </p>
   </div>
 </template>
@@ -30,7 +31,12 @@ export default {
 </script>
 
 <style scoped>
-
+.about-us {
+  /* background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
 
 h1 {
   /* color: #333; */
@@ -43,6 +49,6 @@ p {
 }
 
 strong {
-  color: orange;
+  color:orange;
 }
 </style>
